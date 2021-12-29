@@ -1,0 +1,22 @@
+format: jb-book
+root: intro
+parts:
+- caption: Installation instructions
+  chapters:
+  - file: installation/conda
+  - file: installation/jupyterlabtest
+  - file: installation/aws
+  - file: installation/RDSCreation
+  - file: installation/pgadmin
+  - file: installation/psql
+- caption: Lectures
+  numbered: True
+  chapters:
+  - file: lectures/lecture1
+  - file: lectures/lecture2
+  - file: lectures/lecture3
+  - file: lectures/lecture4
+  - file: lectures/lecture5
+  - file: lectures/lecture6
+  - file: lectures/lecture7
+
