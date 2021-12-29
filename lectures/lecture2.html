@@ -1,0 +1,827 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Lecture 1: Data Management in a Big Data Environment &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Lecture 2: Introduction to cloud computing and connection to cloud" href="lecture3.html" />
+    <link rel="prev" title="1. Lecture 0: Course Introduction" href="lecture1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/psql.html">
+   psql
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/lecture2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/lectures/lecture2.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/lecture2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   2.1. Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-hear-a-story-on-it-depends">
+   2.2. Let’s hear a story on ‘it Depends.’
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vs-of-big-data">
+   2.3. 4 Vs of Big Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#volume">
+     2.3.1. Volume
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#volume-solutions">
+       2.3.1.1. Volume Solutions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocity">
+     2.3.2. Velocity
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#velocity-solutions">
+       2.3.2.1. Velocity Solutions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variety">
+     2.3.3. Variety
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#variety-solutions">
+       2.3.3.1. Variety Solutions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#veracity">
+     2.3.4. Veracity
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#veracity-solutions">
+       2.3.4.1. Veracity Solutions
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-four-v-s-and-analytic-workflows">
+   2.4. The Four V’s and Analytic Workflows
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-based-approaches">
+     2.4.1. Problem Based Approaches
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#v-quadrant">
+   2.5. 4 V quadrant
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-framework-for-big-data-analysis">
+   2.6. General Framework for Big Data Analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#understand-your-data">
+     2.6.1. Understand your data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interrogate-errors-issues">
+     2.6.2. Interrogate errors &amp; issues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#turn-assumptions-into-assertions-tests">
+     2.6.3. Turn assumptions into assertions &amp; tests
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-1-data-management-in-a-big-data-environment">
+<h1><span class="section-number">2. </span>Lecture 1: Data Management in a Big Data Environment<a class="headerlink" href="#lecture-1-data-management-in-a-big-data-environment" title="Permalink to this headline">¶</a></h1>
+<p>Gittu George, January 4 2022</p>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">2.1. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You will understand how database management systems can be optimized for big data applications</p></li>
+<li><p>You will understand how the axes of big data (the 4Vs) apply to databases</p></li>
+<li><p>You will understand how the questions you ask affect the tools needed for data analysis</p></li>
+</ul>
+</div>
+<div class="section" id="let-s-hear-a-story-on-it-depends">
+<h2><span class="section-number">2.2. </span>Let’s hear a story on ‘it Depends.’<a class="headerlink" href="#let-s-hear-a-story-on-it-depends" title="Permalink to this headline">¶</a></h2>
+<p>You probably might have come across many questions like this in Reddit or StackOverflow.</p>
+<img alt="../_images/l21.png" src="../_images/l21.png" />
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><em><strong>“Focus on the business challenge first and then figure out the technology required to support this challenge.”</strong></em></p>
+<p>Lopes et al., 2017. Software Architecture for Big Data and the Cloud.
+DOI:<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/B9780128054673000107?via%3Dihub">10.1016/B978-0-12-805467-3.00010-7</a></p>
+</div>
+<p>You probably want to check out these questions and answers,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/hd3tqs/the_best_sql_vs_nosql_mindset_ive_ever_heard/">1</a>,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/i0y3po/how_big_is_big_data/">2</a>,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/9vwhl8/when_to_use_r_vs_when_to_use_python/">3</a>,<a class="reference external" href="https://www.reddit.com/r/learnprogramming/comments/lo5kpt/can_someone_explain_with_example_when_to_choose/">4</a>,<a class="reference external" href="https://www.reddit.com/r/webdev/comments/9g0z6f/sql_vs_nosql/">5</a>,<a class="reference external" href="https://www.reddit.com/r/webdev/comments/c3226n/when_should_one_use_sql_and_when_should_one_use/">6</a>,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/b09mfj/for_data_visualization_what_is_the_benefit_of/">7</a> to see what they are talking about. Reading these questions and answers is interesting, but before thinking about all these technologies, you have to first think about the problem in your hand. If you have a clear understanding of the business problem in hand and list down all the features of your problem, you can list out the pros and cons of using one technology over another.</p>
+<p>So which technology should I use?
+It all boils down to <code class="docutils literal notranslate"><span class="pre">it</span> <span class="pre">depends</span></code> on your business problem. Let me take you through some of the <code class="docutils literal notranslate"><span class="pre">Depends</span></code>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/depends.png" src="../_images/depends.png" />
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Depends</span></code> on the output you need</p>
+<ul>
+<li><p>Interactive or static graphs?</p></li>
+<li><p>Integrated reports, tables, websites?</p></li>
+<li><p>For yourself, for your company, for the public?</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depends</span></code> on the data you use</p>
+<ul>
+<li><p>One large file, many small files?</p></li>
+<li><p>Use the whole file at once or in small chunks?</p></li>
+<li><p>Is data static (cold) or dynamic (hot)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depends</span></code> on the question(s) you are trying to ask</p>
+<ul>
+<li><p>Is it high value?</p></li>
+<li><p>Are they complex (OLAP) or simple (OLTP)</p></li>
+<li><p>Do you need results quickly?</p></li>
+<li><p>For yourself, for your company, for the public?</p></li>
+</ul>
+</li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The analysis also showed that the underlying infrastructures have special usage and operational characteristics. <em><strong>Clusters should be operated at high utilisation rate to keep costs low;</strong></em> in the cloud, careful management of virtual machine instances and data transfer between frequent and infrequent-access storage services are necessary for minimising cost……..</p>
+<p>Juhasz, Z. 2020. Cluster Computing. <a class="reference external" href="https://link.springer.com/article/10.1007%2Fs10586-020-03141-y">DOI: 10.1007/s10586-020-03141-y</a></p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">It</span> <span class="pre">Depends</span></code> matters a lot, especially in “Big Data,” as</p>
+<ul class="simple">
+<li><p>The costs and benefits are much higher</p></li>
+<li><p>The impact on a business’s bottom line can be significant</p></li>
+</ul>
+<p>Some of you might be thinking now, how big the data should be for it to be big data ? that too <code class="docutils literal notranslate"><span class="pre">It</span> <span class="pre">Depends.</span></code>
+It depends on many <code class="docutils literal notranslate"><span class="pre">V's.</span></code> Let’s discuss 4 <code class="docutils literal notranslate"><span class="pre">V's</span></code> in our next section.</p>
+</div>
+<div class="section" id="vs-of-big-data">
+<h2><span class="section-number">2.3. </span>4 Vs of Big Data<a class="headerlink" href="#vs-of-big-data" title="Permalink to this headline">¶</a></h2>
+<p>Whenever you come across any big-data article, you will hear about V’s. 3V ’s definition was introduced in 2001 by Gartner Inc. analyst Doug Laney. After this, it evolved a lot with many other V’s. Here I will be going through 4 V more common V’s discussed in today’s industry. The Four V’s are, broadly speaking, Velocity, Veracity, Volume, and Variety. These were introduced to help understand the challenges of Big Data in computing and analytics.  The concepts are broadly applicable across all disciplines—for example, check what my colleague wrote about <a class="reference external" href="https://doi.org/10.1093/biosci/biy068">big data in Ecology</a>.  Various datasets or problems are affected differently by each of the different axes, so understanding the different dimensions of big data is critical to finding the analytic solutions we intend to apply.</p>
+<img alt="../_images/vvvv.png" src="../_images/vvvv.png" />
+<p>Source: Farley, Dawson, Goring &amp; Williams, Ecography, 2018 <a class="reference external" href="https://academic.oup.com/bioscience/article/68/8/563/5049569">Open Access</a></p>
+<p>Other people have spoken about five Vs (<a class="reference external" href="https://bizibl.com/marketing/download/fifth-v-big-data">Value</a>), <a class="reference external" href="https://impact.com/marketing-intelligence/7-vs-big-data/">seven Vs</a> (adding Variability, Visualization and Value), and even more.  If you want to know more V’s ( 42 of them ) and add your vocabulary, you can check out <a class="reference external" href="https://www.elderresearch.com/blog/the-42-vs-of-big-data-and-data-science/">this</a> article. These additional V’s can be informative, but, by and large, the Four V’s provide the most insight into data challenges.</p>
+<p>Let’s checkout 4 V’s in detail.</p>
+<div class="section" id="volume">
+<h3><span class="section-number">2.3.1. </span>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h3>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/volume.png" src="../_images/volume.png" />
+</div>
+<p>When we think about “Big Data, ” this is often the most familiar dimension.  We think of Big Data in terms of gigabytes, terabytes, or petabytes.  The volume presents a significant challenge for data storage, although modern technology has reduced this challenge to some degree.  It also produces a challenge for recall (simply finding information) and for data processing (transforming and analyzing data). Here are the pointers to look out for:</p>
+<ul class="simple">
+<li><p>How big is the data?</p></li>
+<li><p>Total File Size</p></li>
+<li><p>Number of Data Points</p></li>
+</ul>
+<div class="section" id="volume-solutions">
+<h4><span class="section-number">2.3.1.1. </span>Volume Solutions<a class="headerlink" href="#volume-solutions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Cloud storage solutions</p></li>
+</ul>
+<p>But in most cases, it’s not just about storing your data; it’s more about how you will process the data. Then there will be limitations by read-write access or/and memory capacity.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/volumesolu.png" src="../_images/volumesolu.png" />
+</div>
+<ul class="simple">
+<li><p>Partitioning/Sharding</p></li>
+</ul>
+<p>We must look at this from different angles, partitioning/sharding from a database perspective, which we will touch upon later in this course. Another option is to go for distributed file system where it stores data in small blocks so that it’s easy to process when needed.</p>
+<ul class="simple">
+<li><p>Parallel processing</p></li>
+</ul>
+<p>Small chunks of files can be processed simultaneously by using different servers/cores and aggregate results at the end. This is mainly made possible in the industry by high-performance/cluster computing or other map-reduce-based frameworks like Hadoop/spark.</p>
+</div>
+</div>
+<div class="section" id="velocity">
+<h3><span class="section-number">2.3.2. </span>Velocity<a class="headerlink" href="#velocity" title="Permalink to this headline">¶</a></h3>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/velocitysolu.png" src="../_images/velocitysolu.png" />
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>“The speed of transmission is what allows HFTs to always have a head start because they closeout and softsell [more] rapidly than anyone.”
+<a class="reference external" href="https://medium.com/&#64;moonxfamily/high-frequency-trading-races-to-nanoseconds-689f86109fb4">High Frequency Trading - Medium post</a></p>
+</div>
+<p>Velocity is a second factor.  We may be interested in only the most recent data, minutes or seconds, requiring low volumes of data, but at a high velocity.  For example, quant traders might be using high-frequency stock data to maximize trading profits.  This involves analysis with extremely fast turnover. Here are the pointers to look out for:</p>
+<ul class="simple">
+<li><p>How fast is the data arriving?</p>
+<ul>
+<li><p>Annual data from Stats Can?</p></li>
+<li><p>Real-time data from stock tickers or Twitter?</p></li>
+</ul>
+</li>
+<li><p>How fast do we need our answers?</p>
+<ul>
+<li><p>Monthly or annual strategy planning?</p></li>
+<li><p>Real-time commodities purchasing?</p></li>
+</ul>
+</li>
+<li><p>How fast is the data changing?</p>
+<ul>
+<li><p>Changing interpretations?</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="velocity-solutions">
+<h4><span class="section-number">2.3.2.1. </span>Velocity Solutions<a class="headerlink" href="#velocity-solutions" title="Permalink to this headline">¶</a></h4>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/coldhot.png" src="../_images/coldhot.png" />
+</div>
+<ul class="simple">
+<li><p>Agile development.</p></li>
+<li><p>BASE databases (Basically available).</p></li>
+<li><p>Modular analytics &amp; fault tolerance.</p></li>
+<li><p>Identify “Key Performance Indicators”.</p></li>
+<li><p>Develop real-time reporting.</p></li>
+<li><p>Split the data into hot (Redis , RAM) and cold data (RDBMS, Disk Storage).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="variety">
+<h3><span class="section-number">2.3.3. </span>Variety<a class="headerlink" href="#variety" title="Permalink to this headline">¶</a></h3>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/variety.png" src="../_images/variety.png" />
+</div>
+<p>When we bring in multiple data sources or build data lakes, how well do data fields align?  Are temporal scales aligned?  Are addresses, zip codes, census tracts, or electoral districts aligned with other spatial data?  Are financial values in standard units? If not, how do we transform the values to account for fluctuating exchange rates? Here are the pointers to look out for</p>
+<ul class="simple">
+<li><p>How different is the data source?</p></li>
+<li><p>Are data coming from multiple sources?</p>
+<ul>
+<li><p>Do fields in sources align well?</p></li>
+<li><p>Do files have similar formatting?</p></li>
+</ul>
+</li>
+<li><p>How different are the data structures?</p>
+<ul>
+<li><p>Can the data work in a relational model?</p></li>
+<li><p>Do we need multiple data models?</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="variety-solutions">
+<h4><span class="section-number">2.3.3.1. </span>Variety Solutions<a class="headerlink" href="#variety-solutions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Normalize using multiple data sources.</p></li>
+<li><p>Clear interface layers (structured based on velocity and volume).</p></li>
+<li><p>Different management systems (RDBMS &amp; Graph DB).</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="veracity">
+<h3><span class="section-number">2.3.4. </span>Veracity<a class="headerlink" href="#veracity" title="Permalink to this headline">¶</a></h3>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/veracitybi.png" src="../_images/veracitybi.png" />
+</div>
+<p>Is data scraped from the web, contributed by individuals, or obtained from other external sources reliable?  How do spam accounts, scraping tools, or missing data affect our interpretations of patterns in the data? Here are the pointers to look out for</p>
+<ul class="simple">
+<li><p>How much do (should) we trust the data?</p></li>
+<li><p>What assumptions or biases are inherent?</p></li>
+<li><p>Does the value change over time?</p></li>
+<li><p>How do we manage missing data?</p></li>
+<li><p>How do we validate or check data validity?</p>
+<ul>
+<li><p>Incoming data</p></li>
+<li><p>Outgoing analysis</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="veracity-solutions">
+<h4><span class="section-number">2.3.4.1. </span>Veracity Solutions<a class="headerlink" href="#veracity-solutions" title="Permalink to this headline">¶</a></h4>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/veracity.png" src="../_images/veracity.png" />
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>…abstracts of papers comparing citizen science data to professional data indicated that the citizen science data quality was good in 73% of the abstracts, the results of our quantitative assessment cast more doubt on the accuracy of the data.
+<a class="reference external" href="https://esajournals.onlinelibrary.wiley.com/doi/10.1002/bes2.1336">Aceves-Bueno et al., 2017. Bulletin of the Ecological Society of America</a></p>
+</div>
+<ul class="simple">
+<li><p>Know your data</p></li>
+<li><p>Data volatility (how long is it accurate)?</p></li>
+<li><p>Domain knowledge is critical</p></li>
+<li><p>Clear definition of assumptions</p></li>
+<li><p>Clear checks on key processes</p></li>
+<li><p>TDD - Test Driven Development (assertions &amp; tests)</p></li>
+</ul>
+<p>… abstracts of papers comparing citizen science data to professional data indicated that the citizen science data quality was good in 73% of the abstracts, the results of our quantitative assessment cast more doubt on the accuracy of the data.
+Aceves-Bueno et al., 2017. Bulletin of the Ecological Society of America
+[Open Access]</p>
+</div>
+</div>
+</div>
+<div class="section" id="the-four-v-s-and-analytic-workflows">
+<h2><span class="section-number">2.4. </span>The Four V’s and Analytic Workflows<a class="headerlink" href="#the-four-v-s-and-analytic-workflows" title="Permalink to this headline">¶</a></h2>
+<p>These challenges come to the forefront when we’re working with data.  The goto standard is to open up an Excel or read in a comma-separated file to look at the data, get a sense of what is happening, or summarise the key elements.</p>
+<ul class="simple">
+<li><p>When that file is &lt;10MB in size, that’s often not a big problem, but as files get bigger and bigger, even calculating a simple mean is an issue (<strong>Volume</strong>).</p></li>
+<li><p>When the data contains text, images, values in different currencies, summary becomes problematic (<strong>Variety</strong>)</p></li>
+<li><p>When the data contain transcription errors, conflicting values, and biases in data collection or coverage, how do we trust our summaries? (<strong>Veracity</strong>)</p></li>
+<li><p>When the 10MB you just summarized are out-of-date, as soon as you’re done outlining them, how do you present these results to your colleagues? (<strong>Velocity</strong>)</p></li>
+</ul>
+<div class="section" id="problem-based-approaches">
+<h3><span class="section-number">2.4.1. </span>Problem Based Approaches<a class="headerlink" href="#problem-based-approaches" title="Permalink to this headline">¶</a></h3>
+<p>Many of these challenges have straightforward(ish) solutions, but how we apply those solutions and our choices are often specific to the problem we are trying to answer.  For example, a common solution people present to <strong>Volume</strong> is to use a NoSQL database to store and index information.  This is an appropriate solution in many cases; however, most data is well suited to relational databases, and these often provide advantages over non-relational databases.</p>
+<p>One of the most important steps in choosing how to set up your analytic workflow is the proper framing of your question.  This will help you understand:</p>
+<ol class="simple">
+<li><p>What data sources do you need ?</p></li>
+<li><p>How you will transform that data ?</p></li>
+<li><p>How you will represent your data ?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="v-quadrant">
+<h2><span class="section-number">2.5. </span>4 V quadrant<a class="headerlink" href="#v-quadrant" title="Permalink to this headline">¶</a></h2>
+<p>Now, look at these 4 V’s in this quadrant and see how different industries score.
+<img alt="../_images/variousbig.png" src="../_images/variousbig.png" /></p>
+<p>To summarize, when is big data appropriate? <code class="docutils literal notranslate"><span class="pre">Depends</span> <span class="pre">on:</span></code></p>
+<ul class="simple">
+<li><p>Velocity, Veracity, Volume, and Variety</p></li>
+<li><p>When traditional tools begin to fail</p></li>
+<li><p>If analysis crashes your computer</p></li>
+</ul>
+</div>
+<div class="section" id="general-framework-for-big-data-analysis">
+<h2><span class="section-number">2.6. </span>General Framework for Big Data Analysis<a class="headerlink" href="#general-framework-for-big-data-analysis" title="Permalink to this headline">¶</a></h2>
+<p>How to Approach Big Data</p>
+<div class="section" id="understand-your-data">
+<h3><span class="section-number">2.6.1. </span>Understand your data<a class="headerlink" href="#understand-your-data" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/understanddata.png"><img alt="../_images/understanddata.png" src="../_images/understanddata.png" style="width: 60%;" /></a>
+<div class="sidebar">
+<p class="sidebar-title">Various sections in workflow</p>
+<ul class="simple">
+<li><p>Submission Information Package
+It shows how the data enters the process</p></li>
+<li><p>Archive Information Package
+Shows what are the processes involved in archiving.</p></li>
+<li><p>Dissemination Information Package
+It shows how the users consume the data</p></li>
+</ul>
+<p>In short, this shows the processes that data goes through right from its raw state to when it reaches the hands of the person/software who will be consuming the data for further insight generation.</p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>“a data dictionary is possibly one of the most valuable artifacts that a data team can deliver to the business.” - Carl Anderson <a class="reference external" href="https://medium.com/&#64;leapingllamas/data-dictionary-a-how-to-and-best-practices-a09a685dcd61">Medium</a></p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Descriptive</span> <span class="pre">information</span></code> - As you see, this appears 2 times in this workflow; this is a vital piece. We can also call it a data dictionary. it helps</p>
+<ul class="simple">
+<li><p>Manage data variety</p></li>
+<li><p>Align source data with project or organization goals</p></li>
+<li><p>Manage veracity (we know what the data means)</p></li>
+<li><p>Dictionaries Power Models</p>
+<ul>
+<li><p>Understanding your data allows you to build better models</p></li>
+<li><p>It drives BI applications for your “clients.”</p></li>
+<li><p>It helps motivate and simplify modeling</p></li>
+<li><p>It is an iterative &amp; ongoing process</p></li>
+</ul>
+</li>
+</ul>
+<p>Here is an example of how a dictionary looks like.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Division</p></th>
+<th class="head"><p>Term</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>hr</p></td>
+<td><p>firstname</p></td>
+<td><p>text</p></td>
+<td><p>An individual’s first name</p></td>
+<td><p>“Arjun”, “Amaira”, “Socorro”</p></td>
+</tr>
+<tr class="row-odd"><td><p>hr</p></td>
+<td><p>lastname</p></td>
+<td><p>text</p></td>
+<td><p>An individual’s last name</p></td>
+<td><p>“Tarana”, “Bolio”, “”</p></td>
+</tr>
+<tr class="row-even"><td><p>realestate</p></td>
+<td><p>projectname</p></td>
+<td><p>text</p></td>
+<td><p>Name for an individual Real Estate Project</p></td>
+<td><p>“Capital Square Acquisition”</p></td>
+</tr>
+<tr class="row-odd"><td><p>realestate</p></td>
+<td><p>projectstart</p></td>
+<td><p>date</p></td>
+<td><p>Start date for a project within the Real Estate division</p></td>
+<td><p>“2021-12-02”</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="interrogate-errors-issues">
+<h3><span class="section-number">2.6.2. </span>Interrogate errors &amp; issues<a class="headerlink" href="#interrogate-errors-issues" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Start with the Data Dictionary</p></li>
+</ul>
+<p>As we discussed earlier, you can get a lot of information from a data dictionary, so it’s best to check it out and understand the data to identify if errors exist with the data.</p>
+<p>For example; Most of us got last-name/surname, and we often think everyone got one. With this assumption, if we came across a row for an individual without a surname, we might consider it an error. But some countries don’t indeed have the culture of adding surnames to their names. Check out <a class="reference external" href="https://theculturetrip.com/europe/iceland/articles/how-did-iceland-become-a-nation-with-no-surnames/">this</a> why Icelandic people have no surnames. If you want to know more on how they name, check out <a class="reference external" href="https://wsimag.com/culture/2248-the-peculiarities-of-icelandic-naming">this</a> article :)</p>
+<ul class="simple">
+<li><p>What biases exist?</p>
+<ul>
+<li><p>Uneven/unaligned sampling (census tracts vs. electoral boundaries)</p></li>
+<li><p>Artifacts of data collection (survey questions, temporal sampling)</p></li>
+<li><p>Incomplete or misaligned data models</p></li>
+</ul>
+</li>
+<li><p>How might these biases affect our analysis?</p>
+<ul>
+<li><p>Spurious correlations</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="turn-assumptions-into-assertions-tests">
+<h3><span class="section-number">2.6.3. </span>Turn assumptions into assertions &amp; tests<a class="headerlink" href="#turn-assumptions-into-assertions-tests" title="Permalink to this headline">¶</a></h3>
+<p>Use the right tools!</p>
+<ul class="simple">
+<li><p>Relational DBMSs are optimized</p>
+<ul>
+<li><p>for data access &amp; transformation</p></li>
+<li><p>Strategies of normalization improve data validity &amp; reduce data size</p></li>
+<li><p>Indexing speeds up data access</p></li>
+<li><p>Constraints improve data validity</p>
+<ul>
+<li><p>Domain Constraint (field values cannot be null, entity must possess attribute)</p></li>
+<li><p>Entity Integrity Constraint (values must be of a value type)</p></li>
+<li><p>Referential Integrity Constraint (foreign key must relate to value in another table)</p></li>
+<li><p>Key Constraint (primary key must be unique and not null)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Python &amp; R are optimized</p>
+<ul>
+<li><p>For data transformation &amp; analysis</p></li>
+<li><p>For reproducibility</p></li>
+<li><p>For visualization (to some degree)</p></li>
+</ul>
+</li>
+</ul>
+<p>You can add assertions when writing your program.
+These assertions will break execution at critical points if some of your workflows don’t meet your prior expectations.<br />
+Good use cases:  filtering, map functions, complex functions, places where input data may change frequently but must meet some prior expectation.</p>
+<p>In Python: <a class="reference external" href="https://docs.pytest.org/en/stable/assert.html">pytest</a>.</p>
+<p>In R: <a class="reference external" href="https://github.com/hadley/assertthat">assertthat</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">data_out</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">data_out</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Sum isn’t working.&quot;</span>
+</pre></div>
+</div>
+<p>Finally, let’s talk about the dangers of too much data!!!! Checkout <a class="reference external" href="https://www.forbes.com/sites/kimberlywhitler/2018/03/17/why-too-much-data-is-a-problem-and-how-to-prevent-it/?sh=2854371a755f">this</a> article.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Lecture 0: Course Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture3.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Lecture 2: Introduction to cloud computing and connection to cloud</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,779 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Lecture 2: Introduction to cloud computing and connection to cloud &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2. Lecture 1: Data Management in a Big Data Environment" href="lecture2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/psql.html">
+   psql
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/lecture3.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/lectures/lecture3.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/lecture3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todays-agenda">
+   3.1. Todays Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   3.2. Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intro-to-cloud-computing">
+   3.3. Intro to cloud computing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#benefits-of-cloud-computing">
+   3.4. Benefits of cloud computing:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-providers">
+   3.5. Cloud providers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#category-of-services-available-in-aws">
+   3.6. Category of services available in AWS
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#database-amazon-rds">
+     3.6.1. Database (Amazon RDS)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ways-to-interact-with-aws">
+   3.7. Ways to interact with AWS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#demo">
+   3.8. Demo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-cloud-rds">
+   3.9. Connecting To Cloud (RDS)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-psycopg2-package">
+   3.10. Using psycopg2 package
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-the-data-to-database">
+     3.10.1. Loading the data to database
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-data-from-database">
+     3.10.2. Reading data from database
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dealing-with-passwords">
+   3.11. Dealing with passwords
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-dumps">
+   3.12. Working with dumps
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-2-introduction-to-cloud-computing-and-connection-to-cloud">
+<h1><span class="section-number">3. </span>Lecture 2: Introduction to cloud computing and connection to cloud<a class="headerlink" href="#lecture-2-introduction-to-cloud-computing-and-connection-to-cloud" title="Permalink to this headline">¶</a></h1>
+<p>Gittu George, January 6 2022</p>
+<div class="section" id="todays-agenda">
+<h2><span class="section-number">3.1. </span>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Intro to cloud computing – WHAT ?, WHY ?, HOW?</p></li>
+<li><p>General overview on services available in AWS (Amazon web services)</p></li>
+<li><p>Various database services available in AWS</p></li>
+<li><p>Details on RDS - Relational Database Service</p></li>
+<li><p>Connecting to RDS (Postgres)</p></li>
+</ul>
+</div>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">3.2. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Have a general understanding of cloud computing and help you get started.</p></li>
+<li><p>You will know how to connect to a remote database from a Jupyter notebook.</p></li>
+<li><p>Different ways in interacting with the database from jupyter notebook.</p></li>
+<li><p>Showing different ways of loading the data.</p></li>
+<li><p>You will use queries to bring data into a Jupyter notebook and provide a simple data analysis.</p></li>
+</ul>
+</div>
+<div class="section" id="intro-to-cloud-computing">
+<h2><span class="section-number">3.3. </span>Intro to cloud computing<a class="headerlink" href="#intro-to-cloud-computing" title="Permalink to this headline">¶</a></h2>
+<p>Let me tell you a short cloud-computing tale. This story starts from a computer that you all are familiar with. By the end of this tale, you will answer WHAT, WHY &amp; HOW cloud computing.</p>
+<p>Here is the computer that I am talking about:
+<br>
+<img alt="../_images/l31.png" src="../_images/l31.png" />
+<br>
+OKAY! So now we all agreed to call monitor as the client and that box as server. Now let’s take this knowledge to a bigger picture or think about how this idea will be when you start working in the industry.
+<br>
+<img alt="../_images/l32.png" src="../_images/l32.png" />
+<br></p>
+<p>Collectively we call these servers data centers ( you can also hear people calling some other names like on-premise infrastructure). Mostly all companies (may be used to as there is this trend of moving to cloud) have data centers, which is considered a company powerhouse for powering data needs (like storage, processing, etc.)</p>
+<p>If you want to check out more on those gigantic data centers. Checkout <a class="reference external" href="https://www.youtube.com/watch?v=g7JaN3rTK2A">here</a></p>
+<p>Let me pause and take a minute to answer this question:</p>
+<div class="sidebar">
+<p class="sidebar-title">Question is here..</p>
+<p>So assume that UBC has some server, and we are using this “client-server model” to do our analysis, then what do we not care about in the laptop requirements that MBAN mandates?</p>
+</div>
+<a class="reference internal image-reference" href="../_images/l33.png"><img alt="../_images/l33.png" src="../_images/l33.png" style="width: 55%;" /></a>
+<br>
+<br>
+<p>Now that you understand this client-server model, let’s look inside these data centers to see which parties are involved.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/funny.png" src="../_images/funny.png" />
+</div>
+<img alt="../_images/l35.png" src="../_images/l35.png" />
+<p>List down in your notes about the labor costs:</p>
+<p>List down costs other than labor cost:</p>
+<p>With cloud computing, we are bringing down most of the costs you listed now. Look how neat and clean the diagram below is as cloud providers are taking care of most of the responsibilities that we discussed and using their infrastructure servers as services.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/whocares.png" src="../_images/whocares.png" />
+</div>
+<img alt="../_images/l34.png" src="../_images/l34.png" />
+<p>I hope by now you can formulate an answer for questions WHAT, WHY, and HOW cloud computing.</p>
+<ul class="simple">
+<li><p><em><strong>WHAT?</strong></em>
+Cloud Computing is when we get a server in the cloud for our compute, storage, databases, and network services provided to users via the internet.</p></li>
+<li><p><em><strong>WHY?</strong></em>
+Save lots of money that otherwise need to spend for on-premise infrastructure, and I don’t want to worry about infrastructure and can focus on your analysis right from day1.</p></li>
+<li><p><em><strong>HOW?</strong></em>
+Some cloud vendors provide infrastructure as a service by taking care of all the responsibilities that otherwise need to be done on-premise.</p></li>
+</ul>
+</div>
+<div class="section" id="benefits-of-cloud-computing">
+<h2><span class="section-number">3.4. </span>Benefits of cloud computing:<a class="headerlink" href="#benefits-of-cloud-computing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Trade capital expense for variable expense</p></li>
+<li><p>Massive economies of scale</p></li>
+<li><p>Stop guessing capacity</p></li>
+<li><p>Increase speed and agility</p></li>
+<li><p>Stop spending money on running and maintaining data centers</p></li>
+<li><p>Go global in minutes</p></li>
+</ul>
+</div>
+<div class="section" id="cloud-providers">
+<h2><span class="section-number">3.5. </span>Cloud providers<a class="headerlink" href="#cloud-providers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Amazon Web Services (AWS)</p></li>
+<li><p>Microsoft Azure</p></li>
+<li><p>Google Cloud</p></li>
+</ul>
+</div>
+<div class="section" id="category-of-services-available-in-aws">
+<h2><span class="section-number">3.6. </span>Category of services available in AWS<a class="headerlink" href="#category-of-services-available-in-aws" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Compute</p>
+<ul>
+<li><p>EC2 – Elastic Cloud Compute</p></li>
+</ul>
+</li>
+<li><p>Storage</p>
+<ul>
+<li><p>EBS - Elastic Block Storage</p></li>
+<li><p>S3 - Simple Storage Service</p></li>
+</ul>
+</li>
+<li><p>Database</p></li>
+</ul>
+<img alt="../_images/l36.png" src="../_images/l36.png" />
+<p>Source: <a class="reference external" href="https://www.dbbest.com/technologies/nosql-databases/">dbtest</a></p>
+<div class="section" id="database-amazon-rds">
+<h3><span class="section-number">3.6.1. </span>Database (Amazon RDS)<a class="headerlink" href="#database-amazon-rds" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Relational database service (RDS) provides a simple way to provision, create, and scale a relational database within AWS.</p></li>
+<li><p>Managed service – AWS takes responsibility for the administrative tasks</p></li>
+<li><p>Following database engines are supported</p>
+<ul>
+<li><p>Amazon Aurora</p></li>
+<li><p>PostgreSQL</p></li>
+<li><p>MySQL</p></li>
+<li><p>MariaDB</p></li>
+<li><p>Oracle Database</p></li>
+<li><p>SQL Server</p></li>
+</ul>
+</li>
+</ul>
+<p>For a list of entire services and details, check out <a class="reference external" href="https://d1.awsstatic.com/whitepapers/aws-overview.pdf">here</a></p>
+</div>
+</div>
+<div class="section" id="ways-to-interact-with-aws">
+<h2><span class="section-number">3.7. </span>Ways to interact with AWS<a class="headerlink" href="#ways-to-interact-with-aws" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><a class="reference external" href="https://www.awsacademy.com/LMS_Login">Web interface</a></p>
+<p>A web-based GUI provides the capability to interact with the services within AWS.</p>
+</li>
+<li><p><a class="reference external" href="https://aws.amazon.com/cli/">AWS CLI</a></p></li>
+<li><p><a class="reference external" href="https://aws.amazon.com/sdk-for-python/">SDK</a></p></li>
+</ul>
+<p>A good blog <a class="reference external" href="https://adamraffe.com/2019/02/20/aws-fundamentals-part-3-interacting-with-aws/">here</a> explains various ways of interaction.</p>
+</div>
+<div class="section" id="demo">
+<h2><span class="section-number">3.8. </span>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h2>
+<p>Lets together explore AWS</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/explore.png"><img alt="../_images/explore.png" src="../_images/explore.png" style="width: 200px;" /></a>
+</div>
+</div>
+<div class="section" id="connecting-to-cloud-rds">
+<h2><span class="section-number">3.9. </span>Connecting To Cloud (RDS)<a class="headerlink" href="#connecting-to-cloud-rds" title="Permalink to this headline">¶</a></h2>
+<p>Consider your database what you built as an independent entity. Then, follow instructions to set up your database in the cloud.</p>
+<p>OKAY.. so now you have your database ready! In our case, we set up our Postgres database in RDS. Since you are not using an already existing database, you created it, so it’s empty now. So we need to load data into this database. After loading data to the database, we are all set with querying from the database.</p>
+<p>Whether it’s for loading or querying the database, we need to connect to the database. You all are aware of 2 other ways that you can use to interact with the database outside of this jupyter notebook.</p>
+<ul class="simple">
+<li><p>pgadmin</p></li>
+<li><p>psql</p></li>
+</ul>
+<p>What information do you want to know if you’re going to connect to the above? We need to know the information of the database that you wanted to connect to</p>
+<ul class="simple">
+<li><p>Hostname</p></li>
+<li><p>Port number</p></li>
+<li><p>User name (need to make sure that this user have access to the database)</p></li>
+<li><p>Password (Ofcourse !! you need to know the password for this user)</p></li>
+</ul>
+<p>If you want to know more details refer to the installation notes for pgadmin &amp; psql</p>
+<p>Now let’s think about other sources you want to connect to the database. Here are a few that I thought of</p>
+<ul class="simple">
+<li><p>From a programming language (java, R, python, etc..)</p></li>
+<li><p>From your jupyter notebook</p></li>
+<li><p>From tableau</p></li>
+<li><p>From excel</p></li>
+<li><p>From R Studio</p></li>
+<li><p>OR from any other application that you are using, e.g., your banking website</p></li>
+</ul>
+<p>Besides knowing the hostname, port name, username, and password, we also need to install an Application programming interface (API) that helps the applications on the client-side communicate with the server-side (in our case database). Java Database Connectivity (JDBC) and Open Database Connectivity (ODBC) are 2 of such APIs that are provided by the database vendor (Postgres, Oracle, MySQL, etc..) to access their database.</p>
+<p>JDBC is language-specific, and its the standard interface between any java application and database. JDBC converts the java programmer’s requests to the database to something that the database understands (you can think of it as a translator). Meanwhile, ODBC is not language-specific, so it can convert requests from any application/software/programming language to something the database understands. Here is a diagram that will help you understand how ODBC works.</p>
+<a class="reference internal image-reference" href="../_images/connection.png"><img alt="../_images/connection.png" src="../_images/connection.png" style="width: 65%;" /></a>
+<div class="sidebar">
+<p class="sidebar-title">How ODBC connects ?</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/odbc.png"><img alt="../_images/odbc.png" src="../_images/odbc.png" style="width: 450px;" /></a>
+</div>
+</div>
+<p>In the rest of the section, let’s focus on connecting to the database from python and the jupyter notebook. We will be using specific packages to make this possible, but as we have discussed, it uses ODBC for the connection. Many packages make this possible, but we will discuss a package named <code class="docutils literal notranslate"><span class="pre">psycopg2.</span></code></p>
+</div>
+<div class="section" id="using-psycopg2-package">
+<h2><span class="section-number">3.10. </span>Using psycopg2 package<a class="headerlink" href="#using-psycopg2-package" title="Permalink to this headline">¶</a></h2>
+<p>Let first install the package using <a class="reference external" href="https://anaconda.org/anaconda/psycopg2">conda</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%sh
+conda install -c anaconda psycopg2 
+</pre></div>
+</div>
+<p>Let’s make sure that we can import it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+</pre></div>
+</div>
+<p>Now we have <code class="docutils literal notranslate"><span class="pre">psycopg2</span></code> imported into our notebook. <code class="docutils literal notranslate"><span class="pre">psycopg2</span></code> package manages the interaction between python and our database. So the first takeaway message here is that psycopg2 has nothing to do with jupyter notebook; rather, it’s tied to python. So we use jupyter notebook as an interactive programming environment to query in python. Later if time permits, we will talk about <code class="docutils literal notranslate"><span class="pre">SQL</span> <span class="pre">magics,</span></code> which is a specific way of interacting with databases from jupyter notebook.</p>
+<p>Okay! Let’s now get to the steps to connect to a database using psycopg2.</p>
+<ul>
+<li><p><em><strong>Create a connection</strong></em></p>
+<p>This connection allows communication with the database; It opens up a network connection.</p>
+</li>
+<li><p><em><strong>Create a cursor</strong></em></p>
+<p>The cursor is an address for the memory on the database management server to say this is what we are looking at. This python object helps you execute the query and fetch the results from the database. You can read more about cursors <a class="reference external" href="https://medium.com/dev-bits/understanding-postgresql-cursors-with-python-ebc3da591fe7">here</a>.</p>
+</li>
+<li><p><em><strong>Formulate your query</strong></em></p>
+<p>Formulate the SQL query that you want to execute in the database.</p>
+</li>
+<li><p><em><strong>Execute</strong></em></p>
+<p>Pass your query to execute() method of cursor object, run the query in the database.</p>
+</li>
+<li><p><em><strong>Fetch/commit/rollback</strong></em></p>
+<p>The query that we performed in execute doesn’t return the query right away. To return it, we need to perform a fetch. If the query is to write something, then we need to commit it. If some transaction went wrong, then we need to roll back it.</p>
+</li>
+</ul>
+<p>Let’s now check out these by creating a ticker table, loading data to it, and doing some querying. Let’s first create schema import,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a connection</span>
+<span class="nv">conString</span> <span class="o">=</span> <span class="o">{</span><span class="s1">&#39;host&#39;</span>:<span class="s1">&#39;mbandtweet.xxxxx.amazonaws.com&#39;</span>,
+             <span class="s1">&#39;dbname&#39;</span>:<span class="s1">&#39;postgres&#39;</span>,
+             <span class="s1">&#39;user&#39;</span>:<span class="s1">&#39;postgres&#39;</span>,
+             <span class="s1">&#39;password&#39;</span>:<span class="s1">&#39;password&#39;</span>,
+             <span class="s1">&#39;port&#39;</span>:5432<span class="o">}</span>
+<span class="nv">conn</span> <span class="o">=</span> psycopg2.connect<span class="o">(</span>**conString<span class="o">)</span>
+<span class="c1"># Create a cursor</span>
+<span class="nv">cur</span> <span class="o">=</span> conn.cursor<span class="o">()</span>
+<span class="c1"># - Formulate your query</span>
+<span class="nv">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;CREATE SCHEMA IF NOT EXISTS classwork&quot;&quot;&quot;</span>
+<span class="c1"># - Execute</span>
+cur.execute<span class="o">(</span>query<span class="o">)</span>
+<span class="c1"># - commiting.</span>
+conn.commit<span class="o">()</span>
+</pre></div>
+</div>
+<p>In the above code we created schema import. You probably already know about it, but if you want to read more on when &amp; why use schema, check this <a class="reference external" href="https://www.postgresql.org/docs/8.1/ddl-schemas.html">out</a>. Let’s create table,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Here we created the table tickers</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS classwork.tickers(</span>
+<span class="s2">               actsymbol text PRIMARY KEY,</span>
+<span class="s2">               securityname text,</span>
+<span class="s2">               exchange text,</span>
+<span class="s2">               cqssymbol text,</span>
+<span class="s2">               etf text,</span>
+<span class="s2">               roundlotsize text,</span>
+<span class="s2">               testissue text,</span>
+<span class="s2">               nasdaqsymbol text)&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="loading-the-data-to-database">
+<h3><span class="section-number">3.10.1. </span>Loading the data to database<a class="headerlink" href="#loading-the-data-to-database" title="Permalink to this headline">¶</a></h3>
+<p>Now we have our table ready, let’s load data into this table. Here we read line by line using python and then insert it into the table using <code class="docutils literal notranslate"><span class="pre">execute.</span></code> This took me around ~5 min.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>from ftplib import FTP
+from io import StringIO
+import csv
+
+<span class="nv">session</span> <span class="o">=</span> FTP<span class="o">(</span><span class="s1">&#39;ftp.nasdaqtrader.com&#39;</span><span class="o">)</span>
+session.login<span class="o">()</span>
+<span class="nv">r</span> <span class="o">=</span> StringIO<span class="o">()</span>
+session.retrlines<span class="o">(</span><span class="s1">&#39;RETR /SymbolDirectory/otherlisted.txt&#39;</span>, lambda x: r.write<span class="o">(</span>x+<span class="s1">&#39;\n&#39;</span><span class="o">))</span>
+r.seek<span class="o">(</span><span class="m">0</span><span class="o">)</span>
+<span class="nv">csvfile</span> <span class="o">=</span> list<span class="o">(</span>csv.DictReader<span class="o">(</span>r, <span class="nv">delimiter</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="o">))</span>
+
+<span class="c1">## Here we are reading each row and then inserting it to the table one at a time </span>
+<span class="k">for</span> row <span class="k">in</span> csvfile:
+    cur.execute<span class="o">(</span><span class="s2">&quot;INSERT INTO classwork.tickers VALUES (%s, %s, %s, %s, %s, %s, %s, %s)&quot;</span>, list<span class="o">(</span>row.values<span class="o">()))</span>
+
+conn.commit<span class="o">()</span>
+</pre></div>
+</div>
+<p>There are many other ways of loading the data to the table. Few to mention</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://naysan.ca/2020/06/21/pandas-to-postgresql-using-psycopg2-copy_from/">copy_from</a></p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/docs/13/sql-copy.html">COPY</a> command.</p></li>
+</ul>
+<p>When using these methods, make sure your CSV file is formatted correctly, or else you will be getting errors.</p>
+<p>If you want to read more on other ways to load data in Postgres, check out <a class="reference external" href="https://www.highgo.ca/2020/12/08/bulk-loading-into-postgresql-options-and-comparison/">this</a> article.</p>
+</div>
+<div class="section" id="reading-data-from-database">
+<h3><span class="section-number">3.10.2. </span>Reading data from database<a class="headerlink" href="#reading-data-from-database" title="Permalink to this headline">¶</a></h3>
+<p>As discussed before, an execute doesn’t return the data right away, and we need to perform a fetch. There are mainly 3 flavors of fetch</p>
+<ul class="simple">
+<li><p>fetchone</p></li>
+<li><p>fetchmany</p></li>
+<li><p>fetchall</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwork.tickers&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwork.tickers LIMIT 5&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sometimes you might not need everything that is returned from a database. For example, you might want to transform each row returned from the database. In these cases fetching each row at a time will be of help.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwork.tickers LIMIT 5&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">rows</span> <span class="ow">in</span> <span class="n">cur</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>But in general most of the cases, you can go with fetchall, provided you write an efficient SQL query to execute and get just the columns and rows that you are interested in.</p>
+</div>
+</div>
+<div class="section" id="dealing-with-passwords">
+<h2><span class="section-number">3.11. </span>Dealing with passwords<a class="headerlink" href="#dealing-with-passwords" title="Permalink to this headline">¶</a></h2>
+<p>Say if you want to share this notebook with your colleague, or if somebody came by and looked at your notebook, they can see your database connection details, including your password. It’s probably okay now as it’s a toy database, but when you start working in the industry, you will be dealing with a database ( or, in other words, business), and it can cause lots of problems if the password is compromised. So now on, let’s practice not doing the connection call as I did.</p>
+<p>We will make use of a python package dotenv. Install python package</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sh</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">anaconda</span> <span class="n">python</span><span class="o">-</span><span class="n">dotenv</span>
+</pre></div>
+</div>
+<p>This package looks for a .env file in the folder where your notebook resides, and it loads your database connection details to the environment variable for your session. Here is how my env file looks like</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> ggeorg02@MacBook-Pro assign1 % cat .env  
+<span class="nv">DB_HOST</span><span class="o">=</span>mbandtweet.xxxxx.us-west-2.rds.amazonaws.com
+<span class="nv">DB_NAME</span><span class="o">=</span>postgres
+<span class="nv">DB_USER</span><span class="o">=</span>postgres
+<span class="nv">DB_PASS</span><span class="o">=</span>password
+<span class="nv">DB_PORT</span><span class="o">=</span><span class="m">5432</span>
+</pre></div>
+</div>
+<p>You have to change this to your connection details
+To create a .env file, you might want to use your terminal. Check how to use <a class="reference external" href="https://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi/">vi editor</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;path to your notebook folder&gt;
+vi .env
+</pre></div>
+</div>
+<p>After this, you can call all variables like this.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="c1">##Make sure you import and load your .env file</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="n">conString</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;dbname&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;user&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PASS&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conString</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This way, you don’t have to worry about exposing your password to anyone.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Nowhere in assignments/projects should you include the hostname or password. If anything needs to be checked, then TA’s will contact you.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure you close the cursor and connection before quitting your jupyter notebook. This is a good practice and can protect you from memory leakage and too many open connections.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-dumps">
+<h2><span class="section-number">3.12. </span>Working with dumps<a class="headerlink" href="#working-with-dumps" title="Permalink to this headline">¶</a></h2>
+<p>Taking dumps comes in handy when you want to share a copy of your database with someone or if you’re going to keep it as a backup.</p>
+<ul class="simple">
+<li><p>How can I take a dump of the database that I already have.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pg_dump -h mbandtweet.xxxxx.ca-central-1.rds.amazonaws.com --username<span class="o">=</span>postgres -n import -f import.sql<span class="sb">`</span>_
+</pre></div>
+</div>
+<p>Read more about how to take database dumps <a class="reference external" href="https://www.postgresql.org/docs/12/app-pgdump.html">here</a>.</p>
+<ul class="simple">
+<li><p>How can you load these dumps to make your schema and tables ready?</p></li>
+</ul>
+<p>psql -h HOST_NAME -U USER_NAME DATABASE &lt; PATH_TO_THE_.sql_DUMP_FILE</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql -h mbandtweet.xxxx.us-west-2.rds.amazonaws.com -U Postgres Postgres &lt; import.sql
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are not using your RDS instance, make sure you shut it down from your AWS console. You can always restart it when working on your assignments/projects. However, your credits are limited, and if those get exhausted, we won’t provide you with more.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Closing your lab doesn’t shut down the RDS instance; you need to shut it down from your AWS console explicitly.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Lecture 1: Data Management in a Big Data Environment</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
