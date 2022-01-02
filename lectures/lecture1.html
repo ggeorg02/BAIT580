@@ -44,9 +44,9 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
@@ -206,10 +206,10 @@
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/lecture1.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture1.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/lectures/lecture1.ipynb"><button
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lectures/lecture1.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -229,7 +229,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/lecture1.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lectures/lecture1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -237,6 +237,9 @@
         
         
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -299,23 +302,23 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#individual-assignments-60">
-     1.3.5. Individual Assignments (60 %)
+    <a class="reference internal nav-link" href="#individual-assignments-50">
+     1.3.5. Individual Assignments (50 %)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assignment-1-20">
-       1.3.5.1. Assignment 1 (20 %)
+      <a class="reference internal nav-link" href="#assignment-1-16">
+       1.3.5.1. Assignment 1 (16 %)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assignment-2-20">
-       1.3.5.2. Assignment 2 (20 %)
+      <a class="reference internal nav-link" href="#assignment-2-17">
+       1.3.5.2. Assignment 2 (17 %)
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assignment-3-20">
-       1.3.5.3. Assignment 3 (20 %)
+      <a class="reference internal nav-link" href="#assignment-3-17">
+       1.3.5.3. Assignment 3 (17 %)
       </a>
      </li>
     </ul>
@@ -348,7 +351,7 @@
 <p><img alt="" src="../_images/l1.png" /></p>
 <ul class="simple">
 <li><p>I am Gittu George, Ph.D</p></li>
-<li><p>I am a Postdoctoral Teaching &amp; Learning Fellow.</p></li>
+<li><p>I am a Postdoctoral Fellow.</p></li>
 <li><p>Email Me: ggeorg02&#64;cs.ubc.ca</p></li>
 <li><p>Office Hours: Tue 2 -3 pm</p></li>
 <li><p>Research interests are at the intersection of computer science and genomics.</p></li>
@@ -486,10 +489,10 @@
 </ul>
 </div>
 </div>
-<div class="section" id="individual-assignments-60">
-<h3><span class="section-number">1.3.5. </span>Individual Assignments (60 %)<a class="headerlink" href="#individual-assignments-60" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="assignment-1-20">
-<h4><span class="section-number">1.3.5.1. </span>Assignment 1 (20 %)<a class="headerlink" href="#assignment-1-20" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="individual-assignments-50">
+<h3><span class="section-number">1.3.5. </span>Individual Assignments (50 %)<a class="headerlink" href="#individual-assignments-50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="assignment-1-16">
+<h4><span class="section-number">1.3.5.1. </span>Assignment 1 (16 %)<a class="headerlink" href="#assignment-1-16" title="Permalink to this headline">¶</a></h4>
 <div class="sidebar">
 <p class="sidebar-title">Let’s checkout some tweets!!</p>
 <div class="figure align-center">
@@ -505,8 +508,8 @@
 <li><p>Get code to download data directly from an FTP</p></li>
 </ul>
 </div>
-<div class="section" id="assignment-2-20">
-<h4><span class="section-number">1.3.5.2. </span>Assignment 2 (20 %)<a class="headerlink" href="#assignment-2-20" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="assignment-2-17">
+<h4><span class="section-number">1.3.5.2. </span>Assignment 2 (17 %)<a class="headerlink" href="#assignment-2-17" title="Permalink to this headline">¶</a></h4>
 <p>Data Pipelines in Jupyter/Postgres</p>
 <ul class="simple">
 <li><p>Connect to a database</p></li>
@@ -515,8 +518,8 @@
 </ul>
 <img alt="../_images/l4.png" src="../_images/l4.png" />
 </div>
-<div class="section" id="assignment-3-20">
-<h4><span class="section-number">1.3.5.3. </span>Assignment 3 (20 %)<a class="headerlink" href="#assignment-3-20" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="assignment-3-17">
+<h4><span class="section-number">1.3.5.3. </span>Assignment 3 (17 %)<a class="headerlink" href="#assignment-3-17" title="Permalink to this headline">¶</a></h4>
 <p>Six Degrees of Sampling</p>
 <ul class="simple">
 <li><p>An introduction to graph databases using the initial Twitter data</p></li>
@@ -529,9 +532,10 @@
 <h3><span class="section-number">1.3.6. </span>Group Assignments (40 %)<a class="headerlink" href="#group-assignments-40" title="Permalink to this headline">¶</a></h3>
 <p>There will 5 students in a randomly assigned group. Checkout <a class="reference external" href="https://canvas.ubc.ca/courses/89141/discussion_topics/1258994">this</a> to find your group.</p>
 <ul class="simple">
-<li><p>Ask the question (10 %)</p></li>
+<li><p>Ask the question (5 %)</p></li>
 <li><p>Find the data (Jupyter &amp; data dictionary) (10 %)</p></li>
-<li><p>Presentation and reproducible Jupyter workbook (10 %)</p></li>
+<li><p>Presentation and reproducible Jupyter workbook (20 %)</p></li>
+<li><p>Team work reflection (5%)</p></li>
 </ul>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/ready.png"><img alt="../_images/ready.png" src="../_images/ready.png" style="width: 250px;" /></a>
@@ -544,7 +548,7 @@
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "ggeorg02/BAIT580",
             ref: "master",
         },
         codeMirrorConfig: {
