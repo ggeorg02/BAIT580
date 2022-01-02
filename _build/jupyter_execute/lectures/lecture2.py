@@ -227,11 +227,11 @@
 # <img src ='img/understanddata.png' width="60%"/>
 # 
 # ```{sidebar} Various sections in workflow
-# - Submission Information Package
+# - Submission Information Package:
 # It shows how the data enters the process
-# - Archive Information Package
+# - Archive Information Package:
 # Shows what are the processes involved in archiving. 
-# - Dissemination Information Package
+# - Dissemination Information Package:
 # It shows how the users consume the data
 # 
 # In short, this shows the processes that data goes through right from its raw state to when it reaches the hands of the person/software who will be consuming the data for further insight generation. 

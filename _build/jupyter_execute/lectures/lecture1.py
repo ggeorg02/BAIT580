@@ -4,19 +4,11 @@
 # # Lecture 0: Course Introduction
 # Gittu George, January 4 2022
 
-# ## Learning objectives
-# 
-# - To think critically about databases as part of an analytics workflow
-# - Learn how to design, use and understand the inner working of the SQL based databases
-# - Taking you from level zero to intermediate with the NoSQL databases (document and graph-based databases)
-# - To work with the data to find the tools best suited to answering the questions you pose
-# - To be able to present analytic workflows and decisions clearly to stakeholders
-
 # ## Teaching squad
 # ### Instructor
 # ![](img/l1.png)
 # - I am Gittu George, Ph.D
-# - I am a Postdoctoral Teaching & Learning Fellow.
+# - I am a Postdoctoral Fellow.
 # - Email Me: ggeorg02@cs.ubc.ca
 # - Office Hours: Tue 2 -3 pm
 # - Research interests are at the intersection of computer science and genomics.
@@ -80,9 +72,9 @@
 # 
 # ```
 # 
-# ### Individual Assignments (60 %)
+# ### Individual Assignments (50 %)
 # 
-# #### Assignment 1 (20 %)
+# #### Assignment 1 (16 %)
 # 
 # ```{sidebar} Let's checkout some tweets!!
 # ```{figure} img/l3.png
@@ -100,7 +92,7 @@
 # - Use Python & Jupyter
 # - Get code to download data directly from an FTP
 # 
-# #### Assignment 2 (20 %)
+# #### Assignment 2 (17 %)
 # 
 # Data Pipelines in Jupyter/Postgres
 # - Connect to a database
@@ -109,7 +101,7 @@
 # 
 # <img src='img/l4.png' >
 # 
-# #### Assignment 3 (20 %)
+# #### Assignment 3 (17 %)
 # 
 # Six Degrees of Sampling
 # - An introduction to graph databases using the initial Twitter data
@@ -119,9 +111,10 @@
 # ### Group Assignments (40 %)
 # 
 # There will 5 students in a randomly assigned group. Checkout [this](https://canvas.ubc.ca/courses/89141/discussion_topics/1258994) to find your group.
-# - Ask the question (10 %)
+# - Ask the question (5 %)
 # - Find the data (Jupyter & data dictionary) (10 %)
-# - Presentation and reproducible Jupyter workbook (10 %)
+# - Presentation and reproducible Jupyter workbook (20 %)
+# - Team work reflection (5%)
 # 
 # ```{figure} img/ready.png
 # ---

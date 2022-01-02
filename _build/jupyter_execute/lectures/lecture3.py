@@ -242,7 +242,7 @@
 # In the above code we created schema import. You probably already know about it, but if you want to read more on when & why use schema, check this [out](https://www.postgresql.org/docs/8.1/ddl-schemas.html). Let's create table,
 
 # ```
-# ## Here we created the table tickers
+# ## Here we create the table tickers
 # cur.execute("""CREATE TABLE IF NOT EXISTS classwork.tickers(
 #                actsymbol text PRIMARY KEY,
 #                securityname text,
@@ -318,6 +318,9 @@
 # But in general most of the cases, you can go with fetchall, provided you write an efficient SQL query to execute and get just the columns and rows that you are interested in. 
 
 # ## Dealing with passwords
+# ```{margin}
+# <img src="img/secret.png">
+# ```
 # Say if you want to share this notebook with your colleague, or if somebody came by and looked at your notebook, they can see your database connection details, including your password. It's probably okay now as it's a toy database, but when you start working in the industry, you will be dealing with a database ( or, in other words, business), and it can cause lots of problems if the password is compromised. So now on, let's practice not doing the connection call as I did.
 # 
 # We will make use of a python package dotenv. Install python package
@@ -337,7 +340,6 @@
 # DB_PASS=password
 # DB_PORT=5432
 # ```
-# 
 # You have to change this to your connection details
 # To create a .env file, you might want to use your terminal. Check how to use [vi editor](https://www.howtogeek.com/102468/a-beginners-guide-to-editing-text-files-with-vi/)
 # 

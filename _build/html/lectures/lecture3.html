@@ -44,9 +44,9 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
@@ -205,10 +205,10 @@
     <div class="dropdown-buttons sourcebuttons">
         
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flectures/lecture3.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture3.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/executablebooks/jupyter-book/edit/master/docs/lectures/lecture3.ipynb"><button
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lectures/lecture3.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -228,7 +228,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lectures/lecture3.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lectures/lecture3.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -236,6 +236,9 @@
         
         
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -568,7 +571,7 @@ conn.commit<span class="o">()</span>
 </pre></div>
 </div>
 <p>In the above code we created schema import. You probably already know about it, but if you want to read more on when &amp; why use schema, check this <a class="reference external" href="https://www.postgresql.org/docs/8.1/ddl-schemas.html">out</a>. Let’s create table,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Here we created the table tickers</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Here we create the table tickers</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;CREATE TABLE IF NOT EXISTS classwork.tickers(</span>
 <span class="s2">               actsymbol text PRIMARY KEY,</span>
 <span class="s2">               securityname text,</span>
@@ -642,6 +645,10 @@ conn.commit<span class="o">()</span>
 </div>
 <div class="section" id="dealing-with-passwords">
 <h2><span class="section-number">3.11. </span>Dealing with passwords<a class="headerlink" href="#dealing-with-passwords" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/secret.png" src="../_images/secret.png" />
+</div>
 <p>Say if you want to share this notebook with your colleague, or if somebody came by and looked at your notebook, they can see your database connection details, including your password. It’s probably okay now as it’s a toy database, but when you start working in the industry, you will be dealing with a database ( or, in other words, business), and it can cause lots of problems if the password is compromised. So now on, let’s practice not doing the connection call as I did.</p>
 <p>We will make use of a python package dotenv. Install python package</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sh</span>
@@ -725,7 +732,7 @@ vi .env
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "ggeorg02/BAIT580",
             ref: "master",
         },
         codeMirrorConfig: {
