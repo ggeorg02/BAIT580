@@ -721,6 +721,7 @@ It shows how the users consume the data</p></li>
 </ul>
 </li>
 </ul>
+<img alt="../_images/chart.png" src="../_images/chart.png" />
 </div>
 <div class="section" id="turn-assumptions-into-assertions-tests">
 <h3><span class="section-number">2.6.3. </span>Turn assumptions into assertions &amp; tests<a class="headerlink" href="#turn-assumptions-into-assertions-tests" title="Permalink to this headline">¶</a></h3>
@@ -756,8 +757,7 @@ Good use cases:  filtering, map functions, complex functions, places where input
 <p>In R: <a class="reference external" href="https://github.com/hadley/assertthat">assertthat</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">data_out</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">data_out</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Sum isn’t working.&quot;</span>
 </pre></div>
