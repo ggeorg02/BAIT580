@@ -589,9 +589,6 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 <li><p>Clear checks on key processes</p></li>
 <li><p>TDD - Test Driven Development (assertions &amp; tests)</p></li>
 </ul>
-<p>… abstracts of papers comparing citizen science data to professional data indicated that the citizen science data quality was good in 73% of the abstracts, the results of our quantitative assessment cast more doubt on the accuracy of the data.
-Aceves-Bueno et al., 2017. Bulletin of the Ecological Society of America
-[Open Access]</p>
 </div>
 </div>
 </div>
@@ -755,14 +752,10 @@ These assertions will break execution at critical points if some of your workflo
 Good use cases:  filtering, map functions, complex functions, places where input data may change frequently but must meet some prior expectation.</p>
 <p>In Python: <a class="reference external" href="https://docs.pytest.org/en/stable/assert.html">pytest</a>.</p>
 <p>In R: <a class="reference external" href="https://github.com/hadley/assertthat">assertthat</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">data_out</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">data_out</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;Sum isn’t working.&quot;</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Finally, let’s talk about the dangers of too much data!!!! Checkout <a class="reference external" href="https://www.forbes.com/sites/kimberlywhitler/2018/03/17/why-too-much-data-is-a-problem-and-how-to-prevent-it/?sh=2854371a755f">this</a> article.</p>
 </div>
