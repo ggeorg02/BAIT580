@@ -20,7 +20,7 @@ align: center
 ---
 ```
 
-- Later, follow the instructions in [this]() pdf.
+- Later, follow the instructions in [this](https://canvas.ubc.ca/files/18576663/download?download_frd=1) pdf.
 
 ```{Warning}
 Shut down your RDS instances when not in use.
