@@ -20,7 +20,7 @@ align: center
 ```
 
 ```{note}
-If you are setting up the pgadmin for the first time, then you might need to set up a [master password](https://www.pgadmin.org/docs/pgadmin4/development/master_password.html)
+If you are setting up the pgadmin for the first time, then you need to set up a [master password](https://www.pgadmin.org/docs/pgadmin4/development/master_password.html). So please don't skip that popup.
 ```
 
 You need `endpoint` and `port`. 
