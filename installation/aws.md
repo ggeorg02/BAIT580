@@ -22,6 +22,8 @@ align: center
 
 - Later, follow the instructions in [this](https://canvas.ubc.ca/files/18576663/download?download_frd=1) pdf.
 
+You can bookmark [this link](https://awsacademy.instructure.com/login/canvas) for easy access to AWS canvas.
+
 ```{important}
 Please don't confuse AWS Academy canvas with the UBC canvas. Both are separate things and are not connected.
 ```
