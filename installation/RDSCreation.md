@@ -108,7 +108,7 @@ align: center
 ---
 ```
 
-Make sure you uncheck this, as you don't have permissions to do this.
+Make sure you uncheck `Enable enhanced monitoring`, as you don't have permissions to do this.
 
 ```{figure} img/rds14.png
 ---
