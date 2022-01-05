@@ -421,6 +421,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 <li><p>Stop spending money on running and maintaining data centers</p></li>
 <li><p>Go global in minutes</p></li>
 </ul>
+<p>Source: aws</p>
 </div>
 <div class="section" id="cloud-providers">
 <h2><span class="section-number">3.5. </span>Cloud providers<a class="headerlink" href="#cloud-providers" title="Permalink to this headline">¶</a></h2>
@@ -655,6 +656,10 @@ conn.commit<span class="o">()</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">anaconda</span> <span class="n">python</span><span class="o">-</span><span class="n">dotenv</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>https://anaconda.org/conda-forge/python-dotenv</p>
+</div>
 <p>This package looks for a .env file in the folder where your notebook resides, and it loads your database connection details to the environment variable for your session. Here is how my env file looks like</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> ggeorg02@MacBook-Pro assign1 % cat .env  
 <span class="nv">DB_HOST</span><span class="o">=</span>mbandtweet.xxxxx.us-west-2.rds.amazonaws.com
@@ -669,6 +674,10 @@ To create a .env file, you might want to use your terminal. Check how to use <a 
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;path to your notebook folder&gt;
 vi .env
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I purposely created this file with just an extension, not a filename. And you can usually make this kind of file only from the terminal, so I am using vi editor. You might not be able to find this file from your file explorer, and that’s the reason we created it starting with a period. This means that <code class="docutils literal notranslate"><span class="pre">.iamasecretfile</span></code>. So no wonder why you can’t see, right? This way, no one can accidentally look at this file when using your computer. if you want to see it, then again, you want to go to terminal and type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code></p>
 </div>
 <p>After this, you can call all variables like this.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
