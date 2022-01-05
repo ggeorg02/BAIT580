@@ -134,6 +134,12 @@ align: center
 - Click on CREATE DATABASE. Sit back and relax AWS is setting up your database in the cloud.
 
 
+```{note}
+If you get any error, Check
+- If the region is AWS US West (Oregon) 
+- If you unchecked everything under Additional configuration
+```
+
 ```{figure} img/sitback.png
 ---
 width: 250px
@@ -143,6 +149,10 @@ align: center
 
 ```{attention}
 This process might take some time. For me, it took around 10 min. Better you grab some coffee.
+```
+
+```{important}
+This database is available only in AWS US West (Oregon). So if you come here later to start/stop your database and don't find your database, then it's mostly the case that you are looking in a different region.
 ```
 
 After your coffee, you will see your database available.
