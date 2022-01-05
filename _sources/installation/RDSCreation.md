@@ -49,6 +49,8 @@ Let's go through each option one by one in the following screenshots.
 
 - Here, we are selecting the database engine that we want. As you see, there are 6 of them available, and we will be going with Postgres. You will be hearing more about it in your Lecture 2. Here we also select which version of Postgres we want.
 
+Make sure you select the latest version of postgres. It might not be what I selected here, ie `PostgreSQL 13.3-R1`.
+
 ```{figure} img/rds5.png
 ---
 width: 900px
@@ -105,6 +107,8 @@ width: 900px
 align: center
 ---
 ```
+
+Make sure you uncheck this, as you don't have permissions to do this.
 
 ```{figure} img/rds14.png
 ---
