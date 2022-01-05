@@ -20,7 +20,7 @@ align: center
 ---
 ```
 
-- Later, follow the instructions in [this](https://canvas.ubc.ca/files/18576663/download?download_frd=1) pdf. After clicking on `Learner Lab - Foundational Services,` if you can't see anything(or show a `refused to connect` error), in most cases, it's that you haven't configured your SwitchyOmega for chrome.
+- Later, follow the instructions in [this](https://canvas.ubc.ca/files/18576663/download?download_frd=1) pdf. After clicking on `Learner Lab - Foundational Services,` if you can't see anything(or show a `refused to connect` error), in most cases, it's that you haven't configured your [SwitchyOmega for chrome](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html).
 
 You can bookmark [this link](https://awsacademy.instructure.com/login/canvas) for easy access to AWS canvas.
 
