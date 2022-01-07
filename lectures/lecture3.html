@@ -554,6 +554,10 @@ conda install -c anaconda psycopg2
 </li>
 </ul>
 <p>Let’s now check out these by creating a ticker table, loading data to it, and doing some querying. Let’s first create schema import,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below you need to replace the <code class="docutils literal notranslate"><span class="pre">conString</span></code> values with your <code class="docutils literal notranslate"><span class="pre">host</span></code>,<code class="docutils literal notranslate"><span class="pre">dbname</span></code>,<code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">password</span></code>, and <code class="docutils literal notranslate"><span class="pre">port</span></code> you used while creating your RDS instance.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a connection</span>
 <span class="nv">conString</span> <span class="o">=</span> <span class="o">{</span><span class="s1">&#39;host&#39;</span>:<span class="s1">&#39;mbandtweet.xxxxx.amazonaws.com&#39;</span>,
              <span class="s1">&#39;dbname&#39;</span>:<span class="s1">&#39;postgres&#39;</span>,
