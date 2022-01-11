@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Lecture 3: Data Modeling for Business Applications &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="3. Lecture 2: Introduction to cloud computing and connection to cloud" href="lecture3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/psql.html">
+   psql
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture4.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture4.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture4.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todays-agenda">
+   4.1. Todays Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   4.2. Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-to-some-problems">
+   4.3. Introducing to some problems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalization">
+   4.4. Normalization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-normal-form-1nf">
+     4.4.1. First normal form (1NF)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-normal-form-2nf">
+     4.4.2. Second normal form (2NF)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#third-normal-form">
+     4.4.3. Third normal form
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-properties-of-a-dbms">
+   4.5. Key Properties of a DBMS
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-3-data-modeling-for-business-applications">
+<h1><span class="section-number">4. </span>Lecture 3: Data Modeling for Business Applications<a class="headerlink" href="#lecture-3-data-modeling-for-business-applications" title="Permalink to this headline">¶</a></h1>
+<p>Gittu George, January 11 2022</p>
+<div class="section" id="todays-agenda">
+<h2><span class="section-number">4.1. </span>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Data normalization</p></li>
+<li><p>Refresher to Database concepts</p></li>
+<li><p>Group Presentation</p></li>
+</ul>
+</div>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">4.2. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>WHAT &amp; WHY databases? (ACID properties)</p></li>
+<li><p>WHY breaking the table is essential?</p></li>
+<li><p>Have an understanding of various normal forms in a database.</p></li>
+</ul>
+</div>
+<div class="section" id="introducing-to-some-problems">
+<h2><span class="section-number">4.3. </span>Introducing to some problems<a class="headerlink" href="#introducing-to-some-problems" title="Permalink to this headline">¶</a></h2>
+<p>We will start with a CSV file or an excel spreadsheet. This is the most common way of storing data in various organizations. Often people organize it messy. Checkout this CSV file</p>
+<a class="center reference internal image-reference" href="../_images/tablel3.png"><img alt="../_images/tablel3.png" class="center" src="../_images/tablel3.png" style="width: 80%;" /></a>
+<p>This looks okay now as it’s just 3 rows, but think about how it will look if we are going to store entire students in a university. Here what are the problems that come to your mind? Here are a few of them</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/problems.png" src="../_images/problems.png" />
+</div>
+<ul>
+<li><p><em><strong>Does the order of courses in a course column matter?</strong></em></p>
+<p>E.g., For Amir Khan, the order for course number is 525,516. Does this mean that the order in which he took classes? How many courses are a student supposed to take? We see Catherine, Amir, Gittu taking 3, 2, and 1 class, respectively. Is there a minimum number of courses that a student needs to take? Is there any maximum limit?</p>
+</li>
+<li><p><em><strong>Too many duplicates ?</strong></em></p></li>
+<li><p><em><strong>What happens if I am loading incoming students to the database ?</strong></em></p>
+<p>They won’t be taking any classes until they start, which can result in lots of null values.</p>
+</li>
+<li><p><em><strong>Human errors can happen.</strong></em></p>
+<p>Assume what happens if I accidentally entered 525a as the course number?</p>
+</li>
+<li><p><em><strong>Deletion anomaly</strong></em></p>
+<p>Deleting a student can end up deleting course information.
+E.g., deleting Catherine can take out the course information for course numbers 580, 518.</p>
+</li>
+<li><p><em><strong>Update anomaly</strong></em></p>
+<p>We plan to change the course name for 525 from “Web and cloud computing” to “Cloud computing for Big Data”! How many places need to be updated?</p>
+</li>
+<li><p><em><strong>Insertion anomaly</strong></em></p>
+<p>We plan to launch a new course named 999 named “Big Data Systems,” and no students are currently enrolled in it. So how are we going to store this information?</p>
+</li>
+</ul>
+<p>Loading this data into a database table can bring in problems mentioned above, resulting in serious data integrity issues, and hence we should do data normalization.</p>
+</div>
+<div class="section" id="normalization">
+<h2><span class="section-number">4.4. </span>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h2>
+<p>Normalization is the process of minimizing redundancy from a table of relations. These redundancies in relation may cause insertion, deletion, and update anomalies. Normal forms are a certain set of defined rules to “break a table smartly” to create normalized tables.</p>
+<p>Storytime:</p>
+<p>Ted Codd introduced the concept of normalization and first normal form in his <a class="reference external" href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">paper</a> in 1970, which provides theoretical foundation of designing a database. After a year, he defined 2nd and 3rd normal form in <a class="reference external" href="https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf">this</a> paper. Later in 1974, Codd and Raymond F. Boyce defined the Boyce–Codd normal form (BCNF). These 4 normal forms are considered the most common or important ones; Most database systems are designed to follow the 3rd normal form or BCNF.</p>
+<p>Later came some more restrictive normal forms (4NF,5NF,6NF), but these are mainly used for theoretical purposes and are less implemented in industries.</p>
+<p>Note: We explain the normal forms in an easier-to-understand fashion, and they can also be explained using theoretical formulas and derivations.</p>
+<div class="section" id="first-normal-form-1nf">
+<h3><span class="section-number">4.4.1. </span>First normal form (1NF)<a class="headerlink" href="#first-normal-form-1nf" title="Permalink to this headline">¶</a></h3>
+<p>To be in 1NF,</p>
+<ul class="simple">
+<li><p>All types must be atomic.❌</p></li>
+<li><p>No repeating groups ✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="../_images/tablel3.png"><img alt="../_images/tablel3.png" class="center" src="../_images/tablel3.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>All types must be atomic.✅</p></li>
+<li><p>No repeating groups ❌</p></li>
+</ul>
+<a class="center reference internal image-reference" href="../_images/1nf.png"><img alt="../_images/1nf.png" class="center" src="../_images/1nf.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>All types must be atomic. ✅</p></li>
+<li><p>No repeating groups✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="../_images/1nfdone.png"><img alt="../_images/1nfdone.png" class="center" src="../_images/1nfdone.png" style="width: 80%;" /></a>
+</div>
+<div class="section" id="second-normal-form-2nf">
+<h3><span class="section-number">4.4.2. </span>Second normal form (2NF)<a class="headerlink" href="#second-normal-form-2nf" title="Permalink to this headline">¶</a></h3>
+<p>To be in 2NF</p>
+<ul class="simple">
+<li><p>Must be in first normal form  ✅</p></li>
+<li><p>Any non-key attributes fully depend on the candidate key ❌</p></li>
+</ul>
+<a class="center reference internal image-reference" href="../_images/2nf.png"><img alt="../_images/2nf.png" class="center" src="../_images/2nf.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>Must be in first normal form  ✅</p></li>
+<li><p>Any non-key attributes fully depend on the candidate key ✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="../_images/2nfdone.png"><img alt="../_images/2nfdone.png" class="center" src="../_images/2nfdone.png" style="width: 80%;" /></a>
+</div>
+<div class="section" id="third-normal-form">
+<h3><span class="section-number">4.4.3. </span>Third normal form<a class="headerlink" href="#third-normal-form" title="Permalink to this headline">¶</a></h3>
+<p>To be in 3NF</p>
+<ul class="simple">
+<li><p>Must be in second normal form  ✅</p></li>
+<li><p>There should be no transitive dependency ❌</p></li>
+</ul>
+<a class="center reference internal image-reference" href="../_images/3nf.png"><img alt="../_images/3nf.png" class="center" src="../_images/3nf.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>Must be in second normal form  ✅</p></li>
+<li><p>There should be no transitive dependency ✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="../_images/3nfdone.png"><img alt="../_images/3nfdone.png" class="center" src="../_images/3nfdone.png" style="width: 80%;" /></a>
+<p>Now we have finished normalizing the table, let’s create this table’s in our database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="c1"># Create a connection</span>
+<span class="n">conString</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span><span class="s1">&#39;mbandtweet.xxxx.rds.amazonaws.com&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;dbname&#39;</span><span class="p">:</span><span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;user&#39;</span><span class="p">:</span><span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="s1">&#39;xxxx&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="mi">5432</span><span class="p">}</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">conString</span><span class="p">)</span>
+<span class="c1"># Create a cursor</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">createTables</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.students(student_no integer PRIMARY KEY, stud_fname text, </span>
+<span class="s2">stud_lname text, major text);</span>
+
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.courses(course_no integer PRIMARY KEY, course_name text);</span>
+
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.grades( grade text PRIMARY KEY, grade_type text);</span>
+
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.student_course_grade( </span>
+<span class="s2">student_no integer REFERENCES classwork.students(student_no), </span>
+<span class="s2">course_no integer REFERENCES classwork.courses(course_no), </span>
+<span class="s2">grade text REFERENCES classwork.grades(grade), </span>
+<span class="s2">PRIMARY KEY(student_no, course_no));&quot;&quot;&quot;</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">createTables</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insertinto</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">INSERT INTO classwork.students VALUES (111,&#39;Catherine&#39;,&#39;John&#39;,&#39;MBAN&#39;);</span>
+<span class="s2">INSERT INTO classwork.students VALUES (222,&#39;Amir&#39;,&#39;Khan&#39;,&#39;MDS&#39;);</span>
+<span class="s2">INSERT INTO classwork.students VALUES (333,&#39;Gittu&#39;,&#39;George&#39;,&#39;MBAN&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (580,&#39;TPCS INFO TECH&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (518,&#39;Data Visualization&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (516,&#39;Health and Technology&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (525,&#39;Web and Cloud Computing&#39;);</span>
+
+<span class="s2">INSERT INTO classwork.grades VALUES (&#39;A&#39;,&#39;Excellent&#39;);</span>
+<span class="s2">INSERT INTO classwork.grades VALUES (&#39;B&#39;,&#39;Good&#39;);</span>
+<span class="s2">INSERT INTO classwork.grades VALUES (&#39;C&#39;,&#39;Average&#39;);</span>
+
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(111,580,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(111,518,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(111,516,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(222,525,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(222,516,&#39;B&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(333,525,&#39;C&#39;);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">insertinto</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Demo exploring it from pgadmin vizualizer.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/problemsolved.png" src="../_images/problemsolved.png" />
+</div>
+<a class="center reference internal image-reference" href="../_images/erd.png"><img alt="../_images/erd.png" class="center" src="../_images/erd.png" style="width: 80%;" /></a>
+<p>Revisit the problems listed at the beginning to see if we have resolved those by performing this normalization.</p>
+<p>Entity Relation Models are about Entities. So we can put these tables together using the primary keys and foreign keys in getting what we want.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT stu.stud_fname, stu.stud_lname,g.grade,c.course_name FROM schema.students AS stu</span>
+<span class="s2">INNER JOIN schema.student_course_grade AS g ON g.student_no = stu.student_no</span>
+<span class="s2">INNER JOIN schema.courses AS c ON c.course_no = g.course_no</span>
+<span class="s2">WHERE g.grade=&#39;A&#39; AND c.course_name=&#39;Health and Technology&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">insertinto</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="key-properties-of-a-dbms">
+<h2><span class="section-number">4.5. </span>Key Properties of a DBMS<a class="headerlink" href="#key-properties-of-a-dbms" title="Permalink to this headline">¶</a></h2>
+<p>Often we refer to ACID or ACID Compliant databases. With modern No-SQL databases, we also hear about BASE databases. However, ACID was one of the fundamental properties of most early databases and is the reason for their broad adoption. It is an acronym that means:</p>
+<ul class="simple">
+<li><p><em><strong>A</strong></em>tomic</p></li>
+</ul>
+<p>The unit of operation within an ACID database is the transaction. A transaction may involve one command or multiple commands. When multiple commands modify data, if one of them fails, the transaction is not committed (i.e., none of the operations are performed).</p>
+<p>E.g., We have a database with one table (Values) and two columns (a and b). We have an operation where, on a particular row, a value is subtracted from a and added to b. This might be similar to a banking transaction, where I withdraw money from my account to pay for a new pair of slippers. The operation takes place in two steps:</p>
+<ul class="simple">
+<li><p>Remove value from a</p></li>
+<li><p>Place value in b</p></li>
+</ul>
+<p>Atomicity ensures that if a system failure occurs between steps one and two, or if either step one or step two is invalid for any other reason, the entire transaction will not be processed.</p>
+<ul class="simple">
+<li><p><em><strong>C</strong></em>onsistent</p></li>
+</ul>
+<p>All data within the database follow the defined rules for the database, the defined rules for anyone table, and the defined rules for any one field. All operations on the database will return the same value, given the same set of underlying data each time.</p>
+<p>E.g., We have table marks that give the breakdown of marking schemes for various courses. It is divided into quiz, participation, midterm, and final columns. All fields must be integers, and because these values make up the course marking scheme, each row must sum to 100. We can add a constraint to the table that ensures this using the CHECK operator.</p>
+<p>A database that ensures consistency would reject any transaction where the final result results in a marking sum &lt;&gt; 100.</p>
+<ul class="simple">
+<li><p><em><strong>I</strong></em>solation</p></li>
+</ul>
+<p>Any transaction occurs in isolation. One transaction cannot affect another transaction. When a transaction acts on the data, the tables or rows on which it acts are effectively locked to other transactions.</p>
+<p>If two transactions modify the same table, the sequence of operations will ensure that the first transaction completes before the second transaction can change the data.</p>
+<p>E.g., In that same marks table as before, let’s assume that a department has decided that all final exam scores will be reduced by 5% and that that value will be shifted to participation. At the same time, an individual instructor in the program has decided to increase the final weighting and reduce the midterm weighting.</p>
+<p>If these operations are not isolated, the program-level transaction may reduce the weighting of the final exam. The instructor-level transaction</p>
+<ul class="simple">
+<li><p><em><strong>D</strong></em>urability</p></li>
+</ul>
+<p>The results of any transaction that completes successfully are permanently stored within the database.</p>
+<p>E.g., Data that goes in following a completed transaction doesn’t come out unless another transaction operates to remove the data.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture3.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Lecture 2: Introduction to cloud computing and connection to cloud</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -148,6 +148,11 @@
    3. Lecture 2: Introduction to cloud computing and connection to cloud
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture4.html">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -209,7 +214,7 @@
             href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Finstallation/RDSCreation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/installation/RDSCreation.md"><button
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/installation/RDSCreation.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -274,6 +279,7 @@
 <ul class="simple">
 <li><p>Here, we are selecting the database engine that we want. As you see, there are 6 of them available, and we will be going with Postgres. You will be hearing more about it in your Lecture 2. Here we also select which version of Postgres we want.</p></li>
 </ul>
+<p>Make sure you select the latest version of postgres. It might not be what I selected here, ie <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span> <span class="pre">13.3-R1</span></code>.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/rds5.png"><img alt="../_images/rds5.png" src="../_images/rds5.png" style="width: 900px;" /></a>
 </div>
@@ -301,6 +307,7 @@
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/rds13.png"><img alt="../_images/rds13.png" src="../_images/rds13.png" style="width: 900px;" /></a>
 </div>
+<p>Make sure you uncheck <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">enhanced</span> <span class="pre">monitoring</span></code>, as you don’t have permissions to do this.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/rds14.png"><img alt="../_images/rds14.png" src="../_images/rds14.png" style="width: 900px;" /></a>
 </div>
@@ -313,12 +320,24 @@
 <ul class="simple">
 <li><p>Click on CREATE DATABASE. Sit back and relax AWS is setting up your database in the cloud.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get any error, Check</p>
+<ul class="simple">
+<li><p>If the region is AWS US West (Oregon)</p></li>
+<li><p>If you unchecked everything under Additional configuration</p></li>
+</ul>
+</div>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/sitback.png"><img alt="../_images/sitback.png" src="../_images/sitback.png" style="width: 250px;" /></a>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>This process might take some time. For me, it took around 10 min. Better you grab some coffee.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This database is available only in AWS US West (Oregon). So if you come here later to start/stop your database and don’t find your database, then it’s mostly the case that you are looking in a different region.</p>
 </div>
 <p>After your coffee, you will see your database available.</p>
 <div class="figure align-center">

@@ -52,6 +52,7 @@
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Lecture 3: Data Modeling for Business Applications" href="lecture4.html" />
     <link rel="prev" title="2. Lecture 1: Data Management in a Big Data Environment" href="lecture2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -147,6 +148,11 @@
    3. Lecture 2: Introduction to cloud computing and connection to cloud
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -208,7 +214,7 @@
             href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture3.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lectures/lecture3.ipynb"><button
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture3.ipynb"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -228,7 +234,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lectures/lecture3.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture3.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -421,6 +427,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 <li><p>Stop spending money on running and maintaining data centers</p></li>
 <li><p>Go global in minutes</p></li>
 </ul>
+<p>Source: aws</p>
 </div>
 <div class="section" id="cloud-providers">
 <h2><span class="section-number">3.5. </span>Cloud providers<a class="headerlink" href="#cloud-providers" title="Permalink to this headline">¶</a></h2>
@@ -553,6 +560,10 @@ conda install -c anaconda psycopg2
 </li>
 </ul>
 <p>Let’s now check out these by creating a ticker table, loading data to it, and doing some querying. Let’s first create schema import,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Below you need to replace the <code class="docutils literal notranslate"><span class="pre">conString</span></code> values with your <code class="docutils literal notranslate"><span class="pre">host</span></code>,<code class="docutils literal notranslate"><span class="pre">dbname</span></code>,<code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">password</span></code>, and <code class="docutils literal notranslate"><span class="pre">port</span></code> you used while creating your RDS instance.</p>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a connection</span>
 <span class="nv">conString</span> <span class="o">=</span> <span class="o">{</span><span class="s1">&#39;host&#39;</span>:<span class="s1">&#39;mbandtweet.xxxxx.amazonaws.com&#39;</span>,
              <span class="s1">&#39;dbname&#39;</span>:<span class="s1">&#39;postgres&#39;</span>,
@@ -627,6 +638,12 @@ conn.commit<span class="o">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwork.tickers&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwork.tickers LIMIT 5&quot;&quot;&quot;</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 <span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
@@ -641,6 +658,40 @@ conn.commit<span class="o">()</span>
 </pre></div>
 </div>
 <p>But in general most of the cases, you can go with fetchall, provided you write an efficient SQL query to execute and get just the columns and rows that you are interested in.</p>
+<p>Before we move to the next topic, let me show you how rollback works. Say, for instance, your query ends up failing for some reason.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwrk.tickers LIMIT 5&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You realized it and corrected it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwork.tickers LIMIT 5&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But this query, even though it’s correct it won’t end up going through and will get this error saying <code class="docutils literal notranslate"><span class="pre">your</span> <span class="pre">current</span> <span class="pre">transaction</span> <span class="pre">is</span> <span class="pre">aborted</span></code></p>
+<a class="reference internal image-reference" href="../_images/error.png"><img alt="../_images/error.png" src="../_images/error.png" style="width: 55%;" /></a>
+<p>You need to do a <code class="docutils literal notranslate"><span class="pre">rollback()</span></code> to back to the previous stable state and then execute your query.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT * FROM classwork.tickers LIMIT 5&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Whenever you get an error, as we showed before, <code class="docutils literal notranslate"><span class="pre">InFailedSqlTransaction:</span> <span class="pre">current</span> <span class="pre">transaction</span> <span class="pre">is</span> <span class="pre">aborted,</span> <span class="pre">commands</span> <span class="pre">ignored</span> <span class="pre">until</span> <span class="pre">end</span> <span class="pre">of</span> <span class="pre">transaction</span> <span class="pre">block</span> </code>, make sure you do a <code class="docutils literal notranslate"><span class="pre">rollback</span></code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It’s not a bad idea to develop your SQL query in pgadmin, toad or any other GUI interface and then bring it in once you know it’s ready.</p>
+</div>
 </div>
 </div>
 <div class="section" id="dealing-with-passwords">
@@ -654,6 +705,10 @@ conn.commit<span class="o">()</span>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sh</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">anaconda</span> <span class="n">python</span><span class="o">-</span><span class="n">dotenv</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>https://anaconda.org/conda-forge/python-dotenv</p>
 </div>
 <p>This package looks for a .env file in the folder where your notebook resides, and it loads your database connection details to the environment variable for your session. Here is how my env file looks like</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> ggeorg02@MacBook-Pro assign1 % cat .env  
@@ -669,6 +724,10 @@ To create a .env file, you might want to use your terminal. Check how to use <a 
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;path to your notebook folder&gt;
 vi .env
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I purposely created this file with just an extension, not a filename. And you can usually make this kind of file only from the terminal, so I am using vi editor. You might not be able to find this file from your file explorer, and that’s the reason we created it starting with a period. This means that <code class="docutils literal notranslate"><span class="pre">.iamasecretfile</span></code>. So no wonder why you can’t see, right? This way, no one can accidentally look at this file when using your computer. if you want to see it, then again, you want to go to terminal and type <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code></p>
 </div>
 <p>After this, you can call all variables like this.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -759,6 +818,13 @@ vi .env
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title"><span class="section-number">2. </span>Lecture 1: Data Management in a Big Data Environment</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture4.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Lecture 3: Data Modeling for Business Applications</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
         

@@ -1,13 +1,17 @@
 # JuypterLab
 
+```{note}
+If you already have jupyter installed, you may not install jupyter lab.
+```
+
 You will be using the Jupyter notebook for all the assignments and projects. So you will be returning these Jupyter notebooks for your assignments and projects. Jupyter notebook, as the name suggests, is a notebook that contains all your text input and code input with all the outputs and plots that got rendered. These notebooks are trendy in the data science team, and you can see them a lot when you start working in the industry.
 
 JupyterLab is a next-generation Jupyter notebook interface that got many additional features. 
 Follow the below instructions to install JupyterLab.
 
-Make sure that you are inside your MBAN environment (from your conda installation instructions) before installing your JupyterLab. 
+Make sure that you are inside your MBAN environment within your terminal(from your conda installation instructions) before installing your JupyterLab. 
 
-Since we are using conda, we have to run the following command.
+Since we are using conda, we have to run the following commands from your terminal.
 
 ```bash
 conda install -c conda-forge jupyterlab

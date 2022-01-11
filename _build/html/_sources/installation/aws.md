@@ -20,7 +20,33 @@ align: center
 ---
 ```
 
-- Later, follow the instructions in [this]() pdf.
+You need to find the above email in your mailbox, click on `Get Started`.
+
+```{figure} img/account.png
+---
+alt: ec2-1
+width: 900px
+align: center
+---
+```
+
+If it asks following for you, press on `Create my account`.
+
+```{figure} img/create.png
+---
+alt: ec2-1
+width: 900px
+align: center
+---
+```
+
+- Later, follow the instructions in [this](https://canvas.ubc.ca/files/18576663/download?download_frd=1) pdf. After clicking on `Learner Lab - Foundational Services,` if you can't see anything(or show a `refused to connect` error), in most cases, it's that you haven't configured your [SwitchyOmega for chrome](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html).
+
+You can bookmark [this link](https://awsacademy.instructure.com/login/canvas) for easy access to AWS canvas.
+
+```{important}
+Please don't confuse AWS Academy canvas with the UBC canvas. Both are separate things and are not connected.
+```
 
 ```{Warning}
 Shut down your RDS instances when not in use.

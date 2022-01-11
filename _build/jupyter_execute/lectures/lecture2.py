@@ -186,10 +186,6 @@
 # - Clear checks on key processes
 # - TDD - Test Driven Development (assertions & tests)
 # 
-#  . . . abstracts of papers comparing citizen science data to professional data indicated that the citizen science data quality was good in 73% of the abstracts, the results of our quantitative assessment cast more doubt on the accuracy of the data.
-# Aceves-Bueno et al., 2017. Bulletin of the Ecological Society of America
-# [Open Access]
-# 
 # ## The Four V's and Analytic Workflows
 # 
 # These challenges come to the forefront when we're working with data.  The goto standard is to open up an Excel or read in a comma-separated file to look at the data, get a sense of what is happening, or summarise the key elements.  
@@ -277,6 +273,8 @@
 # - How might these biases affect our analysis?
 #   - Spurious correlations
 # 
+# <img src = 'img/chart.png'>
+# 
 # ### Turn assumptions into assertions & tests
 # Use the right tools!
 # 
@@ -303,7 +301,6 @@
 # In R: [assertthat](https://github.com/hadley/assertthat).
 
 # ```
-# import pytest
 # data = [1,2,3]
 # data_out = sum(data)
 # assert data_out == 6, "Sum isn’t working."

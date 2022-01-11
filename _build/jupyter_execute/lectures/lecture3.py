@@ -89,6 +89,8 @@
 # - Stop spending money on running and maintaining data centers
 # - Go global in minutes
 # 
+# Source: aws
+# 
 # ## Cloud providers
 # - Amazon Web Services (AWS)
 # - Microsoft Azure
@@ -220,6 +222,10 @@
 #     The query that we performed in execute doesn't return the query right away. To return it, we need to perform a fetch. If the query is to write something, then we need to commit it. If some transaction went wrong, then we need to roll back it.
 # 
 # Let's now check out these by creating a ticker table, loading data to it, and doing some querying. Let's first create schema import,
+# 
+# ```{note}
+# Below you need to replace the `conString` values with your `host`,`dbname`,`user`, `password`, and `port` you used while creating your RDS instance.
+# ```
 
 # ```bash
 # # Create a connection
@@ -300,6 +306,13 @@
 # ````
 
 # ```
+# query = """SELECT * FROM classwork.tickers"""
+# cur.execute(query)
+# row = cur.fetchmany(5)
+# print(row)
+# ````
+
+# ```
 # query = """SELECT * FROM classwork.tickers LIMIT 5"""
 # cur.execute(query)
 # row = cur.fetchall()
@@ -317,6 +330,50 @@
 
 # But in general most of the cases, you can go with fetchall, provided you write an efficient SQL query to execute and get just the columns and rows that you are interested in. 
 
+# Before we move to the next topic, let me show you how rollback works. Say, for instance, your query ends up failing for some reason.
+
+# ```
+# query = """SELECT * FROM classwrk.tickers LIMIT 5"""
+# cur.execute(query)
+# row = cur.fetchall()
+# print(row)
+# ```
+
+# You realized it and corrected it.
+
+# ```
+# query = """SELECT * FROM classwork.tickers LIMIT 5"""
+# cur.execute(query)
+# row = cur.fetchall()
+# print(row)
+# ```
+
+# But this query, even though it's correct it won't end up going through and will get this error saying `your current transaction is aborted`
+# 
+# <img src='img/error.png' width='55%'>
+
+# You need to do a `rollback()` to back to the previous stable state and then execute your query.
+
+# ```
+# conn.rollback()
+# ```
+
+# ```
+# query = """SELECT * FROM classwork.tickers LIMIT 5"""
+# cur.execute(query)
+# row = cur.fetchall()
+# print(row)
+# ```
+
+# ```{important}
+# Whenever you get an error, as we showed before, `InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+# `, make sure you do a `rollback`.
+# ```
+# 
+# ```{tip}
+# It's not a bad idea to develop your SQL query in pgadmin, toad or any other GUI interface and then bring it in once you know it's ready.
+# ```
+
 # ## Dealing with passwords
 # ```{margin}
 # <img src="img/secret.png">
@@ -330,6 +387,10 @@
 # conda install -c anaconda python-dotenv
 # ```
 
+# ```{seealso}
+# https://anaconda.org/conda-forge/python-dotenv
+# ```
+# 
 # This package looks for a .env file in the folder where your notebook resides, and it loads your database connection details to the environment variable for your session. Here is how my env file looks like
 # 
 # ```bash
@@ -347,6 +408,11 @@
 # cd <path to your notebook folder>
 # vi .env
 # ```
+# 
+# ```{note}
+# I purposely created this file with just an extension, not a filename. And you can usually make this kind of file only from the terminal, so I am using vi editor. You might not be able to find this file from your file explorer, and that's the reason we created it starting with a period. This means that `.iamasecretfile`. So no wonder why you can't see, right? This way, no one can accidentally look at this file when using your computer. if you want to see it, then again, you want to go to terminal and type `ls -a`
+# ```
+# 
 # After this, you can call all variables like this. 
 
 # ```

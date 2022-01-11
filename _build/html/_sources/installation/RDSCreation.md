@@ -49,6 +49,8 @@ Let's go through each option one by one in the following screenshots.
 
 - Here, we are selecting the database engine that we want. As you see, there are 6 of them available, and we will be going with Postgres. You will be hearing more about it in your Lecture 2. Here we also select which version of Postgres we want.
 
+Make sure you select the latest version of postgres. It might not be what I selected here, ie `PostgreSQL 13.3-R1`.
+
 ```{figure} img/rds5.png
 ---
 width: 900px
@@ -106,6 +108,8 @@ align: center
 ---
 ```
 
+Make sure you uncheck `Enable enhanced monitoring`, as you don't have permissions to do this.
+
 ```{figure} img/rds14.png
 ---
 width: 900px
@@ -130,6 +134,12 @@ align: center
 - Click on CREATE DATABASE. Sit back and relax AWS is setting up your database in the cloud.
 
 
+```{note}
+If you get any error, Check
+- If the region is AWS US West (Oregon) 
+- If you unchecked everything under Additional configuration
+```
+
 ```{figure} img/sitback.png
 ---
 width: 250px
@@ -139,6 +149,10 @@ align: center
 
 ```{attention}
 This process might take some time. For me, it took around 10 min. Better you grab some coffee.
+```
+
+```{important}
+This database is available only in AWS US West (Oregon). So if you come here later to start/stop your database and don't find your database, then it's mostly the case that you are looking in a different region.
 ```
 
 After your coffee, you will see your database available.
