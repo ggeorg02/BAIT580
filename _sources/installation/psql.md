@@ -37,4 +37,9 @@ Check to make sure that the installation process went well,
 psql (PostgreSQL) 14.1
 ```
 
+Connect to your RDS instance using psql -h HOST_NAME -U USER_NAME DATABASE, eg:
+
+```
+psql -h mbandtweet.xxxx.us-west-2.rds.amazonaws.com -U Postgres Postgres
+```
 [Here](https://www.postgresqltutorial.com/psql-commands/) are some fundamental commands that you need. You can also keep this cheat sheet handy.
