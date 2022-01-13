@@ -1,0 +1,1013 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Lecture 4: SQL for vizualization &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="4. Lecture 3: Data Modeling for Business Applications" href="lecture4.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/psql.html">
+   psql
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Lecture 4: SQL for vizualization
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture5.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture5.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todays-agenda">
+   5.1. Todays Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   5.2. Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-visualization-science">
+   5.3. Introduction to visualization science
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-principles-for-vizualization">
+     5.3.1. General Principles for vizualization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steps-on-vizualization">
+   5.4. Steps on vizualization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-preparation">
+     5.4.1. Data Preparation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reproducible-workflows">
+     5.4.2. Reproducible Workflows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visual-representation">
+     5.4.3. Visual Representation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sql-tricks">
+   5.5. SQL tricks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#views">
+   5.6. Views
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary">
+     5.6.1. Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-cleaning">
+   5.7. Data Cleaning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-does-clean-data-matter">
+     5.7.1. Why Does Clean Data Matter?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#impacts-with-the-dirty-data">
+     5.7.2. Impacts with the dirty data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-does-dirty-data-come-from-how-to-approach">
+     5.7.3. Where Does Dirty Data Come From &amp; how to approach?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elements-of-a-data-cleaning-plan">
+     5.7.4. Elements of a Data Cleaning Plan
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataset-provenance-metadata">
+       5.7.4.1. Dataset Provenance Metadata
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-quality-documentation-pre-cleaning">
+       5.7.4.2. Data Quality Documentation (pre-cleaning)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-cleaning-documentation">
+       5.7.4.3. Data Cleaning Documentation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-quality-documentation-post-cleaning">
+       5.7.4.4. Data Quality Documentation (post-cleaning)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#quality-assessment-error-reporting-procedures">
+       5.7.4.5. Quality Assessment / Error Reporting Procedures
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-standards-for-databases">
+     5.7.5. Data Standards for Databases
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-4-sql-for-vizualization">
+<h1><span class="section-number">5. </span>Lecture 4: SQL for vizualization<a class="headerlink" href="#lecture-4-sql-for-vizualization" title="Permalink to this headline">¶</a></h1>
+<p>Gittu George, January 13 2022</p>
+<div class="section" id="todays-agenda">
+<h2><span class="section-number">5.1. </span>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Vizualization science</p></li>
+<li><p>Steps on vizualization</p></li>
+<li><p>SQL tricks for data prep</p></li>
+<li><p>Views</p></li>
+<li><p>Data Cleaning science</p></li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/cleaning.png" src="../_images/cleaning.png" />
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/visual.png" src="../_images/visual.png" />
+</div>
+</div>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">5.2. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You will understand what kinds of graphs are best applied to various “questions.”</p></li>
+<li><p>You will understand how to construct SQL queries to pre-process data for efficient plotting</p></li>
+<li><p>You will be able to work from question, to figure, to SQL query</p></li>
+<li><p>Why Data Cleaning Matters</p></li>
+<li><p>How to develop a data cleaning plan as part of a workflow</p></li>
+<li><p>How to establish and understand data standards for various data types</p></li>
+<li><p>How to encode data cleaning standards into a database structure</p></li>
+</ul>
+</div>
+<div class="section" id="introduction-to-visualization-science">
+<h2><span class="section-number">5.3. </span>Introduction to visualization science<a class="headerlink" href="#introduction-to-visualization-science" title="Permalink to this headline">¶</a></h2>
+<p>You will be doing many data visualization in this course for your assignments and projects. When you think about it, what are the first things that come to your mind?</p>
+<ul class="simple">
+<li><p>There are so many different graphs out there; which one should I use?</p></li>
+<li><p>There are so many different graphing tools out there; which one should I use?</p></li>
+<li><p>Should my plot be static or dynamic?</p></li>
+</ul>
+<p>Answers to these questions solely rely on the purpose of a graph ?? !!</p>
+<div class="sidebar">
+<p class="sidebar-title">“Graphics reveal data.” - Edward Tufte</p>
+<p>Edward Tufte is a data scientist who did a lot of groundbreaking work in the field of visualization. His <a class="reference external" href="https://www.edwardtufte.com/tufte/books_vdqi">book from 1983</a>, is still referred and sited by many recent(eg <a class="reference external" href="https://medium.com/nightingale/improve-your-visualization-skills-using-tuftes-principles-of-graphical-design-3a0f40a53a2c">this</a> &amp; <a class="reference external" href="https://towardsdatascience.com/little-known-ways-to-make-your-data-visualization-awesome-890d71b6e365">this</a>) articles. From his book, we will be discussing some of the general principles that you need to keep in mind.</p>
+</div>
+<p>In general, graphs should;</p>
+<ul class="simple">
+<li><p>Make large datasets coherent</p></li>
+<li><p>Serve a reasonably clear purpose</p></li>
+<li><p>Be closely integrated with descriptions of the dataset</p></li>
+<li><p>Induce the viewer to think about substance</p></li>
+</ul>
+<div class="section" id="general-principles-for-vizualization">
+<h3><span class="section-number">5.3.1. </span>General Principles for vizualization<a class="headerlink" href="#general-principles-for-vizualization" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Show the data (fairly)</p>
+<p>Ensure that the data represented does not exaggerate or obscure true patterns.</p>
+<a class="reference internal image-reference" href="../_images/employmentl4.png"><img alt="../_images/employmentl4.png" src="../_images/employmentl4.png" style="width: 80%;" /></a>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>Maximize data-ink ratio</p>
+<p>Elements in your figure should represent data, rather than adornment (grid lines &amp;cetera)</p>
+<a class="reference internal image-reference" href="../_images/chartjunk.png"><img alt="../_images/chartjunk.png" src="../_images/chartjunk.png" style="width: 80%;" /></a>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>Erase non-data ink</p>
+<p>As much as possible, reduce clutter around the data itself.</p>
+<a class="reference internal image-reference" href="../_images/ink.png"><img alt="../_images/ink.png" src="../_images/ink.png" style="width: 80%;" /></a>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>Erase redundant data-ink</p>
+<p>Remove (or deprioritize) data that doesn’t support the statements</p>
+<a class="reference internal image-reference" href="../_images/redundant.png"><img alt="../_images/redundant.png" src="../_images/redundant.png" style="width: 50%;" /></a>
+</li>
+</ul>
+<br>
+<ul>
+<li><p>Edit your figures as you would your text</p>
+<p>Ask, is this legible? Does this represent what we need it to show?</p>
+<ul class="simple">
+<li><p>InkScape</p></li>
+<li><p>CorelDRAW</p></li>
+<li><p>AI</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="steps-on-vizualization">
+<h2><span class="section-number">5.4. </span>Steps on vizualization<a class="headerlink" href="#steps-on-vizualization" title="Permalink to this headline">¶</a></h2>
+<p>By now, we understand the science of visualization, but you have to keep in mind that graphical display is more than graphs. Here are how the steps will look like, and here I will be showing some SQL tricks and techniques that you can use.</p>
+<div class="section" id="data-preparation">
+<h3><span class="section-number">5.4.1. </span>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>What are we trying to plot?</p>
+<ul class="simple">
+<li><p>More variables or facets within your data mean more visual variables.</p></li>
+<li><p>Make clear choices about categorical vs. continuous variables.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/bertin.png"><img alt="../_images/bertin.png" src="../_images/bertin.png" style="width: 80%;" /></a>
+<p>Source : <a class="reference external" href="https://www.historyofinformation.com/detail.php?id=3361">Bertin. 1967. Semiology of Graphics.</a></p>
+</li>
+</ul>
+<p><em><strong>We will be discussing later some of the SQL tricks.</strong></em></p>
+<ul class="simple">
+<li><p>Are we plotting the data only once or to be redrawn frequently? Is the data preparation complex?</p>
+<ul>
+<li><p>We can manage longer processing times if things are plotted only once.</p></li>
+<li><p>A complex query only needs to be run once.
+If data is updated often, or the plot must be regenerated often, we need other solutions.</p></li>
+</ul>
+</li>
+</ul>
+<p><em><strong>And that’s why we want to know about views which we will discuss in detail later.</strong></em></p>
+</div>
+<div class="section" id="reproducible-workflows">
+<h3><span class="section-number">5.4.2. </span>Reproducible Workflows<a class="headerlink" href="#reproducible-workflows" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Considerations In Plotting Decisions</p>
+<ul>
+<li><p>How much data are you trying to plot?</p></li>
+<li><p>How many “series”?</p></li>
+</ul>
+</li>
+<li><p>Volume of Data</p>
+<ul>
+<li><p>Static presentation</p></li>
+<li><p>Dynamic presentation</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Simplify your data first.</p>
+<ul>
+<li><p>Can we aggregate by type, count?</p>
+<p>use GROUP BY</p>
+</li>
+<li><p>Do we need to prepare data ahead of time?</p>
+<p>That’s WHY we need to create MATERIALIZED VIEW.</p>
+</li>
+<li><p>Is the data likely to change?</p>
+<p>That’s WHY we need to create VIEW.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="visual-representation">
+<h3><span class="section-number">5.4.3. </span>Visual Representation<a class="headerlink" href="#visual-representation" title="Permalink to this headline">¶</a></h3>
+<p>What are we Representing? Here are the main categories</p>
+<ul class="simple">
+<li><p>Numeric data</p>
+<ul>
+<li><p>Univariate;
+Histogram, density plot: Count of observations.</p></li>
+<li><p>Multivariate, n = 2;
+Scatter plots (x vs. y), bar plots (count of y at value x), boxplots (distribution of y at x)</p></li>
+<li><p>Multivariate, n = 2; one variable ordered
+line graph (ordered x vs. y), connected scatterplot (ordered x vs. y)
+As n increases, we can use other graphic elements (hue, symbol shape &amp; size) to represent other dimensions of the data</p></li>
+</ul>
+</li>
+<li><p>Categorical Data</p>
+<ul>
+<li><p>Univariate (keyword list &amp;cetera)
+Barplot (count of terms), word cloud (ugh); pie or donut chart (ugh)</p></li>
+<li><p>Univariate, structured
+Dendrogram (hierarchy of relationships)</p></li>
+<li><p>Categorical with Numeric
+Variations on numeric, using an extra facet</p></li>
+</ul>
+</li>
+</ul>
+<p>An amazing reference: <a class="reference external" href="https://www.data-to-viz.com/">data-to-viz</a></p>
+<ul class="simple">
+<li><p>Represent data SIMPLY</p></li>
+<li><p>More graphs, less clutter.</p></li>
+<li><p>Less text on the screen (significant figures!!!!)</p></li>
+<li><p>Highlight the key elements (use the alpha channel!)</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/facets.png"><img alt="../_images/facets.png" src="../_images/facets.png" style="width: 90%;" /></a>
+</div>
+</div>
+<div class="section" id="sql-tricks">
+<h2><span class="section-number">5.5. </span>SQL tricks<a class="headerlink" href="#sql-tricks" title="Permalink to this headline">¶</a></h2>
+<p>These SQL tricks help with the data preparation for generating the plots.</p>
+<ul class="simple">
+<li><p>Group continuous variable using <a class="reference external" href="https://www.postgresql.org/docs/8.4/functions-conditional.html">CASE</a>:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT varone,
+	CASE WHEN vartwo &lt; 5 THEN ‘Small’
+         WHEN vartwo &lt; 10 THEN ‘Medium’
+         WHEN vartwo &gt; 10 THEN ‘Big’
+    END,
+    varthree
+FROM table;  
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/table1.png"><img alt="../_images/table1.png" src="../_images/table1.png" style="width: 90%;" /></a>
+<ul class="simple">
+<li><p>Dealing with missing values using <a class="reference external" href="https://www.postgresql.org/docs/8.1/functions-conditional.html">COALESCE</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">varone</span><span class="p">,</span> 
+<span class="n">COALESCE</span><span class="p">(</span><span class="n">vartwo</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">FROM</span> <span class="n">table</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>COALESCE is used to deal with potential NULL values. It saves you from dealing with it in Python &amp; lets you clearly define how you deal with missing values.</p>
+<a class="reference internal image-reference" href="../_images/table2.png"><img alt="../_images/table2.png" src="../_images/table2.png" style="width: 90%;" /></a>
+<ul class="simple">
+<li><p>Changing plotting order:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">varone</span><span class="p">,</span>
+   <span class="n">vartwo</span><span class="p">,</span>
+   <span class="n">varthree</span>
+<span class="n">FROM</span> <span class="n">table</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">varone</span><span class="p">;</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/table3.png"><img alt="../_images/table3.png" src="../_images/table3.png" style="width: 90%;" /></a>
+<ul class="simple">
+<li><p>Changing plotting order with random:</p></li>
+</ul>
+<p>Using random() allows us to sort by a random value that is recalculated each time.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Changing</span> <span class="n">order</span><span class="p">:</span>
+<span class="n">SELECT</span> <span class="n">varone</span><span class="p">,</span>
+   <span class="n">vartwo</span><span class="p">,</span>
+   <span class="n">varthree</span>
+<span class="n">FROM</span> <span class="n">table</span>
+<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">random</span><span class="p">();</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/table4.png"><img alt="../_images/table4.png" src="../_images/table4.png" style="width: 90%;" /></a>
+</div>
+<div class="section" id="views">
+<h2><span class="section-number">5.6. </span>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>Whether we want to use VIEWS depends on the plotting or querying frequency. For example, complex queries with changing data that will be run multiple times (or have varying “WHERE” statements) can use a VIEW.</p>
+<p>Check out how much time this query is taking to run. Before all that lets initiate the connection to the database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+
+<span class="c1">##Make sure you import and load your .env file</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="n">conString</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;dbname&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;user&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PASS&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conString</span><span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">])</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">conString</span><span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT tw.id, </span>
+<span class="s2">       unnest(regexp_matches(tw.text, &#39;\$[A-Z]+\M&#39;, &#39;g&#39;)) AS substring</span>
+<span class="s2">FROM import.tweets AS tw;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s create a view</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;CREATE OR REPLACE VIEW import.tickertweets AS</span>
+<span class="s2">SELECT tw.id, unnest(regexp_matches(tw.text, &#39;\$[A-Z]+\M&#39;, &#39;g&#39;)) AS substring</span>
+<span class="s2">FROM import.tweets AS tw;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Let’s see the query time when we call it from the VIEW.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT * FROM import.tickertweets;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>So, a TABLE is stored data. A VIEW is a stored query. A VIEW’s query is stored to be cached (saved to memory) for faster retrieval and optimized for speed.</p>
+<p>Complex queries with fixed data that will be run multiple times (or have varying “WHERE” statement) can use a MATERIALIZED VIEW:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;DROP MATERIALIZED VIEW import.tickertweetsmat CASCADE;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;CREATE MATERIALIZED VIEW import.tickertweetsmat AS</span>
+<span class="s2">SELECT tw.id, </span>
+<span class="s2">  unnest(regexp_matches(tw.text, &#39;\$[A-Z]+\M&#39;, &#39;g&#39;)) AS substring</span>
+<span class="s2">FROM import.tweets AS tw;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Let’s see the query time when we call it from the VIEW.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT * FROM import.tickertweetsmat;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchmany</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A TABLE is stored data.</p></li>
+<li><p>A VIEW is a stored query.</p></li>
+<li><p>A MATERIALIZED VIEW is a query committed to stored data.</p></li>
+</ul>
+<p>When to use what?</p>
+<ul class="simple">
+<li><p>Choose a table when the underlying data don’t change (except for INSERTs)</p></li>
+<li><p>Choose a MATERIALIZED VIEW when the query is slow, and you can tolerate some lag between UPDATE/INSERTs and updated values.</p></li>
+<li><p>Choose a VIEW when you reuse the query and want to simplify calling it.</p></li>
+</ul>
+<p>Check out these yourself?</p>
+<ul class="simple">
+<li><p>How much time does it take to create a view vs. materialized view?</p></li>
+<li><p>How much time does it take to query? You can use these queries to find that out.</p></li>
+<li><p>How much space does it take? You can use these queries to find that out.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">time</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT pg_size_pretty (pg_relation_size(&#39;import.tickertweets&#39;));&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT pg_size_pretty (pg_relation_size(&#39;import.tickertweetsmat&#39;));&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="section" id="summary">
+<h3><span class="section-number">5.6.1. </span>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Views can be an important tool in managing long-running queries for visualization (and for other purposes)</p></li>
+<li><p>Tradeoffs exist with respect to storage space and the rate at which data needs to be refreshed.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Table</p></th>
+<th class="head"><p>View</p></th>
+<th class="head"><p>Materialized View</p></th>
+<th class="head"><p>SELECT Query</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>High Disk Space</p></td>
+<td><p>Low Disk Space</p></td>
+<td><p>High Disk Space</p></td>
+<td><p>Low Disk Space</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fast Read Time</p></td>
+<td><p>Slower Read Time</p></td>
+<td><p>Fast Read Time</p></td>
+<td><p>Slow Read Time</p></td>
+</tr>
+<tr class="row-even"><td><p>Fixed Values (cannot be refreshed)</p></td>
+<td><p>Can be refreshed</p></td>
+<td><p>Can be refreshed</p></td>
+<td><p>Always refreshed</p></td>
+</tr>
+</tbody>
+</table>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<a class="reference internal image-reference" href="../_images/BORING.png"><img alt="../_images/BORING.png" src="../_images/BORING.png" style="width: 90%;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="data-cleaning">
+<h2><span class="section-number">5.7. </span>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<p>Before we get to visualization or the table, we need to think about data cleaning. This is considered very important yet tedious, where analysts spend most of their time.</p>
+<div class="section" id="why-does-clean-data-matter">
+<h3><span class="section-number">5.7.1. </span>Why Does Clean Data Matter?<a class="headerlink" href="#why-does-clean-data-matter" title="Permalink to this headline">¶</a></h3>
+<p>Dirty data impacts every part of business decision-making. Outliers, data gaps, misspellings, poorly structured data, incorrectly entered, invalid values, duplication.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>“At the operational level, poor data leads directly to customer dissatisfaction, increased cost, and lowered employee job satisfaction… 8 - 12% of revenue may be consumed by bad data.”
+<a class="reference external" href="https://dl.acm.org/doi/pdf/10.1145/269012.269025">TC Redman</a></p>
+</div>
+<ul class="simple">
+<li><p>Garbage in - Garbage out</p></li>
+</ul>
+<p>If you put dirty data in, then what you will be getting, as a result, will be dirty or of no use, or even worse, it can mislead you.</p>
+<ul class="simple">
+<li><p>Time is money</p></li>
+</ul>
+<p>Suppose your data issues get addressed at the point when the data is initially consumed. In that case, there is a meager cost associated with it, but once data gets dispersed throughout the company with different project groups, it becomes harder to address as you want to bring this change across all departments. Then once you’ve started to make strategic decisions based on this data, it becomes very expensive to correct the data as you also want to deal with the consequences of bad strategy decisions.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>50% — the amount of time that knowledge workers waste in hidden data factories, hunting for data, finding and correcting errors, and searching for confirmatory sources for data they don’t trust.”
+<a class="reference external" href="https://hbr.org/2016/09/bad-data-costs-the-u-s-3-trillion-per-year">Redman (2016) HBR</a></p>
+</div>
+</div>
+<div class="section" id="impacts-with-the-dirty-data">
+<h3><span class="section-number">5.7.2. </span>Impacts with the dirty data<a class="headerlink" href="#impacts-with-the-dirty-data" title="Permalink to this headline">¶</a></h3>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>NASA’s Mars Climate Orbiter was designed to study Mars from orbit and serve as a communications relay for the Mars Polar Lander and Deep Space probes. Unfortunately, the mission was unsuccessful due to a navigation error caused by a failure to translate English units to metric.
+<a class="reference external" href="https://solarsystem.nasa.gov/missions/mars-climate-orbiter/in-depth/">NASA</a></p>
+</div>
+<p>It can be broadly categorized into</p>
+<ul class="simple">
+<li><p>Operational</p>
+<ul>
+<li><p>Customer service impacts (mismatched addresses)</p></li>
+<li><p>More costly to analyze data and produce insights</p></li>
+</ul>
+</li>
+<li><p>Strategic</p>
+<ul>
+<li><p>More difficult to set &amp; execute a broad strategy</p></li>
+<li><p>More challenging to align needs in large organizations</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="where-does-dirty-data-come-from-how-to-approach">
+<h3><span class="section-number">5.7.3. </span>Where Does Dirty Data Come From &amp; how to approach?<a class="headerlink" href="#where-does-dirty-data-come-from-how-to-approach" title="Permalink to this headline">¶</a></h3>
+<p>It can come from anywhere. So don’t just think that it had to do with the external data; sometimes, internal data that has been provided to you might be dirtier.</p>
+<a class="reference internal image-reference" href="../_images/dirtydata.png"><img alt="../_images/dirtydata.png" src="../_images/dirtydata.png" style="width: 75%;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data Screening deals with finding errors (generally at data input or analysis)
+Data Cleaning fixes errors, reformats data following data acquisition.</p>
+</div>
+<p>Data Cleaning means having a plan</p>
+<ul class="simple">
+<li><p>Any analysis you do will use some combination of internal and external data</p></li>
+<li><p>You can expect that “finding”, “screening,” and “cleaning” data will take close to a majority of your time</p></li>
+<li><p>You can expect that to costs of poor data management and cleaning can be significant in time and value</p></li>
+<li><p>Beginning with a Data Cleaning Plan is perhaps the most critical stage of analysis.</p></li>
+</ul>
+</div>
+<div class="section" id="elements-of-a-data-cleaning-plan">
+<h3><span class="section-number">5.7.4. </span>Elements of a Data Cleaning Plan<a class="headerlink" href="#elements-of-a-data-cleaning-plan" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="dataset-provenance-metadata">
+<h4><span class="section-number">5.7.4.1. </span>Dataset Provenance Metadata<a class="headerlink" href="#dataset-provenance-metadata" title="Permalink to this headline">¶</a></h4>
+<p>Assume you are a consumer and producer</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Without provenance, consumers have no inherent way to trust the integrity and credibility of shared data. Data publishers, in turn, need to be aware of the needs of prospective consumer communities to know how much provenance detail is appropriate.
+<a class="reference external" href="https://www.w3.org/TR/dwbp/#provenance">W3C Data On The Web Best Practices</a></p>
+</div>
+<p>For Each Dataset (dataset level metadata):</p>
+<ul class="simple">
+<li><p>Title</p></li>
+<li><p>URI (source location</p></li>
+<li><p>Keywords (if needed)</p></li>
+<li><p>Publication Date</p></li>
+<li><p>Publisher</p></li>
+<li><p>Creator</p></li>
+<li><p>Contact Point</p></li>
+<li><p>Spatial Coverage</p></li>
+<li><p>Temporal Coverage</p></li>
+<li><p>Language</p></li>
+<li><p>Date &amp; Time Formats</p></li>
+<li><p>Data Version</p></li>
+<li><p>Access Date</p></li>
+</ul>
+<p>It can be formatted as plain text, YAML, JSON, or other
+W3C Data on the Web: <a class="reference external" href="https://www.w3.org/TR/dwbp">link</a></p>
+</div>
+<div class="section" id="data-quality-documentation-pre-cleaning">
+<h4><span class="section-number">5.7.4.2. </span>Data Quality Documentation (pre-cleaning)<a class="headerlink" href="#data-quality-documentation-pre-cleaning" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Completeness per row</p></li>
+</ul>
+<p>Do we have all the data we need in each table?</p>
+<ul class="simple">
+<li><p>Syntactical Correctness</p></li>
+</ul>
+<p>Are all data in the expected &amp; correct format?</p>
+<ul class="simple">
+<li><p>Absence of Contradictions</p></li>
+</ul>
+<p>All data are in alignment with one another &amp; with expectations.</p>
+<ul class="simple">
+<li><p>Accuracy</p></li>
+</ul>
+<p>All data is up to date and accurate.</p>
+<ul class="simple">
+<li><p>Absence of repetition</p></li>
+</ul>
+<p>Synonyms &amp; overlapping values addressed; all entities unique
+Overlapping values &amp; synonyms addressed; each entity is unique</p>
+<ul class="simple">
+<li><p>Referential Integrity</p></li>
+</ul>
+<p>Required references and entities are complete.</p>
+<ul class="simple">
+<li><p>Completeness</p></li>
+</ul>
+<p>All cross-sum products are complete (sum of product counts == total inventory count)</p>
+<ul class="simple">
+<li><p>Normative consistency</p></li>
+</ul>
+<p>The naming and meaning of data is the same overall systems</p>
+</div>
+<div class="section" id="data-cleaning-documentation">
+<h4><span class="section-number">5.7.4.3. </span>Data Cleaning Documentation<a class="headerlink" href="#data-cleaning-documentation" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>All steps (and the order of steps) should be preserved and documented.</p></li>
+<li><p>All steps should be reproducible (within reason)</p></li>
+<li><p>Reproducibility either directly (by executing a script directly) or indirectly (explaining the steps in a program)</p></li>
+</ul>
+</div>
+<div class="section" id="data-quality-documentation-post-cleaning">
+<h4><span class="section-number">5.7.4.4. </span>Data Quality Documentation (post-cleaning)<a class="headerlink" href="#data-quality-documentation-post-cleaning" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="quality-assessment-error-reporting-procedures">
+<h4><span class="section-number">5.7.4.5. </span>Quality Assessment / Error Reporting Procedures<a class="headerlink" href="#quality-assessment-error-reporting-procedures" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Clear documentation of quality assessment metrics (as above)</p></li>
+<li><p>Clear documentation of how to report/address data issues.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="data-standards-for-databases">
+<h3><span class="section-number">5.7.5. </span>Data Standards for Databases<a class="headerlink" href="#data-standards-for-databases" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://schema.org">schema.org</a></p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/CDM">Microsoft Common Data Standard</a></p></li>
+<li><p><a class="reference external" href="https://datastandards.directory/">datastandards.directory</a></p></li>
+<li><p><a class="reference external" href="https://www.w3.org/TR/NOTE-datetime">W3 standards for dates</a>, <a class="reference external" href="https://www.iso.org/news/2017/02/Ref2164.html">Blog post</a> about the most recent ISO 8601 standard update</p>
+<ul>
+<li><p>April 2, 1974</p></li>
+<li><p>04-02-74</p></li>
+<li><p>04/02/1974</p></li>
+<li><p>4/2/74</p></li>
+<li><p>19740402</p></li>
+<li><p>04021974 - is this April 2 or February 4?</p></li>
+<li><p>2 April 1974</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.w3.org/International/questions/qa-personal-names">W3 standards for names</a></p>
+<ul>
+<li><p>Don’t think people have one name</p></li>
+<li><p>Don’t think people’s names do not change</p></li>
+<li><p>Don’t think people’s names have canonical order (First, Last)</p></li>
+</ul>
+</li>
+<li><p>Provide clear meaning for data elements</p>
+<ul>
+<li><p>Either separately or within the database (COMMENT ON …)</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span> <span class="n">ON</span> <span class="n">TABLE</span> <span class="n">mytable</span> <span class="n">IS</span> <span class="s1">&#39;This table is the table for my data.&#39;</span><span class="p">;</span>
+<span class="n">COMMENT</span> <span class="n">ON</span> <span class="n">COLUMN</span> <span class="n">my_table</span><span class="o">.</span><span class="n">my_column</span> <span class="n">IS</span> <span class="s1">&#39;Employee ID number&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture4.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4. </span>Lecture 3: Data Modeling for Business Applications</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
