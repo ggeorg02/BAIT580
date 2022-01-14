@@ -770,7 +770,7 @@ vi .env
 <ul class="simple">
 <li><p>How can I take a dump of the database that I already have.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pg_dump -h mbandtweet.xxxxx.ca-central-1.rds.amazonaws.com --username<span class="o">=</span>postgres -n import -f import.sql<span class="sb">`</span>_
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pg_dump -h mbandtweet.xxxxx.ca-central-1.rds.amazonaws.com --username<span class="o">=</span>postgres -n import -f import.sql
 </pre></div>
 </div>
 <p>Read more about how to take database dumps <a class="reference external" href="https://www.postgresql.org/docs/12/app-pgdump.html">here</a>.</p>
@@ -778,7 +778,7 @@ vi .env
 <li><p>How can you load these dumps to make your schema and tables ready?</p></li>
 </ul>
 <p>psql -h HOST_NAME -U USER_NAME DATABASE &lt; PATH_TO_THE_.sql_DUMP_FILE</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql -h mbandtweet.xxxx.us-west-2.rds.amazonaws.com -U Postgres Postgres &lt; import.sql
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql -h mbandtweet.xxxx.us-west-2.rds.amazonaws.com -U postgres postgres &lt; import.sql
 </pre></div>
 </div>
 <div class="admonition warning">
