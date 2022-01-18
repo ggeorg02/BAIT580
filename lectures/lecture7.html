@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7. Lecture 6: (de)Normalization &amp; Data Warehousing &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="6. Lecture 5: Disk Management and Indexes" href="lecture6.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/psql.html">
+   psql
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/assignment2helper.html">
+   Assignment 2 helper
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture5.html">
+   5. Lecture 4: SQL for vizualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture6.html">
+   6. Lecture 5: Disk Management and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Lecture 6: (de)Normalization &amp; Data Warehousing
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture7.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture7.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture7.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture7.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todays-agenda">
+   7.1. Todays Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   7.2. Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-recap">
+   7.3. Quick Recap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-data-warehouse">
+   7.4. WHAT is a Data Warehouse?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-structure-of-data-warehouse">
+   7.5. General structure of Data Warehouse
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reciept-story">
+     7.5.1. Reciept story
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why">
+   7.6. WHY
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#goals-of-data-warehousing-bi">
+   7.7. Goals of Data Warehousing &amp; BI
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#so-how-do-we-meet-expectations">
+     7.7.1. So How Do We Meet Expectations?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-we-build-a-data-warehouse">
+   7.8. How Do We Build a Data Warehouse?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-our-twitter-data-eg">
+     7.8.1. in our Twitter data, eg
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differences">
+   7.9. Differences
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dw-vs-rmdbs">
+     7.9.1. DW vs RMDBS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etl-vs-elt">
+     7.9.2. ETL vs ELT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#olap-vs-oltp">
+     7.9.3. OLAP vs OLTP
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bi-vs-dw">
+     7.9.4. BI vs DW
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wrap-up">
+   7.10. Wrap up
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-6-de-normalization-data-warehousing">
+<h1><span class="section-number">7. </span>Lecture 6: (de)Normalization &amp; Data Warehousing<a class="headerlink" href="#lecture-6-de-normalization-data-warehousing" title="Permalink to this headline">¶</a></h1>
+<p>Gittu George, January 20 2022</p>
+<div class="section" id="todays-agenda">
+<h2><span class="section-number">7.1. </span>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Quick Recap</p></li>
+<li><p>WHAT is a Data Warehouse?</p></li>
+<li><p>WHY Data Warehouse?</p></li>
+<li><p>HOW do we build a data warehouse?</p></li>
+<li><p>Differences</p></li>
+<li><p>Wrap up</p></li>
+</ul>
+</div>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">7.2. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Understanding of data warehouse.</p></li>
+<li><p>Building a data warehouse.</p></li>
+<li><p>Connecting our learning from previous classes.</p></li>
+</ul>
+</div>
+<div class="section" id="quick-recap">
+<h2><span class="section-number">7.3. </span>Quick Recap<a class="headerlink" href="#quick-recap" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Building workflows to generate actionable insights using data</p></li>
+<li><p>How to take raw data from independent sources and load it to the database</p></li>
+<li><p>How to take the data and manage it within a database, using normalization, using data standards (schema.org) &amp; referential integrity (fk/pk) to ensure data is clean</p></li>
+<li><p>How to speed up the underlying infrastructure with proper use of indexes</p></li>
+<li><p>The importance of reproducible workflows to ingest data to ensure data is clean and well organized</p></li>
+</ul>
+<p>This will be our last class talking about relational databases.</p>
+</div>
+<div class="section" id="what-is-a-data-warehouse">
+<h2><span class="section-number">7.4. </span>WHAT is a Data Warehouse?<a class="headerlink" href="#what-is-a-data-warehouse" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A Data Warehouse is a Data Management System</p></li>
+<li><p>Data Analysts and BI Experts query a front end</p></li>
+<li><p>Data is ingested in the back-end from multiple sources</p></li>
+<li><p>A Data Warehouse simplifies data access and analysis.</p></li>
+<li><p>Its indeed data stored in a database but in a denormalized fashion</p></li>
+</ul>
+<p>It’s generally a process,</p>
+<a class="reference internal image-reference" href="../_images/warehouse.png"><img alt="../_images/warehouse.png" src="../_images/warehouse.png" style="width: 90%;" /></a>
+<ul class="simple">
+<li><p>Data moves from data sources to a data warehouse and specialized data marts.</p></li>
+<li><p>Users access information from the data warehouse/data mart.</p></li>
+<li><p>Users access data through applications.</p></li>
+</ul>
+<p>When building a data warehouse, we’re taking data from multiple sources and joining it in a comprehensive way to support multiple purposes, from reports and app-based analytics to data mining and machine learning applications.</p>
+<p>How do you think a data warehouse may look like?</p>
+</div>
+<div class="section" id="general-structure-of-data-warehouse">
+<h2><span class="section-number">7.5. </span>General structure of Data Warehouse<a class="headerlink" href="#general-structure-of-data-warehouse" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reciept-story">
+<h3><span class="section-number">7.5.1. </span>Reciept story<a class="headerlink" href="#reciept-story" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/reciept.png"><img alt="../_images/reciept.png" src="../_images/reciept.png" style="width: 30%;" /></a>
+<p>Image source: <a class="reference external" href="https://commons.wikimedia.org/w/index.php?curid=2612801">wikiMedia</a></p>
+<p>Fact Table: A table that contains the measurements of a business process of interest (in red).
+Dimension Table(s): Tables that provide context for the fact table (in violet).</p>
+<p>Let’s look at a real world example,</p>
+<a class="reference internal image-reference" href="../_images/warehouseeg.png"><img alt="../_images/warehouseeg.png" src="../_images/warehouseeg.png" style="width: 90%;" /></a>
+<p>Source: <a class="reference external" href="https://www.ibm.com/docs/en/tap/3.5.3?topic=tables-example-fact-table-associated-dimensions">ibm</a>,<a class="reference external" href="https://docs.oracle.com/cd/E41507_01/epm91pbr3/eng/epm/penw/concept_MultidimensionalWarehouseMDW-9912e0.html">oracle</a></p>
+<p>A Data Warehouse results from a process that takes data and transforms it into a “fact table” that a range of users can access. These facts are represented in a manner that is suited to analysis &amp; use by a broad set of users. In addition, it powers up BI Applications like PowerBI or Tableau.</p>
+</div>
+</div>
+<div class="section" id="why">
+<h2><span class="section-number">7.6. </span>WHY<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Data Can Be Complex</p></li>
+<li><p>Multiple Sources</p></li>
+<li><p>Multiple Uses</p></li>
+<li><p>Multiple Users</p></li>
+<li><p>Varied Skill Levels</p></li>
+<li><p>Changing Data &amp; Data Needs</p></li>
+</ul>
+</div>
+<div class="section" id="goals-of-data-warehousing-bi">
+<h2><span class="section-number">7.7. </span>Goals of Data Warehousing &amp; BI<a class="headerlink" href="#goals-of-data-warehousing-bi" title="Permalink to this headline">¶</a></h2>
+<p>The Data Warehouse system must:</p>
+<ul class="simple">
+<li><p>Make information easily accessible</p></li>
+<li><p>Present information consistently</p></li>
+<li><p>Adapt to change</p></li>
+<li><p>Present information in a timely way</p></li>
+<li><p>Be secure</p></li>
+<li><p>Be authoritative &amp; trustworthy</p></li>
+<li><p>Be accepted by end-users</p></li>
+</ul>
+<div class="section" id="so-how-do-we-meet-expectations">
+<h3><span class="section-number">7.7.1. </span>So How Do We Meet Expectations?<a class="headerlink" href="#so-how-do-we-meet-expectations" title="Permalink to this headline">¶</a></h3>
+<p>We have this dimensional model influenced by the business requirements &amp; data realities.</p>
+<p>The Data Warehouse Design must be collaborative for the expectations to be met. Some parties include;</p>
+<ul class="simple">
+<li><p>IT Managers</p></li>
+<li><p>Executives</p></li>
+<li><p>BI Analysts</p></li>
+<li><p>Department Members</p></li>
+<li><p>App Designers</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/reality.png"><img alt="../_images/reality.png" src="../_images/reality.png" style="width: 80%;" /></a>
+</div>
+</div>
+<div class="section" id="how-do-we-build-a-data-warehouse">
+<h2><span class="section-number">7.8. </span>How Do We Build a Data Warehouse?<a class="headerlink" href="#how-do-we-build-a-data-warehouse" title="Permalink to this headline">¶</a></h2>
+<p>You are already in the process of building an enterprise data warehouse. Here are the steps that you already did;</p>
+<ul class="simple">
+<li><p>You identified the data sources</p></li>
+<li><p>You performed data cleaning and normalization to load the data properly into the database</p></li>
+<li><p>You are already doing some analysis on the data</p></li>
+</ul>
+<p>Even though you are already doing some joins to get to the analysis, we haven’t properly identified the facts and dimensions for denormalizing the data to one flat table. So let’s go through our Twitter data to see how this process looks like.</p>
+<div class="section" id="in-our-twitter-data-eg">
+<h3><span class="section-number">7.8.1. </span>in our Twitter data, eg<a class="headerlink" href="#in-our-twitter-data-eg" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>What is the question?</p></li>
+<li><p>Data we got in hand?</p></li>
+<li><p>What Facts Do We Need?</p></li>
+<li><p>What are Facts?  What are the Dimensions of those facts?</p></li>
+</ul>
+<p>A Data Warehouse is a type of database, but it conforms to a different data model. It’s focused on a Fact Table with multiple dimensions.</p>
+<p>A Data Warehouse is part of a workflow that gets us from raw data (directly from a business process like sales, purchases, quality assessment metrics, real estate holdings, or some other measure) to a dataset easily queried and modeled as part of an analytics team.</p>
+<p>Thinking of our Twitter data, we had a central question that asked if daily cashtag volume was positively correlated to stock price changes. So, we took raw tweet data, stock symbol, and price data from multiple sources (Twitter, NYSE, Yahoo! Finance), came up with a data model and undertook data cleaning.</p>
+<p>If we’re interested in understanding relationships between the tweets and changes in price, we might want to look at some different analyses.  For example:</p>
+<ul class="simple">
+<li><p>Sentiment analysis on tweets</p></li>
+<li><p>Presence of key terms (“sell” or “buy”)</p></li>
+<li><p>Changes in price</p></li>
+<li><p>Analysis by individual ticker</p></li>
+<li><p>Aggregation at different scales (week, month)</p></li>
+</ul>
+<p>If we do that, we would want to work on a single table to undertake our analysis, so we’re assured that there is consistency in our analysis.</p>
+<p>In lecture, I showed you the query we might use:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">sy</span><span class="p">.</span><span class="n">nasdaqsymbol</span><span class="p">,</span>
+	   <span class="n">sy</span><span class="p">.</span><span class="n">securityname</span><span class="p">,</span>
+       <span class="n">cl</span><span class="p">.</span><span class="n">tweet</span><span class="p">,</span>
+	   <span class="n">cl</span><span class="p">.</span><span class="n">userid</span><span class="p">,</span>
+	   <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">rp</span><span class="p">.</span><span class="n">replyid</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">THEN</span> <span class="s1">&#39;FALSE&#39;</span> 
+	                                <span class="k">ELSE</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">reply</span><span class="p">,</span>
+	   <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">rt</span><span class="p">.</span><span class="n">retweetid</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">THEN</span> <span class="s1">&#39;FALSE&#39;</span> 
+	                                <span class="k">ELSE</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">retweet</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">open</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">open</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">close</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">close</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">close</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">open</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">change</span><span class="p">,</span>
+	   <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="n">cl</span><span class="p">.</span><span class="n">createdate</span><span class="p">)::</span><span class="nb">date</span> <span class="k">AS</span> <span class="k">day</span>
+<span class="k">FROM</span>          <span class="n">tweets</span><span class="p">.</span><span class="n">cashtags</span> <span class="k">AS</span> <span class="n">ct</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tweets</span><span class="p">.</span><span class="n">cleantweets</span> <span class="k">AS</span> <span class="n">cl</span> <span class="k">ON</span> <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">ct</span><span class="p">.</span><span class="n">tweetid</span>
+<span class="k">INNER</span> <span class="k">JOIN</span>     <span class="n">tweets</span><span class="p">.</span><span class="n">symbols</span> <span class="k">AS</span> <span class="n">sy</span> <span class="k">ON</span> <span class="n">sy</span><span class="p">.</span><span class="n">symbolid</span> <span class="o">=</span> <span class="n">ct</span><span class="p">.</span><span class="n">symbolid</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tweets</span><span class="p">.</span><span class="n">stockvalues</span> <span class="k">AS</span> <span class="n">sv</span> <span class="k">ON</span> <span class="n">sv</span><span class="p">.</span><span class="n">symbolid</span> <span class="o">=</span> <span class="n">sy</span><span class="p">.</span><span class="n">symbolid</span> <span class="k">AND</span> <span class="n">sv</span><span class="p">.</span><span class="nb">date</span> <span class="o">=</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="n">cl</span><span class="p">.</span><span class="n">createdate</span><span class="p">)::</span><span class="nb">date</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span>      <span class="n">tweets</span><span class="p">.</span><span class="n">replies</span> <span class="k">AS</span> <span class="n">rp</span> <span class="k">ON</span> <span class="n">rp</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span>     <span class="n">tweets</span><span class="p">.</span><span class="n">retweets</span> <span class="k">AS</span> <span class="n">rt</span> <span class="k">ON</span> <span class="n">rt</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>We’re putting back the columns together and making some decisions about how we treat the data; for example, we’re just adding a boolean (<code class="docutils literal notranslate"><span class="pre">TRUE</span></code>/<code class="docutils literal notranslate"><span class="pre">FALSE</span></code>) as to whether something is tweeted or retweeted (using the <code class="docutils literal notranslate"><span class="pre">CASE</span> <span class="pre">WHEN</span></code> statements).</p>
+<p>To create the wide table, given that this is essentially a derived table, we’re going to use a <code class="docutils literal notranslate"><span class="pre">MATERIALIZED</span> <span class="pre">VIEW</span></code>.  This means that the output is committed to the disk, but it results from a query, so it’s not something we’re going to update directly.</p>
+<p>So our call would look something like this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">sy</span><span class="p">.</span><span class="n">nasdaqsymbol</span><span class="p">,</span>
+	   <span class="n">sy</span><span class="p">.</span><span class="n">securityname</span><span class="p">,</span>
+       <span class="n">cl</span><span class="p">.</span><span class="n">tweet</span><span class="p">,</span>
+	   <span class="n">cl</span><span class="p">.</span><span class="n">userid</span><span class="p">,</span>
+	   <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">rp</span><span class="p">.</span><span class="n">replyid</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">THEN</span> <span class="s1">&#39;FALSE&#39;</span> 
+	                                <span class="k">ELSE</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">reply</span><span class="p">,</span>
+	   <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">rt</span><span class="p">.</span><span class="n">retweetid</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">THEN</span> <span class="s1">&#39;FALSE&#39;</span> 
+	                                <span class="k">ELSE</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">retweet</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">open</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">open</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">close</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">close</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">close</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">open</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">change</span><span class="p">,</span>
+	   <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="n">cl</span><span class="p">.</span><span class="n">createdate</span><span class="p">)::</span><span class="nb">date</span> <span class="k">AS</span> <span class="k">day</span>
+<span class="k">FROM</span>          <span class="n">tweets</span><span class="p">.</span><span class="n">cashtags</span> <span class="k">AS</span> <span class="n">ct</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tweets</span><span class="p">.</span><span class="n">cleantweets</span> <span class="k">AS</span> <span class="n">cl</span> <span class="k">ON</span>  <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">ct</span><span class="p">.</span><span class="n">tweetid</span>
+<span class="k">INNER</span> <span class="k">JOIN</span>     <span class="n">tweets</span><span class="p">.</span><span class="n">symbols</span> <span class="k">AS</span> <span class="n">sy</span> <span class="k">ON</span> <span class="n">sy</span><span class="p">.</span><span class="n">symbolid</span> <span class="o">=</span> <span class="n">ct</span><span class="p">.</span><span class="n">symbolid</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tweets</span><span class="p">.</span><span class="n">stockvalues</span> <span class="k">AS</span> <span class="n">sv</span> <span class="k">ON</span> <span class="n">sv</span><span class="p">.</span><span class="n">symbolid</span> <span class="o">=</span> <span class="n">sy</span><span class="p">.</span><span class="n">symbolid</span> <span class="k">AND</span> <span class="n">sv</span><span class="p">.</span><span class="nb">date</span> <span class="o">=</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="n">cl</span><span class="p">.</span><span class="n">createdate</span><span class="p">)::</span><span class="nb">date</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span>      <span class="n">tweets</span><span class="p">.</span><span class="n">replies</span> <span class="k">AS</span> <span class="n">rp</span> <span class="k">ON</span>  <span class="n">rp</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span>     <span class="n">tweets</span><span class="p">.</span><span class="n">retweets</span> <span class="k">AS</span> <span class="n">rt</span> <span class="k">ON</span>  <span class="n">rt</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>I ran this already. Looking at the “Materialized View” tab in pgAdmin, you’ll see the view there.  It’s a table with three million rows, so we may want to add some indices to the table to speed up our query speed.</p>
+<p>The B-Tree index is most appropriate for most of the columns.  We may choose some other indexes for some of the other columns.  Let’s take a look:
+The <code class="docutils literal notranslate"><span class="pre">nasdaqsymbol</span></code> column is simple, and we’re unlikely to be searching for anything</p>
+<p>But let’s pause for a minute and consider further what we’re planning on doing with the data.  This will also help us plan out what indexes we might add to help speed things up.</p>
+<p>The B-Tree index is the default in Postgres and may be most appropriate for most columns. We may choose other indexes for some of the other columns and might even see other transformations we should apply to the data. Let’s take a look:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">nasdaqsymbol</span></code> column could either use a B-TREE index or a HASH index. A HASH index is likely more appropriate if the ratio of unique symbols to total rows is very high (there are few unique symbols and many rows). However, remember that a hash index is only useful for equality. Are we likely to want to do analysis on stock symbols based on their letter configuration? (e.g., all stocks that start with <em>‘A’</em>), or is it more likely that we’re just looking at matches?</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">tweets</span><span class="p">.</span><span class="n">symbolhash_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">hash</span><span class="p">(</span><span class="n">nasdaqsymbol</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">tweets</span><span class="p">.</span><span class="n">symbolhash_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">btree</span><span class="p">(</span><span class="n">nasdaqsymbol</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">securityname</span></code> is something we might query, looking for things like <em>‘Common Stock’</em> or <em>‘ETF’</em> along with searches for the name of a company. In this case, full-text search may well be useful.  If we want to use full-text search, then, consulting the Postgres full-text search documentation, we might want to add a column that uses a <code class="docutils literal notranslate"><span class="pre">tsvector()</span></code> transformation of the <code class="docutils literal notranslate"><span class="pre">securityname</span></code> column.  We’ll add it to our materialized view as the column security_ts and then work on an index:</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">securitysearch_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">GIN</span> <span class="p">(</span><span class="n">security_ts</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This will allow us to use direct matching or full-text search to find the appropriate columns.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tweets</span></code> would be similar to the <code class="docutils literal notranslate"><span class="pre">security</span></code> name, so we’ll add the same index and transformation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reply</span></code> and <code class="docutils literal notranslate"><span class="pre">retweet</span></code> have only two values, <em>‘TRUE’</em> and <em>‘FALSE’</em>, so a hash index here is also likely useful.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">open</span></code>, <code class="docutils literal notranslate"><span class="pre">close</span></code> and <code class="docutils literal notranslate"><span class="pre">change</span></code> are numeric values.  We’d likely be searching using statements like <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>, or some sort of equality.  In that case, a <code class="docutils literal notranslate"><span class="pre">btree</span></code> index is likely sufficient.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">day</span></code> is interesting.  If the dataset is not ordered by <code class="docutils literal notranslate"><span class="pre">day</span></code>, we could use a <code class="docutils literal notranslate"><span class="pre">btree</span></code> index.  If we were only searching by exact matches, a <code class="docutils literal notranslate"><span class="pre">hash</span></code> might be useful here.  <strong>IF HOWEVER</strong> we order our <code class="docutils literal notranslate"><span class="pre">MATERIALIZED</span> <span class="pre">VIEW</span></code> by <code class="docutils literal notranslate"><span class="pre">day</span></code>, then we can use a <code class="docutils literal notranslate"><span class="pre">brin</span></code> index.  The <code class="docutils literal notranslate"><span class="pre">brin</span></code> index assigns values to ordered address blocks.</p></li>
+</ul>
+<p>So, this leaves us with some extra transformations and a set of indexes to apply:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">AS</span>
+<span class="k">SELECT</span> <span class="n">sy</span><span class="p">.</span><span class="n">nasdaqsymbol</span><span class="p">,</span>
+	   <span class="n">sy</span><span class="p">.</span><span class="n">securityname</span><span class="p">,</span>
+       <span class="n">to_tsvector</span><span class="p">(</span><span class="n">sy</span><span class="p">.</span><span class="n">securityname</span><span class="p">)</span> <span class="k">AS</span> <span class="n">security_ts</span><span class="p">,</span>
+       <span class="n">cl</span><span class="p">.</span><span class="n">tweet</span><span class="p">,</span>
+       <span class="n">to_tsvector</span><span class="p">(</span><span class="n">cl</span><span class="p">.</span><span class="n">tweet</span><span class="p">)</span> <span class="k">AS</span> <span class="n">tweet_ts</span><span class="p">,</span>
+	   <span class="n">cl</span><span class="p">.</span><span class="n">userid</span><span class="p">,</span>
+	   <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">rp</span><span class="p">.</span><span class="n">replyid</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">THEN</span> <span class="s1">&#39;FALSE&#39;</span> 
+	                                <span class="k">ELSE</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">reply</span><span class="p">,</span>
+	   <span class="k">CASE</span> <span class="k">WHEN</span> <span class="n">rt</span><span class="p">.</span><span class="n">retweetid</span> <span class="k">IS</span> <span class="k">NULL</span> <span class="k">THEN</span> <span class="s1">&#39;FALSE&#39;</span> 
+	                                <span class="k">ELSE</span> <span class="s1">&#39;TRUE&#39;</span> <span class="k">END</span> <span class="k">AS</span> <span class="n">retweet</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">open</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">open</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">close</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="k">close</span><span class="p">,</span>
+	   <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">close</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">ROUND</span><span class="p">(</span><span class="n">sv</span><span class="p">.</span><span class="k">open</span><span class="p">::</span><span class="nb">numeric</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">AS</span> <span class="n">change</span><span class="p">,</span>
+	   <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="n">cl</span><span class="p">.</span><span class="n">createdate</span><span class="p">)::</span><span class="nb">date</span> <span class="k">AS</span> <span class="k">day</span>
+<span class="k">FROM</span>          <span class="n">tweets</span><span class="p">.</span><span class="n">cashtags</span> <span class="k">AS</span> <span class="n">ct</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tweets</span><span class="p">.</span><span class="n">cleantweets</span> <span class="k">AS</span> <span class="n">cl</span> <span class="k">ON</span>  <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">ct</span><span class="p">.</span><span class="n">tweetid</span>
+<span class="k">INNER</span> <span class="k">JOIN</span>     <span class="n">tweets</span><span class="p">.</span><span class="n">symbols</span> <span class="k">AS</span> <span class="n">sy</span> <span class="k">ON</span> <span class="n">sy</span><span class="p">.</span><span class="n">symbolid</span> <span class="o">=</span> <span class="n">ct</span><span class="p">.</span><span class="n">symbolid</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">tweets</span><span class="p">.</span><span class="n">stockvalues</span> <span class="k">AS</span> <span class="n">sv</span> <span class="k">ON</span> <span class="n">sv</span><span class="p">.</span><span class="n">symbolid</span> <span class="o">=</span> <span class="n">sy</span><span class="p">.</span><span class="n">symbolid</span> <span class="k">AND</span> <span class="n">sv</span><span class="p">.</span><span class="nb">date</span> <span class="o">=</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="n">cl</span><span class="p">.</span><span class="n">createdate</span><span class="p">)::</span><span class="nb">date</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span>      <span class="n">tweets</span><span class="p">.</span><span class="n">replies</span> <span class="k">AS</span> <span class="n">rp</span> <span class="k">ON</span>  <span class="n">rp</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span>
+<span class="k">LEFT</span> <span class="k">JOIN</span>     <span class="n">tweets</span><span class="p">.</span><span class="n">retweets</span> <span class="k">AS</span> <span class="n">rt</span> <span class="k">ON</span>  <span class="n">rt</span><span class="p">.</span><span class="n">tweetid</span> <span class="o">=</span> <span class="n">cl</span><span class="p">.</span><span class="n">tweetid</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="n">cl</span><span class="p">.</span><span class="n">createdate</span><span class="p">)::</span><span class="nb">date</span> <span class="k">ASC</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>And then add the following indices:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span>  <span class="n">symbol_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">GIN</span><span class="p">(</span><span class="n">security_ts</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>   <span class="n">tweet_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">GIN</span><span class="p">(</span><span class="n">tweet_ts</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>  <span class="n">nasdaq_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">btree</span><span class="p">(</span><span class="n">securityname</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>  <span class="n">userid_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">hash</span><span class="p">(</span><span class="n">userid</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>   <span class="n">reply_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">hash</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">retweet_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">hash</span><span class="p">(</span><span class="n">retweet</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>    <span class="n">open_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">btree</span><span class="p">(</span><span class="k">open</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>   <span class="n">close_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">btree</span><span class="p">(</span><span class="k">close</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>  <span class="n">change_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">btree</span><span class="p">(</span><span class="n">change</span><span class="p">);</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span>     <span class="n">day_idx</span> <span class="k">ON</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span> <span class="k">USING</span> <span class="n">BRIN</span><span class="p">(</span><span class="k">day</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can directly query our own mini-data warehouse using simple SQL queries given these changes and new indices.  For example,</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">ROUND</span><span class="p">(</span><span class="n">change</span> <span class="o">/</span> <span class="k">open</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">tweets</span>
+<span class="k">FROM</span> <span class="n">tweets</span><span class="p">.</span><span class="n">dtwide</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="k">day</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">change</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>It would give us the relationship between the number of tweets in a day and the proportional change in stock value.  All of this work then allows us to simplify our workflow:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">import</span> <span class="nn">psycopg2.extras</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="n">conString</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;dbname&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;user&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PASS&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)}</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">conString</span><span class="p">)</span>
+
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT nasdaqsymbol, ROUND(change / open, 2), COUNT(*) AS tweets</span>
+<span class="s2">               FROM tweets.dtwide</span>
+<span class="s2">               GROUP BY day, nasdaqsymbol, change, open;&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">summarized</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nasdaqsymbol&#39;</span><span class="p">,</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="s1">&#39;tweets&#39;</span><span class="p">])</span>
+
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">summarized</span><span class="p">,</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s1">&#39;tweets&#39;</span><span class="p">,</span>
+              <span class="n">y</span><span class="o">=</span><span class="s1">&#39;change&#39;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stock value change by tweet count.&#39;</span><span class="p">,</span> 
+              <span class="n">hover_name</span><span class="o">=</span><span class="s1">&#39;nasdaqsymbol&#39;</span><span class="p">,)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="differences">
+<h2><span class="section-number">7.9. </span>Differences<a class="headerlink" href="#differences" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dw-vs-rmdbs">
+<h3><span class="section-number">7.9.1. </span>DW vs RMDBS<a class="headerlink" href="#dw-vs-rmdbs" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Database</p></th>
+<th class="head"><p>Data Warehouse</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Concerned with data security and durability</p></td>
+<td><p>Concerned with broad access for analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p>Highly normalized to ensure referential integrity &amp; reduce update/insertion anomalies.</p></td>
+<td><p>Denormalized to ensure ease of access</p></td>
+</tr>
+<tr class="row-even"><td><p>Designed to support data ingestion.</p></td>
+<td><p>they are only updated by the system</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data can go in and out</p></td>
+<td><p>User data goes out, not in</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="etl-vs-elt">
+<h3><span class="section-number">7.9.2. </span>ETL vs ELT<a class="headerlink" href="#etl-vs-elt" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>ETL</p></th>
+<th class="head"><p>ELT</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Extract, Transform and Load</p></td>
+<td><p>Extract, Load and Transform</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data is loaded after performing transformation</p></td>
+<td><p>Data first loaded and then transformed</p></td>
+</tr>
+<tr class="row-even"><td><p>Mostly used for structured data</p></td>
+<td><p>Mostly used for unstructured data</p></td>
+</tr>
+<tr class="row-odd"><td><p>SQL based databases</p></td>
+<td><p>NoSQL based systems</p></td>
+</tr>
+<tr class="row-even"><td><p>For building Data Warehouses</p></td>
+<td><p>For building data lakes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="olap-vs-oltp">
+<h3><span class="section-number">7.9.3. </span>OLAP vs OLTP<a class="headerlink" href="#olap-vs-oltp" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>OLAP</p></th>
+<th class="head"><p>OLTP</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Online analytical processing</p></td>
+<td><p>Online transactional processing</p></td>
+</tr>
+<tr class="row-odd"><td><p>Focus on Insert, Update, Delete for databases</p></td>
+<td><p>Focuses on extract data for analyzing</p></td>
+</tr>
+<tr class="row-even"><td><p>uses the data warehouse</p></td>
+<td><p>uses the database</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bi-vs-dw">
+<h3><span class="section-number">7.9.4. </span>BI vs DW<a class="headerlink" href="#bi-vs-dw" title="Permalink to this headline">¶</a></h3>
+<p>Data warehouse powers up BI. (Business intelligence)</p>
+</div>
+</div>
+<div class="section" id="wrap-up">
+<h2><span class="section-number">7.10. </span>Wrap up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture6.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Lecture 5: Disk Management and Indexes</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

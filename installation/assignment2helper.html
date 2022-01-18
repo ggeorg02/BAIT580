@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 2 helper &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Lecture 0: Course Introduction" href="../lectures/lecture1.html" />
+    <link rel="prev" title="psql" href="psql.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="psql.html">
+   psql
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Assignment 2 helper
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture2.html">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture3.html">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture4.html">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture5.html">
+   5. Lecture 4: SQL for vizualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture6.html">
+   6. Lecture 5: Disk Management and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lectures/lecture7.html">
+   7. Lecture 6: (de)Normalization &amp; Data Warehousing
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/installation/assignment2helper.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Finstallation/assignment2helper.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/installation/assignment2helper.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/installation/assignment2helper.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Assignment 2 helper
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regexp-matches">
+     regexp_matches
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-we-use-unnest">
+   why we use unnest ?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ltrim">
+   LTRIM
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constructing-a-dataframe-from-query-returned">
+     Constructing a dataframe from query returned.
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#using-with-as-and-in">
+       Using WITH AS and IN
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="assignment-2-helper">
+<h1>Assignment 2 helper<a class="headerlink" href="#assignment-2-helper" title="Permalink to this headline">¶</a></h1>
+<p>As part of assignment 2, you will be going through a guided process of creating a workflow by answering some of the questions with our tweets data.</p>
+<p>This assignment is like a mini version of the workflow you will produce as part of your final project. In your final project assignment, you need to include some other useful concepts like indexing and warehousing solutions wherever appropriate. You can also check out in lecture 6 how warehousing solutions are applied to the current problem. We will be seeing how indexing and warehousing solutions apply to our assignment dataset in lecture 6.</p>
+<p>Basic knowledge in SQL and python is necessary for going through these assignments. This document is written to help some students who need additional support with the SQL needed for this assignment. You will be using mainly SQL commands that you are familiar with, but one reason some students get overwhelmed by seeing this assignment is probably this could be the first time you use SQL for real in a workflow. That is why the questions are not straightforward like in a regular assignment.</p>
+<p>Colby will give another session on basic python needed during his office hours.</p>
+<p>The idea of dealing with things in the cloud is that you don’t want to worry about any of the installation processes in your laptop and can spin a database and bring it down whenever you want. Also, you all got 100 credits, so make sure you use it, so it’s okay to spin a bigger instance if you want to get a faster experience. However, remember that bigger instances cost more, so better shut it down when you don’t use it.</p>
+<p>It’s your choice to spin a different database instance for this assignment or use the previous instance. However, I strongly suggest you use a separate instance for your project.</p>
+<p>The process of setting it up will only take a minute from your end, and from the AWS end, it might take around 10 minutes for it to be available. <a class="reference external" href="https://ubc.zoom.us/rec/play/a6qhchUCkFCSs-7aT1zeMDWG0Gsu2RK1Gj66NZpNhXvWPqxQBtQ353cCdeP9kMy9CQXFvlaOTxGYTjfv.t7YkUbcpCSYe1MOL?startTime=1642465726000">I am putting a small video on doing it.</a></p>
+<p>First, we want to load the data into the database. So why are we loading dump again? So last time, we put the raw data into our database. After that, I did a lot of data cleaning to normalize it for our analysis. <a class="reference external" href="https://canvas.ubc.ca/files/18519982/download?download_frd=1">You can check this notebook</a>  to see how I did the process of cleaning. But you don’t want to run this notebook for doing your assignment, it’s just put here for your reference, but you can use it for some help when dealing with group assignments.</p>
+<p>The cleaned data is loaded to the tweets schema, and I took a dump of the tweets schema. Next, we want to load this data into our database.</p>
+<p>Hopefully, you all are comfortable uploading dumps from our previous communications. However, <a class="reference external" href="https://ubc.zoom.us/rec/share/MzaxQiS4FmDqw2JUipi6PB6y3llcy5Y7-wAtTqfFIZhzdJfQ54V9qK4fv18nH8wD.Q9iSG0syxrBgTuuF?startTime=1642468195000">I created this video showing how to upload a dump</a>, it will only take ~3 minutes from your end.</p>
+<p>If you want any help with the .env file creation, you <a class="reference external" href="https://ubc.zoom.us/rec/share/DovyeJvun1E3Sb06bXAuQS_GZbwlTbJktsUcqZxHVs4ekFuCV8cfEzpm4O86l38.D3b10SWO9QllKx_y">can check out the first few minutes of this office hour</a>, and we are setting it up both in windows and mac.</p>
+<p>Check out the course channel for access codes for the above videos.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Put your code here.  More than likely you can copy/paste right in.</span>
+<span class="c1"># Make sure you have your .env file in the same folder as this project file.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">sparklines</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="n">conString</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;dbname&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;user&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PASS&#39;</span><span class="p">),</span>
+             <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">conString</span><span class="p">)</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">conString</span><span class="p">)</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>SQL commands you need to go through this assignment include some fundamental ones.</p>
+<ul class="simple">
+<li><p>SELECT</p></li>
+<li><p>LIMIT</p></li>
+<li><p>DISTINCT</p></li>
+<li><p>COUNT</p></li>
+<li><p>INNER JOIN</p></li>
+<li><p>GROUP BY</p></li>
+<li><p>ORDER BY</p></li>
+<li><p>WHERE</p></li>
+</ul>
+<p>Some commands or inbuilt functions that are not too common include</p>
+<ul class="simple">
+<li><p>string functions- LTRIM and regex_matches</p></li>
+<li><p>TO_DATE</p></li>
+<li><p>WITH IN combination Queries</p></li>
+<li><p>date_trunc</p></li>
+</ul>
+<p>To some of these not-so-common commands, I put instructions and references in the assignment to look it up and use it. However, here I will go through all of these not-so-common commands in explaining why we use them generally.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## creating a dummy table </span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;DROP TABLE IF EXISTS import.example;</span>
+<span class="s2">CREATE TABLE import.example (id text, date text, sentence text);</span>
+<span class="s2">INSERT INTO import.example(id, date,sentence) VALUES(&#39;111&#39;,&#39;Thu May 18 22:00:00 +0000 2017&#39;,&#39;This is a test sentence $NEW $OLD $small&#39;);</span>
+<span class="s2">INSERT INTO import.example(id, date,sentence) VALUES(&#39;222&#39;,&#39;Fri Jun 20 09:00:00 +0000 2017&#39;,&#39;Testing sentence $MBAN&#39;);</span>
+<span class="s2">INSERT INTO import.example(id, date,sentence) VALUES(&#39;333&#39;,&#39;Mon Jul 18 21:00:00 +0000 2017&#39;,&#39;Sentence $XXX&#39;);</span>
+<span class="s2">INSERT INTO import.example(id, date,sentence) VALUES(&#39;444&#39;,&#39;Mon Jul 18 14:00:00 +0000 2017&#39;,&#39;Sentence different type $XXX&#39;);</span>
+<span class="s2">INSERT INTO import.example(id, date,sentence) VALUES(&#39;555&#39;,&#39;Thu May 18 14:00:00 +0000 2017&#39;,&#39;I am tweeting again $OLD&#39;);</span>
+<span class="s2">INSERT INTO import.example(id, date,sentence) VALUES(&#39;666&#39;,&#39;Fri Jun 20 16:00:00 +0000 2017&#39;,&#39;Sentence different type $MBAN&#39;);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="regexp-matches">
+<h2>regexp_matches<a class="headerlink" href="#regexp-matches" title="Permalink to this headline">¶</a></h2>
+<p>regexp_matches are helpful when we want to generate some valuable text from a text column. In this dummy example, it’s whatever that follows $. Of course, you can check the official docs linked-to assignment, but you don’t need all that you can probably check out <a class="reference external" href="https://www.postgresqltutorial.com/postgresql-regexp_matches/">this</a>, as this explains just what we want. So please don’t worry too much about regex.</p>
+<p>Basic syntax is
+REGEXP_MATCHES(source_string, pattern [, flags])</p>
+<ul class="simple">
+<li><p>source_string: here will be the text column value</p></li>
+<li><p>pattern: The regex pattern</p></li>
+<li><p>flags: it’s optional, but we will be giving flag ‘g’ that search globally for each occurrence.</p></li>
+</ul>
+<p>The regex pattern is a different study area and can be very useful in many situations. But you can use this <a class="reference external" href="https://regex-generator.olafneumann.org/?sampleText=2020-03-12T13%3A34%3A56.123Z%20INFO%20%20%5Borg.example.Class%5D%3A%20This%20is%20a%20%23simple%20%23logline%20containing%20a%20%27value%27.&amp;flags=i&amp;onlyPatterns=false&amp;matchWholeLine=false&amp;selection=">regex generator</a> for coming up with your pattern.</p>
+<p>Here is how it behaves in our dummy example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT eg.id, </span>
+<span class="s2">  regexp_matches(eg.sentence, &#39;\$[A-Z]+&#39;, &#39;g&#39;)</span>
+<span class="s2">FROM import.example AS eg;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="why-we-use-unnest">
+<h1>why we use unnest ?<a class="headerlink" href="#why-we-use-unnest" title="Permalink to this headline">¶</a></h1>
+<p>unnest just opens up the array</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT eg.id, </span>
+<span class="s2">  unnest(regexp_matches(eg.sentence, &#39;\$[A-Z]+&#39;, &#39;g&#39;)) AS substring</span>
+<span class="s2">FROM import.example AS eg;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="ltrim">
+<h1>LTRIM<a class="headerlink" href="#ltrim" title="Permalink to this headline">¶</a></h1>
+<p>Syntax:
+LTRIM(string,trimming_text)
+It takes out the leading character from the string. There is also RTRIM and BTRIM.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;SELECT eg.id, </span>
+<span class="s2">  LTRIM(unnest(regexp_matches(eg.sentence, &#39;\$[A-Z]+&#39;, &#39;g&#39;)),&#39;$&#39;) AS substring</span>
+<span class="s2">FROM import.example AS eg LIMIT 10;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="constructing-a-dataframe-from-query-returned">
+<h2>Constructing a dataframe from query returned.<a class="headerlink" href="#constructing-a-dataframe-from-query-returned" title="Permalink to this headline">¶</a></h2>
+<p>As we mentioned in our 3rd lecture, psycopg2 returns the data as a list of tuples. The best thing you can do to work with these tuples is to convert them into pandas dataframe. After that, you are in the python world to deal with any further transformation before getting to the visualization. You might need to do this for Question 5a.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># rebuilt to a dataframe </span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">stocktweets</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##as you see list of tuples </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stocktweets</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># rebuilt to a dataframe </span>
+<span class="n">stockdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stocktweets</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;substring&#39;</span><span class="p">])</span>
+<span class="c1"># Now limit it to three stock tweets:</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stockdf</span>
+</pre></div>
+</div>
+<p>Let’s move on to do some data transformations. As mentioned in lecture4, we need to be very careful when dealing with dates as there are a wide variety of dates formats out there, and we need to make sure that it is appropriately aligned with all the datasets. I have already converted the Twitter table to the clean tweets table, and you will be using that from question 3b onwards, but for getting a feel of the conversion, we will use 3a to convert a column to date type.</p>
+<p>TO_DATE - You can use this to convert a text to a date format. Here you specify the format your date is in and convert it to the date format. WHY convert to date format? Because if we convert to a date format, we can apply a variety of <a class="reference external" href="https://www.postgresql.org/docs/9.1/functions-datetime.html">date time operations.</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT TO_DATE(date, &#39;Dy Mon DD HH24:MI:SS +0000 YYYY&#39;) AS date</span>
+<span class="s2">           FROM import.example AS tw&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Below cell is not required for your assignment, but I am creating a column named datacol with timestamp type,so that I can demonstrate how we can apply <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;DROP TABLE import.exampleclean;</span>
+<span class="s2">CREATE TABLE import.exampleclean AS </span>
+<span class="s2">SELECT id,LTRIM(unnest(regexp_matches(eg.sentence, &#39;\$[A-Z]+&#39;, &#39;g&#39;)),&#39;$&#39;) AS instahash,TO_TIMESTAMP(eg.date, &#39;Dy Mon DD HH24:MI:SS +0000 YYYY&#39;) as datecol</span>
+<span class="s2">FROM import.example as eg;&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>About date_trunc, I came across an amazing article <a class="reference external" href="https://mode.com/blog/date-trunc-sql-timestamp-function-count-on/">here</a>, and hence not writing about it here.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT instahash,date_trunc(&#39;day&#39;,datecol),COUNT(*) AS total</span>
+<span class="s2">FROM import.exampleclean</span>
+<span class="s2">GROUP BY instahash,date_trunc(&#39;day&#39;,datecol)&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="using-with-as-and-in">
+<h3>Using WITH AS and IN<a class="headerlink" href="#using-with-as-and-in" title="Permalink to this headline">¶</a></h3>
+<p>This combination is beneficial in many places. You can read about it <a class="reference external" href="https://www.postgresql.org/docs/9.1/queries-with.html">here</a>. You can think of it as creating temporary tables by querying another table. For example, here we are using the following query …</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">instahash</span><span class="p">,</span><span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="n">datecol</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total</span>
+<span class="k">FROM</span> <span class="n">import</span><span class="p">.</span><span class="n">exampleclean</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">instahash</span><span class="p">,</span><span class="n">date_trunc</span><span class="p">(</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="n">datecol</span><span class="p">)</span> <span class="k">LIMIT</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>…and capturing the result to a kind of temporary table called <code class="docutils literal notranslate"><span class="pre">random</span></code>. This <code class="docutils literal notranslate"><span class="pre">random</span></code> is used to query in another SQL query. Probably you learned about it, but check <a class="reference external" href="https://www.techonthenet.com/postgresql/in.php">this out</a> to know more.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">import</span><span class="p">.</span><span class="n">exampleclean</span>
+<span class="k">where</span> <span class="n">instahash</span> <span class="k">IN</span> <span class="p">(</span><span class="k">select</span> <span class="n">instahash</span> <span class="k">from</span> <span class="n">random</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## https://www.postgresql.org/docs/9.1/queries-with.html</span>
+<span class="n">query</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;WITH random as (SELECT * FROM import.exampleclean LIMIT 1)</span>
+<span class="s2">select * from import.exampleclean</span>
+<span class="s2">where instahash IN (select instahash from random)&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./installation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="psql.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">psql</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../lectures/lecture1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Lecture 0: Course Introduction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
