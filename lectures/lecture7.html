@@ -561,8 +561,8 @@ Dimension Table(s): Tables that provide context for the fact table (in violet).<
 </div>
 <p>I ran this already. Looking at the “Materialized View” tab in pgAdmin, you’ll see the view there.  It’s a table with three million rows, so we may want to add some indices to the table to speed up our query speed.</p>
 <p>For students not doing this exercise with me, I am putting a snapshot of this table so that you can follow along.</p>
-<a class="reference internal image-reference" href="../_images/mat1.png"><img alt="../_images/mat1.png" src="../_images/mat1.png" style="width: 90%;" /></a>
-<a class="reference internal image-reference" href="../_images/mat2.png"><img alt="../_images/mat2.png" src="../_images/mat2.png" style="width: 90%;" /></a>
+<img alt="../_images/mat1.png" src="../_images/mat1.png" />
+<img alt="../_images/mat2.png" src="../_images/mat2.png" />
 <p>The B-Tree index is most appropriate for most of the columns.  We may choose some other indexes for some of the other columns.  Let’s take a look:
 The <code class="docutils literal notranslate"><span class="pre">nasdaqsymbol</span></code> column is simple, and we’re unlikely to be searching for anything</p>
 <p>But let’s pause for a minute and consider further what we’re planning on doing with the data.  This will also help us plan out what indexes we might add to help speed things up.</p>

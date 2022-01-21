@@ -14,7 +14,7 @@ These are lecture notes for the course BAIT 580A offered in Winter 2022 at the U
 
 | Name         | Position   | email | 
 | :---:        | :---:      | :---:         | 
-| [Gittu George, PhD](https://g2george.netlify.app) | Instructor | ggeorg02@cs.ubc.ca | 
+| Gittu George, PhD | Instructor | ggeorg02@cs.ubc.ca | 
 | Colby DeLisle | Teaching Assistant | cdelisle@phas.ubc.ca | 
 | Daniel Ramandi | Teaching Assistant | ramandi18@gmail.com |  
 | Elisa Hu| Teaching Assistant | elisa.hu@ubc.ca | 
