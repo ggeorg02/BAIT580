@@ -1,0 +1,878 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9. Lecture 8: CQL 1 &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="8. Lecture 7: Beyond RDBMS" href="lecture8.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/psql.html">
+   psql
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/neo4j.html">
+   Neo4j
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/assignment2helper.html">
+   Assignment 2 helper
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture5.html">
+   5. Lecture 4: SQL for vizualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture6.html">
+   6. Lecture 5: Disk Management and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture7.html">
+   7. Lecture 6: (de)Normalization &amp; Data Warehousing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   8. Lecture 7: Beyond RDBMS
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   9. Lecture 8: CQL 1
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture9.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture9.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture9.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture9.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todays-agenda">
+   9.1. Todays Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   9.2. Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-nodes-relationships">
+   9.3. Creating nodes &amp; relationships
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-constraints">
+     9.3.1. Creating constraints
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inspecting-schema">
+     9.3.2. Inspecting schema
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#querying-nodes-and-relationships">
+   9.4. Querying nodes and relationships
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#match-return">
+     9.4.1. MATCH &amp; RETURN
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-to-filter-queries">
+     9.4.2. WHERE to Filter Queries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deleting-nodes-and-relationships">
+   9.5. Deleting Nodes and Relationships
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-dumps">
+   9.6. Working with dumps.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#can-you">
+   9.7. Can you?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-on-create-optional-additional-information">
+   9.8. More on CREATE (optional- Additional information)
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-8-cql-1">
+<h1><span class="section-number">9. </span>Lecture 8: CQL 1<a class="headerlink" href="#lecture-8-cql-1" title="Permalink to this headline">¶</a></h1>
+<p>Gittu George, January 27 2022</p>
+<p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
+<div class="section" id="todays-agenda">
+<h2><span class="section-number">9.1. </span>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Creating nodes &amp; relationships.</p></li>
+<li><p>Creating constraints.</p></li>
+<li><p>Querying nodes and relationships.</p></li>
+<li><p>Loading data using dumps.</p></li>
+<li><p>Class activity:</p></li>
+</ul>
+</div>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">9.2. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Loading data and creating nodes and relationships</p></li>
+<li><p>Using CQL to query the graph database</p></li>
+</ul>
+<p><a class="reference external" href="https://neo4j.com/docs/cypher-refcard/current/">Here</a> is a good cheat sheet that you can use.</p>
+</div>
+<div class="section" id="creating-nodes-relationships">
+<h2><span class="section-number">9.3. </span>Creating nodes &amp; relationships<a class="headerlink" href="#creating-nodes-relationships" title="Permalink to this headline">¶</a></h2>
+<p>We learned how to define</p>
+<ul class="simple">
+<li><p>Nodes</p></li>
+<li><p>Labels</p></li>
+<li><p>Relationships</p></li>
+<li><p>Relationship types</p></li>
+<li><p>Properties</p></li>
+</ul>
+<p>Here is the simplified syntax for creating a node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="p">(</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">We</span> <span class="n">are</span> <span class="n">creating</span> <span class="n">nodes</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">git</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Gittu&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Postdoctoral Fellow&#39;</span><span class="p">})</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">mik</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Mike&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span><span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Associate Professor&#39;</span><span class="p">})</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">tom</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span><span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Postdoctoral Fellow&#39;</span><span class="p">})</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">pan</span><span class="p">:</span><span class="n">Animal</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Panda&#39;</span><span class="p">,</span><span class="n">method_of_movement</span><span class="p">:</span> <span class="s1">&#39;Climb&#39;</span><span class="p">,</span><span class="n">height</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">mainly_found</span><span class="p">:</span> <span class="s1">&#39;China&#39;</span><span class="p">})</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">pol</span><span class="p">:</span><span class="n">Animal</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Polar Bear&#39;</span><span class="p">,</span><span class="n">method_of_movement</span><span class="p">:</span> <span class="s1">&#39;Walk&#39;</span><span class="p">,</span><span class="n">height</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">mainly_found</span><span class="p">:</span> <span class="s1">&#39;Canada&#39;</span><span class="p">})</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">kan</span><span class="p">:</span><span class="n">Animal</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Kangaroo&#39;</span><span class="p">,</span><span class="n">method_of_movement</span><span class="p">:</span> <span class="s1">&#39;Hop&#39;</span><span class="p">,</span><span class="n">height</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="n">mainly_found</span><span class="p">:</span> <span class="s1">&#39;Australia&#39;</span><span class="p">})</span>
+
+<span class="o">//</span> <span class="n">We</span> <span class="n">are</span> <span class="n">creating</span> <span class="n">a</span> <span class="n">relationship</span> <span class="n">that</span> <span class="n">connects</span> <span class="n">these</span> <span class="n">nodes</span>
+
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">git</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pan</span><span class="p">),</span>
+<span class="p">(</span><span class="n">mik</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">90</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pol</span><span class="p">),</span>
+<span class="p">(</span><span class="n">tom</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">HATE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pol</span><span class="p">),</span>
+<span class="p">(</span><span class="n">tom</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">50</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">kan</span><span class="p">),</span>
+<span class="p">(</span><span class="n">pol</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">git</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With this, we finished creating our dummy graph data in the cloud. To see what we have created, we need to query the database.</p>
+<p>Let’s start with how to examine the data model,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CALL</span> <span class="n">db</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">visualization</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Let’s create better dummy data in neo4j to learn how to query the database using cypher. <a class="reference external" href="https://canvas.ubc.ca/files/19065081/download?download_frd=1">We will use a movie dataset that neo4j provides</a>. Let’s load the data first. Please download this file and copy it to your neo4j query space.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure you only run this one time, Because every time it’s running, it creates nodes and relationships again.</p>
+</div>
+<div class="section" id="creating-constraints">
+<h3><span class="section-number">9.3.1. </span>Creating constraints<a class="headerlink" href="#creating-constraints" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Uniqueness</span> <span class="pre">constraint</span></code> - Ensures that a value for a property is unique for all nodes of that type.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">CONSTRAINT</span> <span class="n">ON</span> <span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span> <span class="n">ASSERT</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="n">IS</span> <span class="n">UNIQUE</span>
+<span class="n">CREATE</span> <span class="n">CONSTRAINT</span> <span class="n">ON</span> <span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span> <span class="n">ASSERT</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">title</span><span class="p">)</span> <span class="n">IS</span> <span class="n">UNIQUE</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Existence</span> <span class="pre">constraint</span></code> - Ensures that when a node or relationship is created or modified, it must have certain properties set.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">CONSTRAINT</span> <span class="n">ExistsMovieTagline</span> <span class="n">ON</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span> <span class="n">ASSERT</span> <span class="n">exists</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">tagline</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">key</span></code> - Ensures that a set of values for properties of a node of a given type is unique.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">CONSTRAINT</span> <span class="n">UniqueNameBornConstraint</span>
+<span class="n">ON</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span> <span class="n">ASSERT</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">born</span><span class="p">)</span> <span class="n">IS</span> <span class="n">NODE</span> <span class="n">KEY</span>
+</pre></div>
+</div>
+<p>For retrieving constraints defined for the graph</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CALL</span> <span class="n">db</span><span class="o">.</span><span class="n">constraints</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For dropping constraints</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DROP</span> <span class="n">CONSTRAINT</span> <span class="n">constraintname</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inspecting-schema">
+<h3><span class="section-number">9.3.2. </span>Inspecting schema<a class="headerlink" href="#inspecting-schema" title="Permalink to this headline">¶</a></h3>
+<p>Let’s inspect the schema for the movie data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CALL</span> <span class="n">db</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">visualization</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Includes nodes (entities,objects,things) such as:</p>
+<ul class="simple">
+<li><p>Movie</p></li>
+<li><p>Person</p></li>
+</ul>
+<p>People are related to Movies using these relationships:</p>
+<ul class="simple">
+<li><p>DIRECTED</p></li>
+<li><p>ACTED_IN</p></li>
+<li><p>WROTE</p></li>
+<li><p>REVIEWED</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="querying-nodes-and-relationships">
+<h2><span class="section-number">9.4. </span>Querying nodes and relationships<a class="headerlink" href="#querying-nodes-and-relationships" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="match-return">
+<h3><span class="section-number">9.4.1. </span>MATCH &amp; RETURN<a class="headerlink" href="#match-return" title="Permalink to this headline">¶</a></h3>
+<p>Use the MATCH to match the nodes you ask for, and RETURN to retrieve the nodes.</p>
+<p>Here we retrieve all the nodes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">//</span> <span class="n">returns</span> <span class="nb">all</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">graph</span>
+<span class="n">RETURN</span> <span class="n">n</span>
+</pre></div>
+</div>
+<p>As you can remember, (n) here stands for all nodes. Now, what if we want to retrieve only the nodes with <code class="docutils literal notranslate"><span class="pre">Person</span></code> labels?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span> <span class="o">//</span> <span class="n">returns</span> <span class="nb">all</span> <span class="n">Person</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">graph</span>
+<span class="n">RETURN</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>You can add whatever nodes you are interested in based on properties. Here we are returning nodes filtered on a property value.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">released</span><span class="p">:</span> <span class="mi">2003</span><span class="p">,</span> <span class="n">tagline</span><span class="p">:</span> <span class="s1">&#39;Free your mind&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>Until now, we have been returning nodes. If we want to return the properties in those nodes</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span> <span class="p">{</span><span class="n">born</span><span class="p">:</span> <span class="mi">1965</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">born</span>
+</pre></div>
+</div>
+<p>You can specify aliases or column headings using AS</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MATCH (p:Person {born: 1965})
+RETURN p.name, p.born AS `birth year`
+</pre></div>
+</div>
+<p>Now let’s add in some relationships as well.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">rel</span><span class="p">:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;The Matrix&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="p">,</span> <span class="n">rel</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>We can also have nodes with no variables or anonymous nodes. In the above example, we are interested in only the persons who acted in ‘The Matrix’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;The Matrix&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>You can also query on multiple relationships</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Tom Hanks&#39;</span><span class="p">})</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="o">|</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>We can also have anonymous relationships.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">--</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;The Matrix&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;--</span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Tom Hanks&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>type() returns the type of a relationship.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">rel</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span><span class="s1">&#39;The Matrix&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">rel</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Traversing multiple relationships</p>
+<p>Since we have a graph, we can traverse through nodes to obtain relationships further into the traversal. In addition, you can assign a variable to the path and return the path as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="n">path</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">FOLLOWS</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">FOLLOWS</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;Jessica Thompson&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">path</span>
+</pre></div>
+</div>
+<p>Let’s try adding some properties for relationships;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REVIEWED</span> <span class="p">{</span><span class="n">rating</span><span class="p">:</span> <span class="mi">65</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;The Da Vinci Code&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="where-to-filter-queries">
+<h3><span class="section-number">9.4.2. </span>WHERE to Filter Queries<a class="headerlink" href="#where-to-filter-queries" title="Permalink to this headline">¶</a></h3>
+<p>Just like in SQL, we use WHERE to filter queries.</p>
+<p>We already know how to write this query.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">released</span><span class="p">:</span> <span class="mi">2008</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>Can we write this using WHERE?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">released</span> <span class="o">=</span> <span class="mi">2008</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can only refer to named nodes or relationships in a WHERE clause, so you must specify a variable for any node or relationship you are testing in the WHERE clause.</p>
+</div>
+<p>If we can write the same thing without using WHERE, then why do we need WHERE?</p>
+<p>With the WHERE clause, you can specify potentially complex conditions for the query.</p>
+<p>Here are some examples;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">released</span> <span class="o">=</span> <span class="mi">2008</span> <span class="n">OR</span> <span class="n">m</span><span class="o">.</span><span class="n">released</span> <span class="o">=</span> <span class="mi">2009</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">released</span> <span class="o">&gt;=</span> <span class="mi">2003</span> <span class="n">AND</span> <span class="n">m</span><span class="o">.</span><span class="n">released</span> <span class="o">&lt;=</span> <span class="mi">2004</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">released</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/functions/predicate/#functions-exists">exists</a>, we can use in testing the existence of a property or a pattern.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Jack Nicholson&#39;</span> <span class="n">AND</span> <span class="n">exists</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">tagline</span><span class="p">)</span>
+<span class="n">RETURN</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">tagline</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span>
+<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="n">STARTS</span> <span class="n">WITH</span> <span class="s1">&#39;Michael&#39;</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">()</span>
+<span class="n">WHERE</span> <span class="n">toLower</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="n">STARTS</span> <span class="n">WITH</span> <span class="s1">&#39;michael&#39;</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Converting a property to lower case may not be performing well, as if an index has been created for this property, it will not be used at runtime.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>There are other string matching operators like <code class="docutils literal notranslate"><span class="pre">ENDS</span> <span class="pre">WITH</span></code>, <code class="docutils literal notranslate"><span class="pre">CONTAINS</span></code></p>
+</div>
+<p>We can also test it with regular expressions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=~</span><span class="s1">&#39;Tom.*&#39;</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>Here =~ is used to filter words</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you specify a regular expression. The index will never be used. In addition, the property value must fully match the regular expression.</p>
+</div>
+<p>Here is an example where we want to return all Person nodes of people who wrote movies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">WROTE</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>Next, we modify this query to exclude people who directed that particular movie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">WROTE</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">NOT</span> <span class="n">exists</span><span class="p">(</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>Here is another example where we want to find Gene Hackman and the movies he acted in with another person who also directed the movie.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">gene</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">other</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">gene</span><span class="o">.</span><span class="n">name</span><span class="o">=</span> <span class="s1">&#39;Gene Hackman&#39;</span>
+<span class="n">AND</span> <span class="n">exists</span><span class="p">(</span> <span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">RETURN</span> <span class="n">gene</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>In this example, we only want to retrieve Person nodes of people born in 1965 or 1970:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">born</span> <span class="n">IN</span> <span class="p">[</span><span class="mi">1965</span><span class="p">,</span> <span class="mi">1970</span><span class="p">]</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">name</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">born</span> <span class="k">as</span> <span class="n">yearBorn</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="s1">&#39;Neo&#39;</span> <span class="n">IN</span> <span class="n">r</span><span class="o">.</span><span class="n">roles</span> <span class="n">AND</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Matrix&#39;</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="deleting-nodes-and-relationships">
+<h2><span class="section-number">9.5. </span>Deleting Nodes and Relationships<a class="headerlink" href="#deleting-nodes-and-relationships" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Jane Doe&#39;</span>
+<span class="n">DELETE</span> <span class="n">p</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The most efficient way to delete a node and its corresponding relationships is to specify DETACH DELETE. When you specify DETACH DELETE for a node, the relationships to and from the node are deleted, then the node is deleted.</p>
+</div>
+<p>Can you try deleting this node? Can you delete it? Why can’t you?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Liam Neeson&#39;</span>
+<span class="n">DELETE</span> <span class="n">p</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Liam Neeson&#39;</span>
+<span class="n">DETACH</span> <span class="n">DELETE</span> <span class="n">p</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-dumps">
+<h2><span class="section-number">9.6. </span>Working with dumps.<a class="headerlink" href="#working-with-dumps" title="Permalink to this headline">¶</a></h2>
+<p>You can use the GUI interface to load dumps.</p>
+<p>Go to your Neo4j Aura web console. Click on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Database</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">.dump</span> <span class="pre">file</span></code> –&gt; select the file from your local file system</p>
+<img alt="../_images/dump.png" src="../_images/dump.png" />
+<p><em><strong>Additional Info (OPTIONAL):</strong></em></p>
+<p>You don’t want to know this, and I am not expecting you to know this, but I am putting <a class="reference external" href="https://canvas.ubc.ca/files/19063585/download?download_frd=1">this</a> notebook here just as a reference if you want to get an idea of the steps I took to load our Twitter data into the graph database. But if we load the entire Twitter data, then the number of nodes will shoot up as we got lots of user IDs and we got limitations on the number of nodes that we load to our Neo4J aura, and hence I did a sampling so that we can make sure that our nodes are under the limit.</p>
+<p>I loaded all this data for you and took a dump. You will be using the CQL that we will be learning in our class to work on the assignments.</p>
+</div>
+<div class="section" id="can-you">
+<h2><span class="section-number">9.7. </span>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">¶</a></h2>
+<p>Write Cypher statements to:</p>
+<ul class="simple">
+<li><p>Retrieve nodes from the graph.</p></li>
+<li><p>Filter nodes retrieved using property values of nodes.</p></li>
+<li><p>Retrieve property values from nodes in the graph.</p></li>
+<li><p>Filter nodes retrieved using relationships.</p></li>
+</ul>
+<p>Write Cypher WHERE clauses to test:</p>
+<ul class="simple">
+<li><p>Equality.</p></li>
+<li><p>Multiple values.</p></li>
+<li><p>Ranges.</p></li>
+<li><p>Labels.</p></li>
+<li><p>Existence of a property.</p></li>
+<li><p>String values.</p></li>
+<li><p>Regular expressions.</p></li>
+<li><p>Patterns in the graph.</p></li>
+<li><p>Inclusion in a list.</p></li>
+</ul>
+<p><a class="reference external" href="https://canvas.ubc.ca/files/19063812/download?download_frd=1">Let’s check out</a> the reference card again to see the covered topics.</p>
+</div>
+<div class="section" id="more-on-create-optional-additional-information">
+<h2><span class="section-number">9.8. </span>More on CREATE (optional- Additional information)<a class="headerlink" href="#more-on-create-optional-additional-information" title="Permalink to this headline">¶</a></h2>
+<p>We already saw about creating nodes and relationships. This section shows you that you can create relationships with existing nodes.</p>
+<p>To demonstrate, let’s create some nodes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">:</span><span class="n">Action</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39; Batman Begins&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span>
+
+<span class="n">CREATE</span>
+<span class="p">(:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Michael Caine&#39;</span><span class="p">,</span> <span class="n">born</span><span class="p">:</span> <span class="mi">1933</span><span class="p">}),</span>
+<span class="p">(:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Liam Neeson&#39;</span><span class="p">,</span> <span class="n">born</span><span class="p">:</span> <span class="mi">1952</span><span class="p">}),</span>
+<span class="p">(:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Katie Holmes&#39;</span><span class="p">,</span> <span class="n">born</span><span class="p">:</span> <span class="mi">1978</span><span class="p">}),</span>
+<span class="p">(:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Benjamin Melniker&#39;</span><span class="p">,</span> <span class="n">born</span><span class="p">:</span> <span class="mi">1913</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>If you want to add more labels to a node, you can query for the node you want to add, and after that, use SET to set the label.</p>
+<p>Syntax for SET</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SET</span> <span class="n">x</span><span class="p">:</span><span class="n">Label</span> <span class="o">//</span> <span class="n">adding</span> <span class="n">one</span> <span class="n">label</span> <span class="n">to</span> <span class="n">node</span> <span class="n">referenced</span> <span class="n">by</span> <span class="n">the</span> <span class="n">variable</span> <span class="n">x</span>
+<span class="n">SET</span> <span class="n">x</span><span class="p">:</span><span class="n">Label1</span><span class="p">:</span><span class="n">Label2</span> <span class="o">//</span> <span class="n">adding</span> <span class="n">two</span> <span class="n">labels</span> <span class="n">to</span> <span class="n">node</span> <span class="n">referenced</span> <span class="n">by</span> <span class="n">the</span> <span class="n">variable</span> <span class="n">x</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">SET</span> <span class="n">m</span><span class="p">:</span><span class="n">Fantasy</span>
+<span class="n">RETURN</span> <span class="n">labels</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Syntax: Removing labels from a node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">label</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">node</span> <span class="n">referenced</span> <span class="n">by</span> <span class="n">the</span> <span class="n">variable</span> <span class="n">x</span>
+<span class="n">REMOVE</span> <span class="n">x</span><span class="p">:</span><span class="n">Label</span>
+<span class="o">//</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">two</span> <span class="n">labels</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">node</span> <span class="n">referenced</span> <span class="n">by</span> <span class="n">the</span> <span class="n">variable</span> <span class="n">x</span>
+<span class="n">REMOVE</span> <span class="n">x</span><span class="p">:</span><span class="n">Label1</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">Label2</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Action</span><span class="p">)</span>
+<span class="n">REMOVE</span> <span class="n">m</span><span class="p">:</span><span class="n">Action</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span><span class="n">Fantasy</span>
+<span class="n">RETURN</span> <span class="n">labels</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Syntax: Adding properties to a node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SET</span> <span class="n">x</span><span class="o">.</span><span class="n">propertyName</span> <span class="o">=</span> <span class="n">value</span>
+<span class="n">SET</span> <span class="n">x</span><span class="o">.</span><span class="n">propertyName1</span> <span class="o">=</span> <span class="n">value1</span> <span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">propertyName2</span> <span class="o">=</span> <span class="n">value2</span>
+<span class="n">SET</span> <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">propertyName1</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span> <span class="n">propertyName2</span><span class="p">:</span> <span class="n">value2</span><span class="p">}</span>
+<span class="n">SET</span> <span class="n">x</span> <span class="o">+=</span> <span class="p">{</span><span class="n">propertyName1</span><span class="p">:</span> <span class="n">value1</span><span class="p">,</span> <span class="n">propertyName2</span><span class="p">:</span> <span class="n">value2</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">SET</span> <span class="n">m</span><span class="o">.</span><span class="n">released</span> <span class="o">=</span> <span class="mi">2005</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">lengthInMinutes</span> <span class="o">=</span> <span class="mi">140</span>
+<span class="n">RETURN</span> <span class="n">m</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">SET</span> <span class="n">m</span> <span class="o">=</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;Batman Begins&#39;</span><span class="p">,</span>
+<span class="n">released</span><span class="p">:</span> <span class="mi">2005</span><span class="p">,</span>
+<span class="n">lengthInMinutes</span><span class="p">:</span> <span class="mi">140</span><span class="p">,</span>
+<span class="n">videoFormat</span><span class="p">:</span> <span class="s1">&#39;DVD&#39;</span><span class="p">,</span>
+<span class="n">grossMillions</span><span class="p">:</span> <span class="mf">206.5</span><span class="p">}</span>
+<span class="n">RETURN</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>Retrieving properties of a node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">RETURN</span> <span class="n">properties</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Updating properties - JSON-style</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">SET</span> <span class="n">m</span> <span class="o">+=</span> <span class="p">{</span> <span class="n">grossMillions</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+<span class="n">awards</span><span class="p">:</span> <span class="mi">66</span><span class="p">}</span>
+<span class="n">RETURN</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>Syntax: Removing properties from a node</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REMOVE</span> <span class="n">x</span><span class="o">.</span><span class="n">propertyName</span>
+<span class="n">SET</span> <span class="n">x</span><span class="o">.</span><span class="n">propertyName</span> <span class="o">=</span> <span class="n">null</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">SET</span> <span class="n">m</span><span class="o">.</span><span class="n">grossMillions</span> <span class="o">=</span> <span class="n">null</span>
+<span class="n">REMOVE</span> <span class="n">m</span><span class="o">.</span><span class="n">videoFormat</span>
+<span class="n">RETURN</span> <span class="n">m</span>
+</pre></div>
+</div>
+<p>Creating Relationships</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">),</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Katie Holmes&#39;</span> <span class="n">AND</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">rel</span><span class="p">:</span><span class="n">ACTED_IN</span> <span class="p">{</span><span class="n">roles</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Rachel&#39;</span><span class="p">,</span><span class="s1">&#39;Rachel Dawes&#39;</span><span class="p">]}</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">RETURN</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">rel</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>The SET and REMOVE syntax is the same as what we discussed with nodes.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">),</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Christian Bale&#39;</span> <span class="n">AND</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">CREATE</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">rel</span><span class="p">:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">SET</span> <span class="n">rel</span><span class="o">.</span><span class="n">roles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Bruce Wayne&#39;</span><span class="p">,</span><span class="s1">&#39;Batman&#39;</span><span class="p">]</span>
+<span class="n">RETURN</span> <span class="n">a</span><span class="p">,</span> <span class="n">rel</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">rel</span><span class="p">:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="n">WHERE</span> <span class="n">a</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Christian Bale&#39;</span> <span class="n">AND</span> <span class="n">m</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Batman Begins&#39;</span>
+<span class="n">REMOVE</span> <span class="n">rel</span><span class="o">.</span><span class="n">roles</span>
+<span class="n">RETURN</span> <span class="n">a</span><span class="p">,</span> <span class="n">rel</span><span class="p">,</span> <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture8.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>Lecture 7: Beyond RDBMS</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
