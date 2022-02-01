@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10. Lecture 9: CQL 2 &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="9. Lecture 8: CQL 1" href="lecture9.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">BAIT 580A - Topics in Information Technology Management</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installation instructions
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/jupyterlabtest.html">
+   JuypterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/aws.html">
+   AWS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/RDSCreation.html">
+   RDS creation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/pgadmin.html">
+   pgAdmin
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/psql.html">
+   psql
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/neo4j.html">
+   Neo4j
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation/assignment2helper.html">
+   Assignment 2 helper
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture1.html">
+   1. Lecture 0: Course Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture2.html">
+   2. Lecture 1: Data Management in a Big Data Environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture3.html">
+   3. Lecture 2: Introduction to cloud computing and connection to cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture4.html">
+   4. Lecture 3: Data Modeling for Business Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture5.html">
+   5. Lecture 4: SQL for vizualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture6.html">
+   6. Lecture 5: Disk Management and Indexes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture7.html">
+   7. Lecture 6: (de)Normalization &amp; Data Warehousing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture8.html">
+   8. Lecture 7: Beyond RDBMS
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lecture9.html">
+   9. Lecture 8: CQL 1
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   10. Lecture 9: CQL 2
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        
+        <a class="issues-button"
+            href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture10.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture10.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#today-s-agenda">
+   10.1. Today’s Agenda
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   10.2. Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-patterns-in-queries">
+   10.3. Working with Patterns in Queries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-multiple-match-patterns">
+     10.3.1. Specifying multiple MATCH patterns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-match-clauses">
+     10.3.2. Multiple MATCH clauses,
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-varying-length-paths">
+     10.3.3. Specifying varying length paths
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-the-shortest-path">
+     10.3.4. Finding the shortest path
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aggregation-in-cypher">
+   10.4. Aggregation in Cypher
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controlling-the-query-chain">
+   10.5. Controlling the Query Chain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#controlling-results-returned">
+   10.6. Controlling Results Returned
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dealing-with-duplicates">
+     10.6.1. Dealing with duplicates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ordering-results">
+     10.6.2. Ordering results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limiting-the-number-of-results">
+     10.6.3. Limiting the number of results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#can-you">
+   10.7. Can you ?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-9-cql-2">
+<h1><span class="section-number">10. </span>Lecture 9: CQL 2<a class="headerlink" href="#lecture-9-cql-2" title="Permalink to this headline">¶</a></h1>
+<p>Gittu George, January 30 2022</p>
+<p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
+<div class="section" id="today-s-agenda">
+<h2><span class="section-number">10.1. </span>Today’s Agenda<a class="headerlink" href="#today-s-agenda" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Working with patterns in queries</p></li>
+<li><p>Aggregation in cypher</p></li>
+<li><p>Controlling the query chain</p></li>
+<li><p>Controlling results returned</p></li>
+</ul>
+</div>
+<div class="section" id="learning-objectives">
+<h2><span class="section-number">10.2. </span>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Using CQL to query the graph database</p></li>
+</ul>
+<p><a class="reference external" href="https://canvas.ubc.ca/files/19165620/download?download_frd=1">Check the ticks in this</a> cheat sheet to see all topics we will cover by the end of this lecture. You only need these to finish your assignment.</p>
+</div>
+<div class="section" id="working-with-patterns-in-queries">
+<h2><span class="section-number">10.3. </span>Working with Patterns in Queries<a class="headerlink" href="#working-with-patterns-in-queries" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Traversal in a MATCH clause</p></li>
+</ul>
+<p>We already understand this query from the last class, but understanding how the graph engine performed this traversal can help write an efficient CQL query.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">follower</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">FOLLOWS</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">reviewer</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;The Replacements&#39;</span>
+<span class="k">RETURN</span> <span class="n">follower</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">reviewer</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="section" id="specifying-multiple-match-patterns">
+<h3><span class="section-number">10.3.1. </span>Specifying multiple MATCH patterns<a class="headerlink" href="#specifying-multiple-match-patterns" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">),</span>
+<span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="k">RETURN</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When multiple patterns are specified in a MATCH clause, no relationship is traversed more than once.</p>
+</div>
+<p>We can also specify the above query using a single pattern.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="k">RETURN</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Why multiple match patterns?</p></li>
+</ul>
+<p>Even though both queries mentioned above mean the same, there are situations when you can’t represent it in a single match pattern, especially when looking at complex queries. For e.g.:</p>
+<p>Suppose we want to retrieve the movies that Meg Ryan acted in and their respective directors and the other actors that acted in these movies. Here is the query to do this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">meg</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">),</span>
+<span class="p">(</span><span class="n">other</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">meg</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Meg Ryan&#39;</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">movie</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">director</span> <span class="p">,</span> <span class="n">other</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="o">`</span><span class="n">co</span><span class="o">-</span><span class="n">actors</span><span class="o">`</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can specify aliases or column headings using AS; you will be seeing it a lot in all upcoming queries.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It’s a good practice to use AS wherever you can, as it can guide your thoughts and print results in a meaningful way.</p>
+</div>
+</div>
+<div class="section" id="multiple-match-clauses">
+<h3><span class="section-number">10.3.2. </span>Multiple MATCH clauses,<a class="headerlink" href="#multiple-match-clauses" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">valKilmer</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">MATCH</span> <span class="p">(</span><span class="n">actor</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">valKilmer</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Val Kilmer&#39;</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">movie</span> <span class="p">,</span> <span class="n">actor</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>But we can also write the same using multiple patterns,</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">valKilmer</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">),</span>
+<span class="p">(</span><span class="n">actor</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">valKilmer</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Val Kilmer&#39;</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">movie</span> <span class="p">,</span> <span class="n">actor</span><span class="p">.</span><span class="n">name</span> <span class="k">as</span> <span class="o">`</span><span class="n">Actor</span> <span class="n">name</span><span class="o">`</span>
+</pre></div>
+</div>
+<p>A best practice is to traverse as few nodes as possible so in this example, using multiple MATCH patterns is best.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Usually, the multiple MATCH clauses are used when dealing with Subqueries using WITH. We will discuss it soon.</p>
+</div>
+</div>
+<div class="section" id="specifying-varying-length-paths">
+<h3><span class="section-number">10.3.3. </span>Specifying varying length paths<a class="headerlink" href="#specifying-varying-length-paths" title="Permalink to this headline">¶</a></h3>
+<p>Syntax:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Retrieve</span> <span class="k">all</span> <span class="n">paths</span> <span class="k">of</span> <span class="k">any</span> <span class="k">length</span> <span class="k">with</span> <span class="n">the</span> <span class="n">relationship</span><span class="p">,</span> <span class="p">:</span><span class="n">RELTYPE</span> <span class="k">from</span> <span class="n">nodeA</span> <span class="k">to</span> <span class="n">nodeB</span> <span class="k">and</span> <span class="n">beyond</span>
+<span class="p">(</span><span class="n">nodeA</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">RELTYPE</span><span class="o">*</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">nodeB</span><span class="p">)</span> 
+<span class="o">//</span><span class="n">Retrieve</span> <span class="n">the</span> <span class="n">paths</span> <span class="k">of</span> <span class="k">length</span> <span class="mi">2</span> <span class="k">with</span> <span class="n">the</span> <span class="n">relationship</span><span class="p">,</span> <span class="p">:</span><span class="n">RELTYPE</span> <span class="k">from</span> <span class="n">nodeA</span> <span class="k">to</span> <span class="n">nodeB</span><span class="p">:</span>
+<span class="p">(</span><span class="n">nodeA</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">RELTYPE</span><span class="o">*</span><span class="mi">2</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">nodeB</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Retrieve</span> <span class="n">the</span> <span class="n">paths</span> <span class="k">of</span> <span class="k">length</span> <span class="mi">3</span> <span class="k">with</span> <span class="n">the</span> <span class="n">relationship</span><span class="p">,</span> <span class="p">:</span><span class="n">RELTYPE</span> <span class="k">from</span> <span class="n">nodeA</span> <span class="k">to</span> <span class="n">nodeB</span><span class="p">:</span>
+<span class="p">(</span><span class="n">nodeA</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">RELTYPE</span><span class="o">*</span><span class="mi">3</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">nodeB</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Experiment with the below query by varying depths, and see how it behaves.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">follower</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">FOLLOWS</span><span class="o">*</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">follower</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Paul Blythe&#39;</span>
+<span class="k">RETURN</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>Now what if we want to retrieve the paths of lengths 1, 2, or 3 with the relationship, :RELTYPE from nodeA to nodeB, nodeB to nodeC, as well as, nodeC to _nodeD) (up to three hops):</p>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">nodeA</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">RELTYPE</span><span class="o">*</span><span class="mf">1..3</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">nodeB</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">follower</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">FOLLOWS</span><span class="o">*</span><span class="mi">1</span><span class="p">..</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">follower</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Paul Blythe&#39;</span>
+<span class="k">RETURN</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="finding-the-shortest-path">
+<h3><span class="section-number">10.3.4. </span>Finding the shortest path<a class="headerlink" href="#finding-the-shortest-path" title="Permalink to this headline">¶</a></h3>
+<p>This shortestPath() function is very useful in many cases where there are many ways to reach from node A to node B.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="n">p</span> <span class="o">=</span> <span class="n">shortestPath</span><span class="p">((</span><span class="n">m1</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">m2</span><span class="p">:</span><span class="n">Movie</span><span class="p">))</span>
+<span class="k">WHERE</span> <span class="n">m1</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;A Few Good Men&#39;</span> <span class="k">AND</span>
+<span class="n">m2</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;The Matrix&#39;</span>
+<span class="k">RETURN</span> <span class="n">p</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here we specify * for the relationship. This means to use any relationship for the traversal.</p>
+</div>
+</div>
+</div>
+<div class="section" id="aggregation-in-cypher">
+<h2><span class="section-number">10.4. </span>Aggregation in Cypher<a class="headerlink" href="#aggregation-in-cypher" title="Permalink to this headline">¶</a></h2>
+<p>When you return results as values, Cypher automatically returns the values grouped by a common value.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">RETURN</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>Aggregation in Cypher is different from aggregation in SQL. In Cypher, you need not specify a grouping key. As soon as an aggregation function is used, all non-aggregated result columns become grouping keys. The grouping is implicitly done, based upon the fields in the RETURN clause.</p>
+<ul class="simple">
+<li><p>count()</p></li>
+</ul>
+<p>count() is a common way to aggregate your data. You can use count() to perform a</p>
+<ul class="simple">
+<li><p>count of nodes</p></li>
+<li><p>relationships</p></li>
+<li><p>paths</p></li>
+<li><p>rows during query processing</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The query engine processed all nodes and relationships in the pattern so that it could perform a count of all movies for a particular actor/director pair in the graph. Then the results returned grouped the results by the name of the director.</p>
+<p>There are many places we can use count; check out this <a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/functions/aggregating/#functions-count">document</a></p>
+<p>More aggregating functions such as avg(),stDev(), min() or max(), sum(). For entire list check in <a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/functions/aggregating/">cypher manual.</a></p>
+</div>
+<div class="section" id="controlling-the-query-chain">
+<h2><span class="section-number">10.5. </span>Controlling the Query Chain<a class="headerlink" href="#controlling-the-query-chain" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Intermediate processing using WITH</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">RETURN</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">AS</span> <span class="n">numMovies</span>
+</pre></div>
+</div>
+<p>During the execution of a MATCH clause, you can specify that you want some intermediate calculations or values that will be used for further processing of the query. You use the WITH clause to perform intermediate processing that is not possible in a RETURN clause.</p>
+<p>Example: Using WITH</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WITH</span> <span class="n">a</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">AS</span> <span class="n">numMovies</span>
+<span class="k">WHERE</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">numMovies</span> <span class="o">&lt;</span> <span class="mi">4</span>
+<span class="k">RETURN</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">numMovies</span>
+</pre></div>
+</div>
+<p>In the above example, we start the query processing by retrieving all actors and their movie count. During the query processing, we only want to return actors with 2 or 3 movies. All other actors and the aggregated results are filtered out. Here WITH clause does the counting and collecting, and the intermediate result is used in the subsequent WHERE clause to test.</p>
+<ul class="simple">
+<li><p>Subqueries with WITH</p></li>
+</ul>
+<p>Here is an example where we retrieve all movies reviewed by a person. For a particular movie found, we want the list of directors of the movie, so we do a second query, a subquery as follows:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[</span><span class="n">rv</span><span class="p">:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WITH</span> <span class="n">m</span><span class="p">,</span> <span class="n">rv</span><span class="p">,</span> <span class="n">r</span>
+<span class="k">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">rv</span><span class="p">.</span><span class="n">rating</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>For the second MATCH clause, we use the found movie nodes, m. The RETURN clause has access to the movie, rating by that reviewer, the name of the reviewer, and the collection of director names for that movie.</p>
+</div>
+<div class="section" id="controlling-results-returned">
+<h2><span class="section-number">10.6. </span>Controlling Results Returned<a class="headerlink" href="#controlling-results-returned" title="Permalink to this headline">¶</a></h2>
+<p>What have you learned until now?</p>
+<ul class="simple">
+<li><p>How to query the database using both simple and complex patterns</p></li>
+<li><p>How to control query processing by chaining queries using WITH.</p></li>
+</ul>
+<p>Now we will focus on controlling how results are processed in the RETURN and WITH clauses.</p>
+<div class="section" id="dealing-with-duplicates">
+<h3><span class="section-number">10.6.1. </span>Dealing with duplicates<a class="headerlink" href="#dealing-with-duplicates" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Duplicate results</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span> <span class="o">|</span> <span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tom Hanks&#39;</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/clauses/return/#return-unique-results">DISTINCT</a> can be used to deal with duplicates.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span> <span class="o">|</span> <span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tom Hanks&#39;</span>
+<span class="k">RETURN</span> <span class="k">DISTINCT</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span>
+</pre></div>
+</div>
+<p>Using DISTINCT in the RETURN clause here means that rows with identical values will not be returned.</p>
+<p>Another way to avoid duplicates is by using WITH and DISTINCT together.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span> <span class="o">|</span> <span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tom Hanks&#39;</span>
+<span class="k">WITH</span> <span class="k">DISTINCT</span> <span class="n">m</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ordering-results">
+<h3><span class="section-number">10.6.2. </span>Ordering results<a class="headerlink" href="#ordering-results" title="Permalink to this headline">¶</a></h3>
+<p>If you want the results to be sorted, specify the expression to use for the sort using the ORDER BY keyword and whether you want the order to be descending using the DESC keyword. Ascending order is the default.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span> <span class="o">|</span> <span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tom Hanks&#39;</span> <span class="k">OR</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Keanu Reeves&#39;</span>
+<span class="k">RETURN</span> <span class="k">DISTINCT</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">DESC</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Ordering multiple results</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span> <span class="o">|</span> <span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Tom Hanks&#39;</span> <span class="k">OR</span> <span class="n">p</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Keanu Reeves&#39;</span>
+<span class="k">RETURN</span> <span class="k">DISTINCT</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">DESC</span> <span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="limiting-the-number-of-results">
+<h3><span class="section-number">10.6.3. </span>Limiting the number of results<a class="headerlink" href="#limiting-the-number-of-results" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="c1">--&gt;(m:Movie)</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">as</span> <span class="k">year</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">actor</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span> 
+<span class="k">RETURN</span> <span class="n">actor</span><span class="p">.</span><span class="n">name</span> <span class="k">AS</span> <span class="n">actor</span><span class="p">,</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">AS</span> <span class="n">movienumber</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">movienumber</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">5</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Limiting the number of intermediate results</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Using ORDER BY and LIMIT together can be helpful in many scenarios, just like how you did it in your SQL assignments.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="c1">--&gt;(m:Movie)</span>
+<span class="k">WITH</span> <span class="k">DISTINCT</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span> <span class="k">AS</span> <span class="n">title</span><span class="p">,</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">AS</span> <span class="k">year</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">m</span><span class="p">.</span><span class="n">released</span> <span class="k">DESC</span> <span class="k">LIMIT</span> <span class="mi">1</span>
+<span class="k">MATCH</span> <span class="p">(</span><span class="n">pp</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="c1">--&gt;(mm:Movie)</span>
+<span class="k">WHERE</span> <span class="n">mm</span><span class="p">.</span><span class="n">title</span><span class="o">=</span><span class="n">title</span>
+<span class="k">RETURN</span> <span class="n">pp</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="k">year</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Expression in WITH must be aliased (use AS). As we discussed before whatever we give in WITH will be available for subquery. And if you are using a property within a node then you must use alias to refer to that in your subquery.</p>
+</div>
+<p>If within WITH you are using entire node or relationship then you don’t want to alias (but its okay if you want to use)</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[</span><span class="n">rv</span><span class="p">:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WITH</span> <span class="n">m</span><span class="p">,</span> <span class="n">rv</span><span class="p">,</span> <span class="n">r</span>
+<span class="k">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span> <span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">rv</span><span class="p">.</span><span class="n">rating</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[</span><span class="n">rv</span><span class="p">:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WITH</span> <span class="n">m</span> <span class="k">AS</span> <span class="n">mov</span><span class="p">,</span> <span class="n">rv</span> <span class="k">AS</span> <span class="n">movierel</span><span class="p">,</span> <span class="n">r</span> <span class="k">AS</span> <span class="n">person</span>
+<span class="k">MATCH</span> <span class="p">(</span><span class="n">mov</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span> <span class="n">mov</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="n">movierel</span><span class="p">.</span><span class="n">rating</span><span class="p">,</span> <span class="n">person</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="can-you">
+<h2><span class="section-number">10.7. </span>Can you ?<a class="headerlink" href="#can-you" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Specify multiple MATCH patterns.</p></li>
+<li><p>Specify multiple MATCH clauses.</p></li>
+<li><p>Specify varying length paths.</p></li>
+<li><p>Perform intermediate processing with WITH.</p></li>
+<li><p>Perform subqueries with WITH.</p></li>
+<li><p>Count results returned.</p></li>
+<li><p>Eliminate duplication in results returned.</p></li>
+<li><p>Order results returned.</p></li>
+<li><p>Limit the number of results returned.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture9.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>Lecture 8: CQL 1</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Gittu George, PhD<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
